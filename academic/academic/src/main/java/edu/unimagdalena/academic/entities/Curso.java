@@ -1,12 +1,14 @@
 package edu.unimagdalena.academic.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name = "cursos")
@@ -21,4 +23,61 @@ public class Curso implements Serializable {
 	
 	@Column(name = "etapa")
 	private String etapa;
+
+	@OneToMany(mappedBy="grado")
+	private Set<Estudiante> estudiantes;
+	
+	@OneToMany(mappedBy = "curso")
+	private Set<Asignatura> asignaturas;
+
+	/**
+	 * 
+	 */
+	public Curso() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getNivel() {
+		return nivel;
+	}
+
+	public void setNivel(Integer nivel) {
+		this.nivel = nivel;
+	}
+
+	public String getEtapa() {
+		return etapa;
+	}
+
+	public void setEtapa(String etapa) {
+		this.etapa = etapa;
+	}
+
+	public Set<Estudiante> getEstudiantes() {
+		return estudiantes;
+	}
+
+	public void setEstudiantes(Set<Estudiante> estudiantes) {
+		this.estudiantes = estudiantes;
+	}
+
+	public Set<Asignatura> getAsignaturas() {
+		return asignaturas;
+	}
+
+	public void setAsignaturas(Set<Asignatura> asignaturas) {
+		this.asignaturas = asignaturas;
+	}
+	
+	
+	
 }

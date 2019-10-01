@@ -1,0 +1,4 @@
+para las uniones entre las tablas Clase y Hora_Semanal se tiene encuenta que el lado dueño es la tabla Clase
+
+
+Union Entre tablas Estudiante y Clase El lado dueño es estudiante
