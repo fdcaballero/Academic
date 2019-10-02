@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "users")
@@ -22,7 +23,13 @@ public class Usuario implements Serializable {
 	
 	@Column(name = "hablitado", nullable = false)
 	private Boolean habilitado;
-
+	
+	@OneToOne(mappedBy = "t_usuario")
+	private Profesor t_usuario;
+	
+	@OneToOne(mappedBy = "t_user")
+	private Estudiante t_user;
+	
 	
 	
 	public Usuario() {

@@ -72,7 +72,8 @@ public class Estudiante implements Serializable {
 	@Column(name = "observaciones")
 	private String observaciones;
 	
-	
+	@JoinColumn(name = "t_user")
+	private Usuario t_user;
 
 	public Estudiante() {
 		super();
