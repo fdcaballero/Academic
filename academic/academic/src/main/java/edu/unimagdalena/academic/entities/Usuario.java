@@ -24,14 +24,30 @@ public class Usuario implements Serializable {
 	@Column(name = "hablitado", nullable = false)
 	private Boolean habilitado;
 	
-	@OneToOne(mappedBy = "t_usuario")
-	private Profesor t_usuario;
+	@OneToOne(mappedBy = "TpUsuario")
+	private Profesor Tusuario;
 	
-	@OneToOne(mappedBy = "t_user")
+	@OneToOne(mappedBy = "typeUser")
 	private Estudiante t_user;
 	
 	
-	
+
+	public Profesor getTusuario() {
+		return Tusuario;
+	}
+
+	public void setTusuario(Profesor tusuario) {
+		Tusuario = tusuario;
+	}
+
+	public Estudiante getT_user() {
+		return t_user;
+	}
+
+	public void setT_user(Estudiante t_user) {
+		this.t_user = t_user;
+	}
+
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub

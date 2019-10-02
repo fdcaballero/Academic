@@ -38,8 +38,8 @@ public class Profesor implements Serializable {
 	private Set<Clase> clases;
 	
 	@OneToOne
-	@JoinColumn(name = "t_usuario")
-	private Usuario t_usuario;
+	@JoinColumn(name = "t_user")
+	private Usuario TpUsuario;
 	
 	public Profesor() {
 		super();

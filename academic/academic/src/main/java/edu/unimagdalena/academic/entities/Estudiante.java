@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -70,10 +71,11 @@ public class Estudiante implements Serializable {
 	private Date fecha_baja;
 	
 	@Column(name = "observaciones")
-	private String observaciones;
+	private String observacion;
 	
+	@OneToOne
 	@JoinColumn(name = "t_user")
-	private Usuario t_user;
+	private Usuario typeUser;
 
 	public Estudiante() {
 		super();
@@ -161,11 +163,11 @@ public class Estudiante implements Serializable {
 	}
 
 	public String getObservaciones() {
-		return observaciones;
+		return observacion;
 	}
 
 	public void setObservaciones(String observaciones) {
-		this.observaciones = observaciones;
+		this.observacion = observaciones;
 	}
 
 	public Responsable_Alumno getResponsable() {
