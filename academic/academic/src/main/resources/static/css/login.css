@@ -1,0 +1,15 @@
+ .submit{
+    position: relative;
+    top: 45%;
+    left: 35%;
+}
+
+ .footer{
+    position: absolute;
+    bottom: 0%;
+    background-color: black;
+    height: 10%;
+    padding: 2%;
+    width: 100%;
+    
+ }
