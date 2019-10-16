@@ -23,6 +23,7 @@ public class Usuario implements Serializable {
 	
 	@Column(name = "user", nullable = false)
 	private String user;
+	
 	@Column (name = "password" , nullable = false)
 	private String password;
 	

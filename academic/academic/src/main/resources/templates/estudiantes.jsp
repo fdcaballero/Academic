@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/estudiantes.css" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/estudiantes.css}" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body class="center">
@@ -17,20 +17,8 @@
         <li class="nav-item">
           <a href="#tab1Id" class="nav-link active">Active</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#tab2Id">Action</a>
-            <a class="dropdown-item" href="#tab3Id">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#tab4Id">Action</a>
-          </div>
-        </li>
         <li class="nav-item">
-          <a href="#tab5Id" class="nav-link">Another link</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link disabled">Disabled</a>
+          <a th:href="@{/inicio}" class="">volver</a>
         </li>
       </ul>
       
@@ -66,7 +54,7 @@
         
              <div class="form-group">
                <label for="nombre">Nombre</label>
-                 <input type="name" class="form-control form-control-user"  placeholder="Ingrese nombre...">
+                 <input type="text" class="form-control form-control-user"  placeholder="Ingrese nombre...">
                </div>
                <div class="form-group">
                   <label for="curso">Curso </label>
@@ -105,7 +93,7 @@
                       <th><a href="#" class="btn btn-primary btn-user btn-block ">Datos personales</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block "  data-toggle="modal" data-target="#myModalClases">Clases</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block  " onclick="confirm('desear dar de baja')">Dar de alta/ baja</a></th>
-                      </th>
+                      
                   </tr>
                   <tr>
                     <th>Nombre</th>
@@ -115,7 +103,7 @@
                     <th>Fecha de baja</th>
                   </tr>
                 </thead>
-                <tbody ">
+                <tbody >
   
                  <tr>
                     <td>------</td>
