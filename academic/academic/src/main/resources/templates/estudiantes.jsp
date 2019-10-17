@@ -161,7 +161,7 @@
       
             <!-- Modal body -->
             <div class="modal-body ">
-              <form action="" method="post" class="form">
+              <form th:action="@{/api/v1/crear-estudiante}" th:object ="${}" method="post" class="form">
                 <section class="container">  
                     <section class="row">
                         <section class="form-group col">
@@ -170,8 +170,8 @@
                             <input type="text" name="nombre" id="nombre" class="form-control " required>
                         
                             <label for="apellido1">* Apellido 1</label>
-                            <input type="text" name="apellido1" id="apellido1" class="form-control" required>
-                            
+                                  <input type="text" name="apellido1" id="apellido1" class="form-control" required>
+                              
                             <label for="apellido2">Apellido 2 </label>
                             <input type="text" name="apellido2"  class="form-control" id="apellido2">
                         
@@ -241,7 +241,7 @@
             <!-- Modal footer -->
             <div class="modal-footer">
 
-              <button type="button" class="btn btn-primary " id="crear" data-dismiss="modal">Crear</button>
+              <button type="submit" class="btn btn-primary " id="crear" data-dismiss="modal">Crear</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
               
             </div>
