@@ -5,4 +5,6 @@ import edu.unimagdalena.academic.entities.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Integer>{
 
+	 Role findByRole(String string);
+
 }

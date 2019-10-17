@@ -101,5 +101,6 @@ public class Usuario implements Serializable {
 	public void setHabilitado(Boolean habilitado) {
 		this.habilitado = habilitado;
 	}
+
 	
 }

@@ -18,7 +18,6 @@ public class Role implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	
 	@Column
 	private String nombre;
 	
