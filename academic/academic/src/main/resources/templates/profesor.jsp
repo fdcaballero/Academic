@@ -195,55 +195,20 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table" width="100%" cellspacing="0">
-                  <thead>
+                <table id = "prof-tabla" class="table" width="100%" cellspacing="0">         
                     <tr>
-                        <th><a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Nuevo profesor</a></th>
+                        <th><button class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Crear docente</button></th>                    
                         <th><a href="#" class="btn btn-primary btn-user btn-block">Datos personales</a></th>
-                        <th><a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModalHorario"> Clases</a></th>
-                        <th><a href="#" class="btn btn-primary btn-user btn-block">Eliminar profesor</a></th>
+                        <th><a href="#" class="btn btn-primary btn-user btn-block">Clases</a></th>
+                        <th><a href="#" id="Delete" class="btn btn-primary btn-user btn-block">Eliminar profesor</a></th>
                         </th>
                     </tr>
                     <tr>
                       <th>Nombre</th>
-                      <th>NIF O C.C.</th>
+                      <th>NIF</th>
                       <th>Correo</th>
-                      <th>TelÃ©fono</th>
+                      <th>Teléfono</th>
                     </tr>
-                  </thead>
-                  <tbody>
-    
-                    <tr>
-                      <td>------</td>
-                      <td>Integration Specialist</td>
-                      <td>Tokyo</td>
-                      <td>55</td>
-                    </tr>
-                    <tr>
-                      <td>Colleen Hurst</td>
-                      <td>Javascript Developer</td>
-                      <td>San Francisco</td>
-                      <td>39</td>
-                    </tr>
-                    <tr>
-                      <td>Sonya Frost</td>
-                      <td>Software Engineer</td>
-                      <td>Edinburgh</td>
-                      <td>23</td>
-                    </tr>
-                    <tr>
-                      <td>Jena Gaines</td>
-                      <td>Office Manager</td>
-                      <td>London</td>
-                      <td>30</td>
-                    </tr>
-                    <tr>
-                      <td>Quinn Flynn</td>
-                      <td>Support Lead</td>
-                      <td>Edinburgh</td>
-                      <td>22</td>
-                    </tr>
-                  </tbody>
                 </table>
               </div>
             </div>
@@ -265,44 +230,43 @@
               <h4 class="modal-title">Nuevo profesor</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-      
+  
             <!-- Modal body -->
             <div class="modal-body">
               <form action="" method="post" class="form">
                 <section class="form-group">
                     <label for="nombre">* Nombre </label>
-                    <input type="text" name="nombre"  class="form-control" required>
+                    <input id = "nombre" type="text" name="nombre"  class="form-control" />
                    
                     <label for="apellido1">* Apellido 1</label>
-                    <input type="text" name="apellido1"  class="form-control" required>
+                    <input id="apellido1" type="text" name="apellido1"  class="form-control" />
                     
                     <label for="apellido2">Apellido 2 </label>
-                    <input type="text" name="apellido2"  class="form-control">
+                    <input id = "apellido2" type="text" name="apellido2"  class="form-control">
                    
                     <label for="nif">* NIF </label>
-                    <input type="text" name="nif"  class="form-control" required>
+                    <input id="nif" type="text" name="nif"  class="form-control" required>
                     
                     <label for="telefono">* Telefono </label>
-                    <input type="tel" name="telefono"  class="form-control" required>
+                    <input id="telefono" type="tel" name="telefono"  class="form-control" required>
                    
                     <label for="correo">* Correo </label>
-                    <input type="email" name="correo"  class="form-control" required>
+                    <input id="correo" type="email" name="correo" class="form-control" required>
 
-                    <label for="titulacion">TitulaciÃ³n </label>
-                    <input type="text" name="titulacion"  class="form-control">
+                    <label for="titulacion">Titulación </label>
+                    <input id="titulacion" type="text" name="titulacion" class="form-control">
                 </section>
 
               </form>
             </div>
       
-            <!-- Modal footer -->
-            <div class="modal-footer">
-
-              <button type="button" class="btn btn-primary ">Crear</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-              
-            </div>
       
+            <!-- Modal footer -->
+         <!-- Modal footer -->
+            <div class="modal-footer">
+              <input id ="create" value = "Crear" type="button" class="btn btn-primary "/>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
           </div>
         </div>
       </div>
@@ -310,7 +274,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; Academic</span>
           </div>
         </div>
       </footer>
@@ -345,7 +309,7 @@
       </div>
     </div>
   </div>
-  <!---#######################HORARIO DOCENTE##########################################-->
+  <!---#######################HORARIO DOCENTE#################################-->
   <!-- The Modal -->
   <div class="modal" id="myModalHorario">
     <div class="modal-dialog modal-lg">
@@ -498,8 +462,9 @@
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/Docente.js"></script>
+  
 
 </body>
 
