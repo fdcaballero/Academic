@@ -1,9 +1,9 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+  <head th:replace="layout/base::head('Estudiantes','styles')">
     <title>Alumno</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -13,7 +13,7 @@
   <body class="center">
     <header>
       <!-- Nav tabs -->
-      <ul class="nav nav-tabs" id="navId">
+      <ul  th:replace="layout/base::sidebar()" class="nav nav-tabs" id="navId">
         <li class="nav-item">
           <a href="#tab1Id" class="nav-link active">Active</a>
         </li>
@@ -38,6 +38,8 @@
         });
       </script>
     </header>
+    
+    
    <section class=" col-11">
       <div class="container-fluid">
 
@@ -82,7 +84,7 @@
       <!-- DataTables Example -->
       <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Resultado de la b煤squeda</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Resultado de la b鷖queda</h6>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -161,7 +163,7 @@
       
             <!-- Modal body -->
             <div class="modal-body ">
-              <form action="" method="post" class="form">
+              <form th:action="@{/api/v1/crear-estudiante}" th:object ="${}" method="post" class="form">
                 <section class="container">  
                     <section class="row">
                         <section class="form-group col">
@@ -170,8 +172,8 @@
                             <input type="text" name="nombre" id="nombre" class="form-control " required>
                         
                             <label for="apellido1">* Apellido 1</label>
-                            <input type="text" name="apellido1" id="apellido1" class="form-control" required>
-                            
+                                  <input type="text" name="apellido1" id="apellido1" class="form-control" required>
+                              
                             <label for="apellido2">Apellido 2 </label>
                             <input type="text" name="apellido2"  class="form-control" id="apellido2">
                         
@@ -230,7 +232,7 @@
                             
                             <label for="correo">* Correo </label>
                             <input type="email" name="correoR" id="correoR" class="form-control" required>
-                            <h5><br>** Nota: Los datos del responsable se rellenar谩n en caso de que sea necesario</h5>
+                            <h5><br>** Nota: Los datos del responsable se rellenar醤 en caso de que sea necesario</h5>
 
                         </section>
                     </section>
@@ -241,7 +243,7 @@
             <!-- Modal footer -->
             <div class="modal-footer">
 
-              <button type="button" class="btn btn-primary " id="crear" data-dismiss="modal">Crear</button>
+              <button type="submit" class="btn btn-primary " id="crear" data-dismiss="modal">Crear</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
               
             </div>
@@ -251,7 +253,7 @@
       </div>
       <section>
     
-          <!-- The Modal Horario路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路路-->
+          <!-- The Modal Horario贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩贩-->
           <div class="modal" id="myModalClases">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">

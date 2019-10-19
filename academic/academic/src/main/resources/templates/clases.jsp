@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
+<head th:replace="layout/base::head('Clases','styles')">
 
-  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -30,65 +29,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/inicio}">
-          <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-          </div>
-          <div class="sidebar-brand-text mx-3">Academic</div>
-        </a>
-  
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-  
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-          <a class="nav-link" th:href="@{/inicio}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Inicio</span></a>
-        </li>
-  
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/docente}">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Profesores</span>
-          </a>
-        </li>
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{estudiante}" >
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Alumnos</span>
-          </a>
-          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar"></div>
-        </li>
-  
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/clase}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Clases</span></a>
-        </li>
-  
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/mantenimiento/asignatura}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Mantenimiento</span></a>
-        </li>
-  
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-  
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-          <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-  
-      </ul>
+     <ul  th:replace="layout/base::sidebar()" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"></ul>
       <!-- End of Sidebar -->
   
     <!-- Content Wrapper -->
@@ -173,7 +114,7 @@
              <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h2 class="m-0 font-weight-bold text-primary">Clases</h2>    
             </div>
-               <p><strong> BÃºsqueda de clases</strong></p>
+               <p><strong> Búsqueda de clases</strong></p>
             <div>
                 <div class="form-group">
                     <select class="form-control">
@@ -187,7 +128,7 @@
                   <div class="form-group">
                     <select class="form-control">
                         <option>Seleccione Asignatura...</option>
-                        <option>ProgramaciÃ³n web</option>
+                        <option>Programación web</option>
                         <option>3</option>
                         <option>4</option>
                         <option>5</option>
@@ -212,7 +153,7 @@
           <!-- DataTables Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Resultado de la bÃºsqueda</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Resultado de la búsqueda</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -303,13 +244,13 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">Ã—</span>
+            <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Cerrar sesiÃ³n</a>
+          <a class="btn btn-primary" href="login.html">Cerrar sesión</a>
         </div>
       </div>
     </div>
@@ -516,7 +457,6 @@
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
-
 </body>
 
 </html>
