@@ -161,7 +161,7 @@
       
             <!-- Modal body -->
             <div class="modal-body ">
-              <form th:action="@{/api/v1/crear-estudiante}" th:object ="${}" method="post" class="form">
+              <form th:action="@{/api/v1/estudiante}"  method="post" class="form">
                 <section class="container">  
                     <section class="row">
                         <section class="form-group col">

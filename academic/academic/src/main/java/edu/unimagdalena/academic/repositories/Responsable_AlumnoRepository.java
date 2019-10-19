@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import edu.unimagdalena.academic.entities.Responsable_Alumno;
 
 @Repository
-public interface Responsable_AlumnoRepository extends JpaRepository<Responsable_Alumno, Integer> {
+public interface Responsable_AlumnoRepository extends JpaRepository<Responsable_Alumno, Long> {
 
 }

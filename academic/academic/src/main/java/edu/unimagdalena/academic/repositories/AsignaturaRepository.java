@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import edu.unimagdalena.academic.entities.Asignatura;
 
 @Repository
-public interface AsignaturaRepository extends JpaRepository<Asignatura, Integer>{
+public interface AsignaturaRepository extends JpaRepository<Asignatura, Long>{
 
 }

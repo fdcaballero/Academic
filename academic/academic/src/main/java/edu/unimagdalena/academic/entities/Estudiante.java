@@ -21,12 +21,12 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "Students")
+@Table(name = "Estudiante")
 public class Estudiante implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	@Column(name = "nombre", nullable = false)
 	private String nombre;
 	@Column(name="apellido1" ,  nullable = false)
@@ -82,11 +82,11 @@ public class Estudiante implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

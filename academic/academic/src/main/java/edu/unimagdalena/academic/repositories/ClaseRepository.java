@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import edu.unimagdalena.academic.entities.Clase;
 
 @Repository
-public interface ClaseRepository  extends JpaRepository<Clase, Integer>{
+public interface ClaseRepository  extends JpaRepository<Clase, Long>{
 
 }

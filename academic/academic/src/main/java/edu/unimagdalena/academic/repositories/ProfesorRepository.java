@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import edu.unimagdalena.academic.entities.Profesor;
 
 @Repository
-public interface ProfesorRepository extends JpaRepository<Profesor, Integer>{
+public interface ProfesorRepository extends JpaRepository<Profesor, Long>{
 
 }

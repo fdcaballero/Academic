@@ -1,6 +1,6 @@
 package edu.unimagdalena.academic.restfull;
 
-import javax.websocket.server.PathParam;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.unimagdalena.academic.entities.Clase;
-import edu.unimagdalena.academic.entities.Profesor;
 import edu.unimagdalena.academic.repositories.ClaseRepository;
-import edu.unimagdalena.academic.repositories.ProfesorRepository;
+import java.util.*;
+
+import javax.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -24,9 +25,12 @@ public class RestClaseController {
 	private ClaseRepository  classRepositories;
 	
 	@GetMapping("/clase/{id}")
-	public Clase getClase(@PathVariable Integer id) {
-		
-		return classRepositories.getOne(id);
+	public Clase getClase(@PathVariable Long id) {
+		Optional<Clase> clase  = classRepositories.findById(id);
+		if(!clase.isPresent()) {
+			throw new EntityNotFoundException("No se encontro la clase");
+		}
+		return clase.get();
 	}
 	
 	@PostMapping ("/clase")
@@ -41,7 +45,12 @@ public class RestClaseController {
 	}
 	
 	@DeleteMapping("/clase/{id}")
-	public void borrarClase (@PathVariable Integer id) {
-		classRepositories.deleteById(id);
+	public void borrarClase (@PathVariable Long id) {
+		Clase aux = classRepositories.getOne(id);
+		classRepositories.delete(aux);
+	}
+	@GetMapping("/clase")
+	public List<Clase> getClases(){
+		return classRepositories.findAll();
 	}
 }	

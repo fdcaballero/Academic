@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "user", nullable = false)
 	private String user;
@@ -70,11 +70,11 @@ public class Usuario implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -1,10 +1,9 @@
 package edu.unimagdalena.academic.restfull;
 
-import javax.validation.Valid;
-import javax.websocket.server.PathParam;
+import javax.persistence.EntityNotFoundException;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,18 +24,24 @@ public class RestEstudianteController {
 	@Autowired
 	private EstudianteRepository studentRepository;
 	
+	 @GetMapping("/estudiante/{id}")
+	 public Estudiante getEstudiante(@PathVariable("id") Long id) {
+		Optional<Estudiante> estudiante = studentRepository.findById(id);
+		if(!estudiante.isPresent()) {
+			throw new EntityNotFoundException("No se encontro el estudiante ");
+		}
+		return estudiante.get();
+	 }
+	
+	
 	 @PostMapping("/estudiante")
-	 public Estudiante createStudent(@Valid @RequestBody Estudiante student, Model model) {
+	 public Estudiante createStudent(@RequestBody Estudiante student) {
 		 
 		 return studentRepository.save(student);
 	 }
 	 
-	 @GetMapping("/estudiante/{id}")
-	 public Estudiante showDataStudent(@PathVariable Integer id) {
-		return studentRepository.getOne(id);
-		
-	 }
-	 @GetMapping("/estudiantes")
+	
+	 @GetMapping("/estudiante")
 	 public List<Estudiante> listar(){
 		 return studentRepository.findAll();
 	 }
@@ -48,7 +53,9 @@ public class RestEstudianteController {
 	}
 	 
 	 @DeleteMapping("/estudiante/{id}")
-	 public void borrarStudent(@PathVariable Integer id) {
-		 studentRepository.deleteById(id);
+	 public void borrarStudent(@PathVariable("id") Long id) {
+		Estudiante aux = studentRepository.getOne(id);
+		studentRepository.delete(aux);
+		 
 	 }
 }
