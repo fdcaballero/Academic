@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.unimagdalena.academic.entities.Profesor;
-import edu.unimagdalena.academic.repositories.ProfesorRepository;
+import edu.unimagdalena.academic.services.*;
 import java.util.*;
 
-import javax.persistence.EntityNotFoundException;
+
 
 @RestController
 @RequestMapping("/api/v1")
 public class RestDocenteController {
 
 	@Autowired
-	private ProfesorRepository docenteRepository;
+	private ProfesorServiceImp docenteRepository;
 	
 	@GetMapping("/docente")
 	public List<Profesor> getProfesor(){
@@ -30,11 +30,9 @@ public class RestDocenteController {
 	
 	@GetMapping("/docente/{id}")
 	public Profesor getProfesor(@PathVariable Long id ) {
-		Optional<Profesor> profesor = docenteRepository.findById(id);
-		if(profesor.isPresent()) {
-			throw new EntityNotFoundException("No se encontro el profesor con id "+ id);
-		}
-		return profesor.get();
+		Profesor profesor = docenteRepository.findById(id);
+		
+		return profesor;
 	}
 	
 	@PostMapping("/docente")

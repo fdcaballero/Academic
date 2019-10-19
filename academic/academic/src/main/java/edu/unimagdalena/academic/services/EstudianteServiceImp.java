@@ -1,5 +1,65 @@
 package edu.unimagdalena.academic.services;
 
-public class EstudianteServiceImp {
+import java.util.*;
 
+import javax.persistence.EntityNotFoundException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.unimagdalena.academic.entities.Estudiante;
+import edu.unimagdalena.academic.repositories.EstudianteRepository;
+
+@Service
+public class EstudianteServiceImp implements EstudianteService{
+	@Autowired
+	private EstudianteRepository estudiantRepository;
+	
+	@Override
+	public Estudiante save(Estudiante estudiante) {
+		return estudiantRepository.save(estudiante);
+		
+	}
+	
+	
+
+	@Override
+	public void delete(Estudiante estudiante) {
+		estudiantRepository.delete(estudiante);
+		
+	}
+
+	@Override
+	public Estudiante buscarEstudiantePorId(Long id) {
+		return estudiantRepository.getOne(id);
+	}
+
+
+	
+
+	@Override
+	public List<Estudiante> findAll() {
+		return estudiantRepository.findAll();
+	}
+
+
+
+	@Override
+	public Estudiante getOne(Long id) {
+		
+		return estudiantRepository.getOne(id);
+	}
+
+
+
+	@Override
+	public Estudiante findById(Long id) {
+		Optional<Estudiante> estudiante = estudiantRepository.findById(id);
+		if(!estudiante.isPresent()) {
+			throw new EntityNotFoundException("No se encontro el estudiante");
+		}
+		
+		return estudiante.get();
+	}
+	
 }

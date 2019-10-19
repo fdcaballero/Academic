@@ -13,24 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.unimagdalena.academic.entities.Clase;
-import edu.unimagdalena.academic.repositories.ClaseRepository;
+import edu.unimagdalena.academic.services.*;
 import java.util.*;
 
-import javax.persistence.EntityNotFoundException;
+
 
 @RestController
 @RequestMapping("/api/v1")
 public class RestClaseController {
 	@Autowired
-	private ClaseRepository  classRepositories;
+	private ClaseServiceImp  classRepositories;
 	
 	@GetMapping("/clase/{id}")
 	public Clase getClase(@PathVariable Long id) {
-		Optional<Clase> clase  = classRepositories.findById(id);
-		if(!clase.isPresent()) {
-			throw new EntityNotFoundException("No se encontro la clase");
-		}
-		return clase.get();
+		return classRepositories.findById(id);
+	
 	}
 	
 	@PostMapping ("/clase")
