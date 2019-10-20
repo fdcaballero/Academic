@@ -8,8 +8,8 @@ function AddDocente(){
    $('#create').on("click", function(event){
       event.preventDefault();
       var nombre = $("input[id = nombre]");
-      var apellido1 = $("input[id = apellido1]");
-      var apellido2 = $("input[id = apellido2]");
+      var apellido = $("input[id = apellido]");
+      var apellidoS = $("input[id = apellidoS]");
       var Nif = $("input[id = nif]");
       var telefono = $("input[id = telefono]");
       var correo = $("input[id = correo]");
@@ -17,8 +17,8 @@ function AddDocente(){
       
       var docente = {
     	  "nombre" : nombre,
-    	  "apellido1" : apellido1,
-    	  "apellido2" : apellido2,
+    	  "apellido1" : apellido,
+    	  "apellido2" : apellidoS,
     	  "nif" : nif ,
     	  "telefono" : telefono,
     	  "correo" : correo ,
@@ -26,22 +26,22 @@ function AddDocente(){
     	};
      $.ajax("./api/v1/docente",
     		 {
-    	 contentType :"application/json",
+    	 contentType : "application/json",
     	 dataType:'json',
     	 type: "POST",
     	 data:JSON.stringify(docente),
     	 success:function(dataDocente){  
     		 
-    	      $('#prof-tabla').append(
-    	    "<tr class = 'prof' data-id=" + dataDocente.id +">"+
-    	      "<th>" + dataDocente.nombre + "</th>" +
-    	      "<th>" + dataDocente.Nif + "</th>" +
-    	      "<th>" + dataDocente.telefono + "</th>" +
-    	      "<th>" + dataDocente.correo + "</th>" +
-    	     "</tr>");
+    	  $('#prof-tabla').append(
+    			  "<tr class = 'prof' data-id=" + dataDocente.id +">"+
+		    	      "<td>" + dataDocente.nombre + "</td>" +
+		    	      "<td>" + dataDocente.Nif + "</td>" +
+		    	      "<td>" + dataDocente.telefono + "</td>" +
+		    	      "<td>" + dataDocente.correo + "</td>" +
+	    	     "</tr>");
     	       nombre.val('');
-    	       apellido1.val('');
-    	       apellido2.val('');
+    	       apellido.val('');
+    	       apellidoS.val('');
     	       Nif.val(''); 
     	       telefono.val(''); 
     	       correo.val('');

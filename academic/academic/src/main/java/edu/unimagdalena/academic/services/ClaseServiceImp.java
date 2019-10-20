@@ -1,14 +1,19 @@
 package edu.unimagdalena.academic.services;
 
+
 import edu.unimagdalena.academic.repositories.ClaseRepository;
+
 
 import java.util.*;
 
-import javax.persistence.EntityNotFoundException;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import edu.unimagdalena.academic.entities.Clase;
+
+@Service
 public class ClaseServiceImp implements ClaseService {
 	
 	@Autowired
@@ -40,14 +45,9 @@ public class ClaseServiceImp implements ClaseService {
 	}
 
 	@Override
-	public Clase findById(Long id) {
-		Optional<Clase> clase = claseRepository.findById(id);
+	public Optional<Clase> findById(Long id) {
+		return claseRepository.findById(id);
 		
-		if(!clase.isPresent()) {
-			
-			throw new EntityNotFoundException("No se encontro la clase con id" + id);
-		}
-		return clase.get();
 	}
 	
 	

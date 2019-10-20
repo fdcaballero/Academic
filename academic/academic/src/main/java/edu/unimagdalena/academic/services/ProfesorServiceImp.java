@@ -2,7 +2,7 @@ package edu.unimagdalena.academic.services;
 
 import java.util.*;
 
-import javax.persistence.EntityNotFoundException;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import edu.unimagdalena.academic.repositories.*;
 
 import edu.unimagdalena.academic.entities.*;
+
 @Service
 public class ProfesorServiceImp implements ProfesorService {
 	
@@ -40,11 +41,13 @@ public class ProfesorServiceImp implements ProfesorService {
 	}
 
 	@Override
-	public Profesor findById(Long id) {
-		Optional<Profesor> profesor = profesorRepository.findById(id);
-		if(profesor.isPresent()) {
-			throw new EntityNotFoundException("No se encontro el profesor con id "+ id);
-		}
-		return profesor.get();
+	public Optional<Profesor> findById(Long id) {
+		return profesorRepository.findById(id);
+	
+	}
+
+	@Override
+	public Profesor buscarProfesorPorId(Long id) {
+		return profesorRepository.getOne(id);
 	}
 }

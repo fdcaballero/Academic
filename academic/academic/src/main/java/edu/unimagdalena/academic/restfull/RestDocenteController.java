@@ -14,6 +14,8 @@ import edu.unimagdalena.academic.entities.Profesor;
 import edu.unimagdalena.academic.services.*;
 import java.util.*;
 
+import javax.persistence.EntityNotFoundException;
+
 
 
 @RestController
@@ -21,7 +23,7 @@ import java.util.*;
 public class RestDocenteController {
 
 	@Autowired
-	private ProfesorServiceImp docenteRepository;
+	private ProfesorService docenteRepository;
 	
 	@GetMapping("/docente")
 	public List<Profesor> getProfesor(){
@@ -29,10 +31,14 @@ public class RestDocenteController {
 	}
 	
 	@GetMapping("/docente/{id}")
-	public Profesor getProfesor(@PathVariable Long id ) {
-		Profesor profesor = docenteRepository.findById(id);
+	public Profesor getProfesor(@PathVariable("id") Long id ) {
 		
-		return profesor;
+		Optional<Profesor> profesor = docenteRepository.findById(id);
+		
+		if(!profesor.isPresent()) {
+			throw new EntityNotFoundException("No se encontro el profesor con id "+ id);
+		}
+		return profesor.get();
 	}
 	
 	@PostMapping("/docente")

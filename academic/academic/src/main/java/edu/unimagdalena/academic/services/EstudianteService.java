@@ -1,13 +1,13 @@
 package edu.unimagdalena.academic.services;
 
 import edu.unimagdalena.academic.entities.Estudiante;
-import java.util.List;
+import java.util.*;
 
 public interface EstudianteService {
 	
 	Estudiante save(Estudiante estudiante);
 	
-	Estudiante findById(Long id);
+	Optional<Estudiante> findById(Long id);
 	 
 	void delete(Estudiante estudiante);
 	

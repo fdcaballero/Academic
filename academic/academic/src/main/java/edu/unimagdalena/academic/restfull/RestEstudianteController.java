@@ -13,19 +13,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
+
+import javax.persistence.EntityNotFoundException;
+
 import edu.unimagdalena.academic.entities.Estudiante;
-import edu.unimagdalena.academic.services.EstudianteServiceImp;
+import edu.unimagdalena.academic.services.EstudianteService;
 
 @RestController
 @RequestMapping("/api/v1") //Nombre para accesar a la api
 public class RestEstudianteController {
 	
 	@Autowired
-	private EstudianteServiceImp studentRepository;
+	private EstudianteService studentRepository;
 	
 	 @GetMapping("/estudiante/{id}")
 	 public Estudiante getEstudiante(@PathVariable("id") Long id) {
-		return studentRepository.findById(id);
+		Optional<Estudiante> estudiante =  studentRepository.findById(id);
+		if(!estudiante.isPresent()) {
+			
+			throw new EntityNotFoundException("No se encontro el estudiante con id" + id);
+		}
+		return estudiante.get();
 	 }
 	
 	

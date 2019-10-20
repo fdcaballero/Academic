@@ -22,11 +22,12 @@ import java.util.*;
 @RequestMapping("/api/v1")
 public class RestClaseController {
 	@Autowired
-	private ClaseServiceImp  classRepositories;
+	private ClaseService classRepositories;
 	
 	@GetMapping("/clase/{id}")
 	public Clase getClase(@PathVariable Long id) {
-		return classRepositories.findById(id);
+		Optional<Clase> clase = classRepositories.findById(id);
+		return clase.get();
 	
 	}
 	

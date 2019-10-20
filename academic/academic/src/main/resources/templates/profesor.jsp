@@ -219,7 +219,7 @@
 
       </div>
       <!-- End of Main Content -->
-      
+ <!-- ############################################################################################################### -->     
       <!-- The Modal -->
       <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -233,16 +233,16 @@
   
             <!-- Modal body -->
             <div class="modal-body">
-              <form action="" method="post" class="form">
+              <form action=""  class="form">
                 <section class="form-group">
                     <label for="nombre">* Nombre </label>
-                    <input id = "nombre" type="text" name="nombre"  class="form-control" />
+                    <input id = "nombre" type="text" name="nombre"  class="form-control" required />
                    
                     <label for="apellido1">* Apellido 1</label>
-                    <input id="apellido1" type="text" name="apellido1"  class="form-control" />
+                    <input id="apellido1" type="text" name="apellido"  class="form-control" required/>
                     
                     <label for="apellido2">Apellido 2 </label>
-                    <input id = "apellido2" type="text" name="apellido2"  class="form-control">
+                    <input id = "apellido2" type="text" name="apellidoS"  class="form-control">
                    
                     <label for="nif">* NIF </label>
                     <input id="nif" type="text" name="nif"  class="form-control" required>
@@ -270,6 +270,7 @@
           </div>
         </div>
       </div>
+<!-- ##################################################################################################### -->    
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -309,7 +310,7 @@
       </div>
     </div>
   </div>
-  <!---#######################HORARIO DOCENTE#################################-->
+  <!---#######################HORARIO DOCENTE#####################################################-->
   <!-- The Modal -->
   <div class="modal" id="myModalHorario">
     <div class="modal-dialog modal-lg">
@@ -462,7 +463,7 @@
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/Docente.js"></script>
   
 
