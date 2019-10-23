@@ -16,6 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name =  "profesores")
 public class Profesor implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -67,6 +68,7 @@ public class Profesor implements Serializable {
 	}
 
 
+
 	public String getApellido1() {
 		return apellido1;
 	}
@@ -84,6 +86,16 @@ public class Profesor implements Serializable {
 
 	public void setApellido2(String apellido2) {
 		this.apellido2 = apellido2;
+	}
+
+
+	public Usuario getTpUsuario() {
+		return TpUsuario;
+	}
+
+
+	public void setTpUsuario(Usuario tpUsuario) {
+		TpUsuario = tpUsuario;
 	}
 
 

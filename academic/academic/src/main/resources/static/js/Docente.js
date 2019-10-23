@@ -18,17 +18,20 @@ function AddDocente(){
       var docente = {
     	  "nombre" : nombre,
     	  "apellido1" : apellido,
-    	  "apellido2" : apellidoS,
+    	  "apellido" : apellidoS,
     	  "nif" : nif ,
     	  "telefono" : telefono,
     	  "correo" : correo ,
     	  "titulacion" : titulacion
     	};
-     $.ajax("./api/v1/docente",
+     $.ajax(
+    	
     		 {
     	 contentType : "application/json",
-    	 dataType:'json',
+    	 
     	 type: "POST",
+    	 url: window.location + "/api/v1/docente",
+    	 dataType:"json",    	 
     	 data:JSON.stringify(docente),
     	 success:function(dataDocente){  
     		 
@@ -46,8 +49,12 @@ function AddDocente(){
     	       telefono.val(''); 
     	       correo.val('');
     	       titulacion.val('');
-    	 }
-     
+    	 },
+     	/*error: function (jqXHR, state, error){
+     		console.log(state);
+     		consile.log(error);
+     	}
+     */
     	 });
     
    

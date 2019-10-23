@@ -176,10 +176,10 @@
                <p><strong> Búsqueda de profesores</strong></p>
         <div>
                 <div class="form-group">
-                    <input type="name" class="form-control form-control-user"  placeholder="Ingrese nombre...">
+                    <input type="text" class="form-control form-control-user"  placeholder="Ingrese nombre...">
                   </div>
                   <div class="form-group">
-                    <input type="id" class="form-control form-control-user"  placeholder="Ingrese C.C...">
+                    <input type="number" class="form-control form-control-user"  placeholder="Ingrese C.C...">
                   </div>
         </div>
         <div>
@@ -191,7 +191,7 @@
           <!-- DataTables Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Resultado de la búsqueda</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Resultado de la busqueda</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -201,7 +201,7 @@
                         <th><a href="#" class="btn btn-primary btn-user btn-block">Datos personales</a></th>
                         <th><a href="#" class="btn btn-primary btn-user btn-block">Clases</a></th>
                         <th><a href="#" id="Delete" class="btn btn-primary btn-user btn-block">Eliminar profesor</a></th>
-                        </th>
+                      
                     </tr>
                     <tr>
                       <th>Nombre</th>
@@ -264,7 +264,7 @@
             <!-- Modal footer -->
          <!-- Modal footer -->
             <div class="modal-footer">
-              <input id ="create" value = "Crear" type="button" class="btn btn-primary "/>
+              <input id ="create" value = "Crear" type="button" class="btn btn-primary" />
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
           </div>
@@ -447,7 +447,7 @@
       </div>
     </div>
   </div>
-  <!---#################################################################-->
+  <!---#################################################################################################################-->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -463,8 +463,9 @@
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/Docente.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  
+  <script type="text/javascript" src="js/Docente.js"></script>
   
 
 </body>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.unimagdalena.academic.entities.Profesor;
+import edu.unimagdalena.academic.repositories.ProfesorRepository;
 import edu.unimagdalena.academic.services.*;
 import java.util.*;
 
@@ -24,6 +25,9 @@ public class RestDocenteController {
 
 	@Autowired
 	private ProfesorService docenteRepository;
+	
+	@Autowired
+	private ProfesorRepository repositorio;
 	
 	@GetMapping("/docente")
 	public List<Profesor> getProfesor(){
@@ -43,7 +47,6 @@ public class RestDocenteController {
 	
 	@PostMapping("/docente")
 	public Profesor createProfesor(@RequestBody Profesor profesor) {
-		
 		return docenteRepository.save(profesor);
 	}
 	

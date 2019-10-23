@@ -23,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "Estudiante")
 public class Estudiante implements Serializable {
-	
+		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -98,12 +98,31 @@ public class Estudiante implements Serializable {
 		this.nombre = nombre;
 	}
 
+
+	
+
 	public String getApellido1() {
 		return apellido1;
 	}
 
 	public void setApellido1(String apellido1) {
 		this.apellido1 = apellido1;
+	}
+
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
+	public Usuario getTypeUser() {
+		return typeUser;
+	}
+
+	public void setTypeUser(Usuario typeUser) {
+		this.typeUser = typeUser;
 	}
 
 	public String getApellido2() {
