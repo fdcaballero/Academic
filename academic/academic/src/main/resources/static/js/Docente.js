@@ -5,7 +5,7 @@ $(function(){
     limpiar();
     showData();
     buscar();
-
+    
 
 });
 
@@ -73,9 +73,37 @@ function AddButtonDelete(){
 }
 
 function EliminarDocente(){
-    $('#prof-tabla').on('click', '.eliminar', function(event){
+    $('#Delete').on('click',  function(event){
          event.preventDefault();
-         $(this).closest('tr').remove();
+         var id;
+         var Listado = document.getElementsByName("seleccion");
+    	 $.each(Listado,function(iter,dato){
+    		 if(dato.checked){
+    			 console.log(dato.getAttribute("id"));
+    			 id = dato.getAttribute("id");
+    		 }
+    	 });
+         
+    $.ajax("api/v1/docente/" + id,
+    		{
+    	//url: window.location +"api/v1/docente/" + id,
+    	contentType: "application/json",
+    	dataType:'json',
+    	type: "DELETE",
+    	success:function(){
+		 $("input.seleccion").closest("tr").remove();
+		
+			   
+			
+
+		},
+		error : function(event){
+  		 alert("error en el registro intente nuevamente");
+  		 console.log("error" , event);
+  	 	}
+    });
+     
+         
     });
 }
 
@@ -108,12 +136,14 @@ function buscar(){
 	    		type: "GET",
 	    		success:function(datos){
 	    			 $.each(datos, function(i, e) {
-	    			        $('#prof-tabla').append("<tr class = 'contenido' data-id="+e.id+">" +
+	    			        $('#prof-tabla').append("" +
+	    			        	"<tr class = 'contenido' data-id="+e.id+">" +
 	    			              "<td>" + e.nombre + "</td>" +
 	    			    	      "<td>" + e.nif + "</td>" +
 	    			    	      "<td>" + e.telefono + "</td>" +
 	    			    	      "<td>" + e.correo + "</td>" +
-	    			             "</tr>");
+	    			    	      "<td> <input type='radio' class='seleccion' name='seleccion' id="+ e.id + "> </td>" +
+	    			    	    "</tr>");
 	    			    });
 	    			
 
@@ -121,23 +151,25 @@ function buscar(){
 	    		error : function(event){
 	       		 alert("error en el registro intente nuevamente");
 	       		 console.log("error" , event);
-	       	 }
+	       	 	}
 	    		
 	    });
 		
 	});
 }
 
-/*function btnAccep(){
- $("#BtnAccep").on("click", function(e){
-     e.preventDefault();
-    $("#myModalHorario").hide();
- });
- Quieres ocultar el modal despues de haber ingresado un docente?
- cual?
  
-}*/
 
+function getId(){
+	var Listado = document.getElementsByName("seleccion");
+	 $.each(Listado,function(iter,dato){
+		 if(dato.checked){
+			 console.log(dato.getAttribute("id"));
+			 return dato.getAttribute("id");
+		 }
+	 });
+     
+}
 function limpiar(){
 	$("#limpiar").on("click", function(event){
 			event.preventDefault();
