@@ -26,14 +26,20 @@ public class RestDocenteController {
 	@Autowired
 	private ProfesorService docenteRepository;
 	
-	@Autowired
-	private ProfesorRepository repositorio;
+	
 	
 	@GetMapping("/docente")
 	public List<Profesor> getProfesor(){
 		return docenteRepository.findAll();
 	}
-	
+	@GetMapping("/docente/{nombre}")
+	public List<Profesor> getProfesores(@PathVariable("nombre") String nombre){
+		return docenteRepository.findProfesoresByNombre(nombre);
+	}
+	@GetMapping("/docente/{nombre}/{nif}")
+	public List<Profesor> getProfesore(@PathVariable("nombre") String nombre, @PathVariable("nif") String nif){
+		return docenteRepository.findProfesorByNombreOrNif(nombre, nif);
+	}
 	@GetMapping("/docente/{id}")
 	public Profesor getProfesor(@PathVariable("id") Long id ) {
 		

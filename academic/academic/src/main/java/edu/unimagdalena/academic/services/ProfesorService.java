@@ -17,4 +17,8 @@ public interface ProfesorService {
 	List<Profesor> findAll();
 	Profesor buscarProfesorPorId(Long id);
 	
+	List<Profesor> findProfesoresByNombre(String nombre);
+	
+	List<Profesor> findProfesorByNombreOrNif(String nombre, String nif);
+	
 }

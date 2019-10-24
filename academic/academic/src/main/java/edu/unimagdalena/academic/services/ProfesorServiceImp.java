@@ -50,4 +50,16 @@ public class ProfesorServiceImp implements ProfesorService {
 	public Profesor buscarProfesorPorId(Long id) {
 		return profesorRepository.getOne(id);
 	}
+
+	@Override
+	public List<Profesor> findProfesoresByNombre(String nombre) {
+		
+		return profesorRepository.findProfesoresByNombre(nombre); 
+	}
+
+	@Override
+	public List<Profesor> findProfesorByNombreOrNif(String nombre, String nif) {
+	
+		return profesorRepository.findProfesorByNombreOrNif(nombre, nif);
+	}
 }

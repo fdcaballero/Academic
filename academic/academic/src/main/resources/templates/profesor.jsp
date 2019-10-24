@@ -140,19 +140,6 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
@@ -173,18 +160,18 @@
                 <h2 class="m-0 font-weight-bold text-primary">Profesorado</h2>
     
             </div>
-               <p><strong> BÃºsqueda de profesores</strong></p>
+               <p><strong> Busqueda de profesores</strong></p>
         <div>
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user"  placeholder="Ingrese nombre...">
+                    <input type="text" class="form-control form-control-user" id="buscarNombre" placeholder="Ingrese nombre...">
                   </div>
                   <div class="form-group">
-                    <input type="number" class="form-control form-control-user"  placeholder="Ingrese C.C...">
+                    <input type="number" class="form-control form-control-user" id="buscarCC" placeholder="Ingrese C.C...">
                   </div>
         </div>
         <div>
-            <a href="#" class="btn btn-primary btn-user btn-block">Buscar</a>
-            <a href="#" class="btn btn-primary btn-user btn-block">Limpiar</a>
+            <a id="buscar" class="btn btn-primary btn-user btn-block">Buscar</a>
+            <a id="limpiar" class="btn btn-primary btn-user btn-block">Limpiar</a>
         </div>
 
   
@@ -209,6 +196,7 @@
                       <th>Correo</th>
                       <th>Teléfono</th>
                     </tr>
+                    
                 </table>
               </div>
             </div>
@@ -236,25 +224,25 @@
               <form action=""  class="form">
                 <section class="form-group">
                     <label for="nombre">* Nombre </label>
-                    <input id = "nombre" type="text" name="nombre"  class="form-control" required />
+                    <input id = "nombre" type="text" name="nombre"   class="form-control" required />
                    
                     <label for="apellido1">* Apellido 1</label>
-                    <input id="apellido1" type="text" name="apellido"  class="form-control" required/>
+                    <input  type="text" name="apellido" id="apellido" class="form-control" required/>
                     
                     <label for="apellido2">Apellido 2 </label>
-                    <input id = "apellido2" type="text" name="apellidoS"  class="form-control">
+                    <input  type="text" name="apellidoS" id="apellidoS"  class="form-control">
                    
                     <label for="nif">* NIF </label>
-                    <input id="nif" type="text" name="nif"  class="form-control" required>
+                    <input id="nif" type="text" name="nif" class="form-control" required>
                     
                     <label for="telefono">* Telefono </label>
-                    <input id="telefono" type="tel" name="telefono"  class="form-control" required>
+                    <input id="telefono" type="tel" name="telefono"   class="form-control" required>
                    
                     <label for="correo">* Correo </label>
-                    <input id="correo" type="email" name="correo" class="form-control" required>
+                    <input id="correo" type="email" name="correo"  class="form-control" required>
 
                     <label for="titulacion">Titulación </label>
-                    <input id="titulacion" type="text" name="titulacion" class="form-control">
+                    <input id="titulacion" type="text" name="titulacion"  class="form-control">
                 </section>
 
               </form>
@@ -264,7 +252,7 @@
             <!-- Modal footer -->
          <!-- Modal footer -->
             <div class="modal-footer">
-              <input id ="create" value = "Crear" type="button" class="btn btn-primary" />
+              <input id ="create" value = "Crear" type="button" class="btn btn-primary" data-dismiss="modal" />
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
           </div>
@@ -305,7 +293,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Cerrar sesiÃ³n</a>
+          <a class="btn btn-primary" href="login.html">Cerrar sesión</a>
         </div>
       </div>
     </div>
