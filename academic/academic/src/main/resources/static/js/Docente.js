@@ -1,9 +1,9 @@
 $(function(){
     AddDocente();
     EliminarDocente();
-    AddButtonDelete();
+    
     limpiar();
-    showData();
+   
     buscar();
     
 
@@ -65,17 +65,11 @@ function AddDocente(){
    });
 }
 
-function AddButtonDelete(){
-  $('#Delete').on('click', function(event){
-      event.preventDefault();
-      $(".prof").append("<th><a href='#' class='eliminar button'>Eliminar</a></th>");
-  });
-}
 
 function EliminarDocente(){
     $('#Delete').on('click',  function(event){
          event.preventDefault();
-         var id;
+         var id ;
          var Listado = document.getElementsByName("seleccion");
     	 $.each(Listado,function(iter,dato){
     		 if(dato.checked){
@@ -87,11 +81,11 @@ function EliminarDocente(){
     $.ajax("api/v1/docente/" + id,
     		{
     	//url: window.location +"api/v1/docente/" + id,
-    	contentType: "application/json",
-    	dataType:'json',
+    	//contentType: "application/json",
+    	//dataType:'json',
     	type: "DELETE",
     	success:function(){
-		 $("input.seleccion").closest("tr").remove();
+		// $("input.seleccion").closest("tr").remove(); añadir codigo para eliminar la fila de la bd al momento de borrar usuario
 		
 			   
 			
@@ -168,6 +162,7 @@ function getId(){
 			 return dato.getAttribute("id");
 		 }
 	 });
+	
      
 }
 function limpiar(){
@@ -180,5 +175,4 @@ function limpiar(){
 	
 	
 }
- 
  
