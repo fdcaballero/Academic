@@ -37,11 +37,7 @@ public class RestEstudianteController {
 	 }
 	
 	
-	 @PostMapping("/estudiante")
-	 public Estudiante createStudent(@RequestBody Estudiante student) {
-		 
-		 return studentRepository.save(student);
-	 }
+	
 	 
 	
 	 @GetMapping("/estudiante")
@@ -61,4 +57,10 @@ public class RestEstudianteController {
 		studentRepository.delete(aux);
 		 
 	 }
+
+	@PostMapping("/estudiante")
+    public Estudiante createStudent(@RequestBody Estudiante student) {
+			 
+	  return studentRepository.save(student);
+	}
 }

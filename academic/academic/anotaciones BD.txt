@@ -2,3 +2,5 @@ para las uniones entre las tablas Clase y Hora_Semanal se tiene encuenta que el 
 
 
 Union Entre tablas Estudiante y Clase El lado dueño es estudiante
+
+Lado padre tiene toda las especificaciones de la union

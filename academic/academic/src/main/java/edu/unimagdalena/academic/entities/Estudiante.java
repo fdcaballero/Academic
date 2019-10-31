@@ -53,20 +53,19 @@ public class Estudiante implements Serializable {
 	joinColumns = @JoinColumn(name = "id_estudiante", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "id_clase", referencedColumnName = "id"))
 	private Set<Clase> clases;
-	
 	@Column
 	private Boolean repetidor;
 	
 
 
 	@Column(name = "fecha_alta" , nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd-MM--yyyy")
 	private Date fecha_alta;
 	
 	//Falta el atributo repetidor del estudiante
 	@Column(name = "fecha_baja")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd-MM--yyyy")
 	private Date fecha_baja;
 	

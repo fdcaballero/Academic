@@ -58,7 +58,7 @@ function AddDocente(){
     		 console.log("error" , event);
     	 }
      
-    	 });
+      });
         
    
     
@@ -120,8 +120,8 @@ function buscar(){
 		if(buscaNombre == ""  && buscaCC == ""){	
 			link = "./api/v1/docente";
 			
-		}else if (buscaNombre != "" && buscaCC != ""){
-			link = "./api/v1/docente";
+		}else {
+			link = "./api/v1/docente/" + buscaNombre + "/" + buscaCC ;
 		}
 		$.ajax({
 				url : link,

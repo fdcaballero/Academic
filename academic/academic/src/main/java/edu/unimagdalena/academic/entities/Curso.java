@@ -24,10 +24,10 @@ public class Curso implements Serializable {
 	@Column(name = "etapa")
 	private String etapa;
 
-	@OneToMany(mappedBy="grado")
+	@OneToMany(mappedBy="grado") //Lado Dominante
 	private Set<Estudiante> estudiantes;
 	
-	@OneToMany(mappedBy = "curso")
+	@OneToMany(mappedBy = "curso") // Lado Dominante
 	private Set<Asignatura> asignaturas;
 
 	/**
