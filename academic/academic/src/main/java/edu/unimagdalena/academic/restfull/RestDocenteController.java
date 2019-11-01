@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.unimagdalena.academic.entities.Profesor;
-import edu.unimagdalena.academic.repositories.ProfesorRepository;
 import edu.unimagdalena.academic.services.*;
 import java.util.*;
 
@@ -32,10 +31,7 @@ public class RestDocenteController {
 	public List<Profesor> getProfesor(){
 		return docenteRepository.findAll();
 	}
-	@GetMapping("/docente/{nombre}")
-	public List<Profesor> getProfesores(@PathVariable("nombre") String nombre){
-		return docenteRepository.findProfesoresByNombre(nombre);
-	}
+	
 	@GetMapping("/docente/{nombre}/{nif}")
 	public List<Profesor> getProfesore(@PathVariable("nombre") String nombre, @PathVariable("nif") String nif){
 		return docenteRepository.findProfesorByNombreOrNif(nombre, nif);
@@ -56,9 +52,11 @@ public class RestDocenteController {
 		return docenteRepository.save(profesor);
 	}
 	
-	@PutMapping("/docente")
-	public Profesor editDocente(@RequestBody Profesor profesor) {
+	@PutMapping("/docente/{id}")
+	public Profesor editDocente(@RequestBody Profesor profesor, @PathVariable Long id) {
+		profesor.setId(id);
 		return docenteRepository.save(profesor);
+		
 	}
 	
 	@DeleteMapping("/docente/{id}")

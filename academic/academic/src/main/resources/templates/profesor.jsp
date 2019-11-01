@@ -185,7 +185,7 @@
                 <table id = "prof-tabla" class="table" width="100%" cellspacing="0">         
                     <tr>
                         <th><button class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Crear docente</button></th>                    
-                        <th><a href="#" class="btn btn-primary btn-user btn-block">Datos personales</a></th>
+                        <th><a id ="datosDocente" class="btn btn-primary btn-user btn-block"data-toggle="modal" data-target="#myModal">Datos personales</a></th>
                         <th><a href="#" class="btn btn-primary btn-user btn-block">Clases</a></th>
                         <th><a href="#" id="Delete" class="btn btn-primary btn-user btn-block">Eliminar profesor</a></th>
                       
@@ -215,7 +215,7 @@
       
             <!-- Modal Header -->
             <div class="modal-header bg-primary text-white">
-              <h4 class="modal-title">Nuevo profesor</h4>
+              <h4 class="modal-title" id= "NuevoDoc">Nuevo profesor</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
   
