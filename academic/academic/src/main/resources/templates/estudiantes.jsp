@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>Alumno</title>
@@ -18,7 +18,7 @@
           <a href="#tab1Id" class="nav-link active">Active</a>
         </li>
         <li class="nav-item">
-          <a th:href="@{/inicio}" class="">volver</a>
+          <a th:href="@{/inicio}" >volver</a>
         </li>
       </ul>
       
@@ -49,7 +49,7 @@
         
              <div class="form-group">
                <label for="nombre">Nombre</label>
-                 <input type="text" class="form-control form-control-user"  placeholder="Ingrese nombre...">
+                 <input type="text" id ="buscaNombre" class="form-control form-control-user"  placeholder="Ingrese nombre...">
                </div>
                <div class="form-group">
                   <label for="curso">Curso </label>
@@ -63,29 +63,29 @@
                   <div class="form-check">
                     <label class="form-check-label">
                           
-                      <input type="checkbox" class="form-check-input" name="repetidor" id="" value="checkedValue" >
+                      <input type="checkbox" class="form-check-input" name="repetidor"  value="checkedValue" >
                       Mostrar solo actuales 
                     </label>
                   </div>
                </div>
      </div>
      <div class="form-group align-items-center">
-         <button type="submit" class="btn btn-primary col-2" name = "buscar">Buscar </button>
+         <button type="submit" class="btn btn-primary col-2" name = "buscar" id  = "buscar">Buscar </button>
          <button type="submit" class=" btn btn-primary col-2"name="limpiar">Limpiar </button>
      </div>
 
       <!-- DataTables Example -->
       <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Resultado de la búsqueda</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Resultado de la busqueda</h6>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table" width="100%" cellspacing="0" id="tabla-c">
                 <thead>
                   <tr>
-                      <th><a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Nuevo alumno</a></th>
-                      <th><a href="#" class="btn btn-primary btn-user btn-block ">Datos personales</a></th>
+                      <th><a href="#" class="btn btn-primary btn-user btn-block" id ="nuevoEst" data-toggle="modal" data-target="#myModal">Nuevo alumno</a></th>
+                      <th><a href="#" class="btn btn-primary btn-user btn-block " id="datosEst">Datos personales</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block "  data-toggle="modal" data-target="#myModalClases">Clases</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block  " onclick="confirm('desear dar de baja')">Dar de alta/ baja</a></th>
                       
@@ -98,45 +98,10 @@
                     <th>Fecha de baja</th>
                   </tr>
                 </thead>
-                <tbody >
+                <tbody class ="cuerpo-tableEst">
   
-                 <tr>
-                    <td>------</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>das</td>
-                  </tr>
-                  <!--- 
-                  <tr>
-                    <td>Colleen Hurst</td>
-                    <td>Javascript Developer</td>
-                    <td>San Francisco</td>
-                    <td>39</td>
-                    <td>86</td>
-                  </tr>
-                  <tr>
-                    <td>Sonya Frost</td>
-                    <td>Software Engineer</td>
-                    <td>Edinburgh</td>
-                    <td>23</td>
-                    <td>25</td>
-                  </tr>
-                  <tr>
-                    <td>Jena Gaines</td>
-                    <td>Office Manager</td>
-                    <td>London</td>
-                    <td>30</td>
-                    <td>40</td>
-                  </tr>
-                  <tr>
-                    <td>Quinn Flynn</td>
-                    <td>Support Lead</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>66</td>
-                  </tr>
-                  -->
+                
+                  
                 </tbody>
               </table>
             </div>
@@ -156,7 +121,7 @@
       
             <!-- Modal body -->
             <div class="modal-body ">
-              <form th:action="@{/api/v1/estudiante}"  method="post" class="form">
+              <form action="#"  class="form">
                 <section class="container">  
                     <section class="row">
                         <section class="form-group col">
@@ -197,7 +162,7 @@
                             </div>
                             
                             <label for="fecha de alta">Fecha de alta </label>
-                            <input type="date" name="fecha de alta" id="fecha_de_alta" class="form-control">
+                            <input type="text" name="fecha de alta" id="fecha_de_alta" class="form-control">
                             
                             <label for="fecha de baja">Fecha de baja </label>
                             <input type="text" name="fecha de baja" id="fecha_de_baja" class="form-control">
@@ -412,7 +377,7 @@
     
   
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
    

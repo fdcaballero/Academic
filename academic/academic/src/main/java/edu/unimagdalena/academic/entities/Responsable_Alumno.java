@@ -39,7 +39,7 @@ public class Responsable_Alumno implements Serializable {
 	 */
 	public Responsable_Alumno() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	public Long getId() {

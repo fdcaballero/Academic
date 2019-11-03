@@ -17,6 +17,8 @@ import java.util.*;
 import javax.persistence.EntityNotFoundException;
 
 import edu.unimagdalena.academic.entities.Estudiante;
+import edu.unimagdalena.academic.entities.Responsable_Alumno;
+import edu.unimagdalena.academic.repositories.Responsable_AlumnoRepository;
 import edu.unimagdalena.academic.services.EstudianteService;
 
 @RestController
@@ -25,6 +27,7 @@ public class RestEstudianteController {
 	
 	@Autowired
 	private EstudianteService studentRepository;
+	
 	
 	 @GetMapping("/estudiante/{id}")
 	 public Estudiante getEstudiante(@PathVariable("id") Long id) {
@@ -35,19 +38,15 @@ public class RestEstudianteController {
 		}
 		return estudiante.get();
 	 }
-	
-	
-	
 	 
-	
 	 @GetMapping("/estudiante")
 	 public List<Estudiante> listar(){
 		 return studentRepository.findAll();
 	 }
 	 
-	 @PutMapping("/estudiante")
-	 public Estudiante editStudent(@RequestBody Estudiante estudiante ) {
-		 
+	 @PutMapping("/estudiante/{id}")
+	 public Estudiante editStudent(@RequestBody Estudiante estudiante, @PathVariable Long id) {
+		 estudiante.setId(id);
 		 return studentRepository.save(estudiante);
 	}
 	 
@@ -60,7 +59,8 @@ public class RestEstudianteController {
 
 	@PostMapping("/estudiante")
     public Estudiante createStudent(@RequestBody Estudiante student) {
-			 
+		//responsableRepository.save(responsableA);
+		//student.setResponsable(responsableA);
 	  return studentRepository.save(student);
 	}
 }

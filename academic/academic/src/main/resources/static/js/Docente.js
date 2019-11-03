@@ -7,22 +7,32 @@ $(function(){
     buscar();
     getId();
     btnCrear();
-    activarBtn();
+    //activarBtn();
 });
 
-function btnCrear(){
-	$('#create').on("click", function(event){
+function btnCrear(){ //esta funcion es llamada cuando el usuario presiona el Btn con el id de create
+	$('#create').on("click", function(event){ 
 	      event.preventDefault();
-	      if($(this).val =="Crear"){
-	    	  AddDocente();
-	      }else{
-	    	  Actualizar();
+	      if($("#myModal").is(":hide")){
+	    	
+	    	  if($(this).val() == "Crear"){
+	    		 
+	    		  AddDocente();
+	    	  }else if($(this).val() == "Guardar"){
+	    		  Actualizar();
+	    	  }
 	      }
 	});
 }
-
+function agregarCurso(){
+	$.ajax("./api/v1/");
+	
+}
 function AddDocente(){
-      $("#create").val("Crear");
+	
+      $("#create").val("Crear"); //Cambio de valor del bton aceptar para manejo de acciones
+      $("#NuevoDoc").text("Nuevo Profesor"); //Cambio de header del modal para orientar al usuario
+      
       var nombre = $("input[id = nombre]").val();
       var apellido = $("input[id = apellido]").val();
       var apellidoS = $("input[id = apellidoS]").val();
@@ -37,22 +47,15 @@ function AddDocente(){
     	  "telefono" : telefono,"correo" : correo, "titulacion" : titulacion
         };
         
-     $.ajax("./api/v1/docente",
+      $.ajax("./api/v1/docente",
     		 {
     	 contentType :"application/json",
     	 dataType:'json',
     	 type: "POST",
     	 data: JSON.stringify(docente),
     	 success: function(dataDocente){  
-    		/* $('#prof-tabla').append(
-    		  	    "<tr class = 'prof' data-id=" + dataDocente.id +">"+
-    		    	      "<td>" + dataDocente.nombre + "</td>" +
-    		    	      "<td>" + dataDocente.nif + "</td>" +
-    		    	      "<td>" + dataDocente.telefono + "</td>" +
-    		    	      "<td>" + dataDocente.correo + "</td>" +
-    		           "</tr>");*/
-    		             
-    		   $("input[id = nombre]").val("");
+    		 
+    		    $("input[id = nombre]").val("");
     		    $("input[id = apellido]").val("");
     		    $("input[id = apellidoS]").val("");
     		    $("input[id = nif]").val("");
@@ -60,10 +63,10 @@ function AddDocente(){
     		    $("input[id = correo]").val("");
     		    $("input[id  = titulacion]").val("");
     		
-    	      
+    	      console.log("usuario crado");
     	 },
     	 error : function(event){
-    		 alert("error en el registro intente nuevamente");
+    		 alert("error en al registrar  intente nuevamente");
     		 console.log("error" , event);
     	 }
      
@@ -80,8 +83,8 @@ function activarBtn(){
 		band = true;
 	}
 	
-	$("#datosDocente").prop("disabled",band);
-	$("#Delete").prop("disabled", band);
+	//$("#datosDocente").prop("disabled",band);
+	//$("#Delete").prop("disabled", band);
 }
 
 function EliminarDocente(){
@@ -89,7 +92,7 @@ function EliminarDocente(){
          event.preventDefault();
          var id = getId();
          
-    $.ajax("api/v1/docente/" + id,
+     $.ajax("api/v1/docente/" + id,
     		{
     	//url: window.location +"api/v1/docente/" + id,
     	contentType: "application/json",
@@ -127,7 +130,8 @@ function Actualizar(){
 	    	  "apellido2" : apellidoS, "nif" : Nif ,
 	    	  "telefono" : telefono,"correo" : correo, "titulacion" : titulacion
 	        };
-	        if(getId() != "undefined"){
+	      var id = getId();
+	        if(id == "undefined"){
 			     $.ajax("./api/v1/docente/"+getId(),
 			    		 {
 			    	 contentType :"application/json",
@@ -165,7 +169,9 @@ function showData(){
         $("#create").val("Guardar");
         
        var id = getId();
-        if(id != 'undefined'){
+        if(id == 'undefined'){
+        	//abrir modal data-toggle="modal"
+        	$('#myModal').modal('show');
         	$.ajax("api/v1/docente/"+id,
     	    	{
     	    		contentType :"application/json",
@@ -228,7 +234,7 @@ function buscar(){
 	    			    	    "</tr>");
 	    			    });
 	    			
-
+//
 	    		},
 	    		error : function(event){
 	       		 alert("error en el registro intente nuevamente");

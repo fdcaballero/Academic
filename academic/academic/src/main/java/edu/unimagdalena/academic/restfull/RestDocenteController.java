@@ -15,6 +15,7 @@ import edu.unimagdalena.academic.services.*;
 import java.util.*;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 
 
 
@@ -48,7 +49,7 @@ public class RestDocenteController {
 	}
 	
 	@PostMapping("/docente")
-	public Profesor createProfesor(@RequestBody Profesor profesor) {
+	public Profesor createProfesor(@Valid @RequestBody Profesor profesor) {
 		return docenteRepository.save(profesor);
 	}
 	

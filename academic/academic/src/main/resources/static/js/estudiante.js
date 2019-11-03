@@ -1,6 +1,8 @@
 $(function(){
     add();
     limpiar();
+    Listar();
+    Fecha();
 });
 
 
@@ -14,47 +16,74 @@ function add(){
     var nif  = $("#nif").val();
     var tel = $("#telefono").val();
     var correo  = $("#email").val();
-    var curso = $("#curso").val();
+    var idcurso = $("#curso").val();
     var repetidor = $("#repetidor").val();
     var fechaAlta = $("#fecha_de_alta").val();
     var fechaBaja  = $("#fecha_de_baja").val();
     var observacion = $("#observaciones").val();
    // DATOS DEL RESPONSABLE 
-    var responsable = $("#nombreR").val();
-    var apellidoRe  = $("#apellidoR").val();
+    var Nameresponsable = $("#nombreR").val();
+    var apellidoRe  = $("#apellido1R").val();
     var apellido1Re = $("#apellido2R").val();
     var nifRe = $("#nifR").val();
     var telefonoRe = $("#telefonoR").val();
     var correoRe = $("#correoR").val();
     
-    var estudiante = {
-      "nombre" : nombre, "apellido1" : apellido1,
-      "apellido2" : apellido2, "nif" : nif,
-      "telefono" : tel, "corrreo" : correo,
-      "grado" : curso = {"nive": 11,"etapa": curso}, "repetidor" : repetidor,
-      "fecha_alta" : fechaAlta, "fecha_baja" : fechaBaja, "observacion" : observacion,
-      "responsable" : {
-    	  "nombre" : responsable, "apellido1" : apellidoRe, 
+    
+    
+    var  responsable= {
+
+    	  "nombre" : Nameresponsable, "apellido1" : apellidoRe, 
     	  "apellido2" : apellido1Re, "nif" : nifRe,
     	  "telefono" : telefonoRe, "corrreo" : correoRe 
-       }   
-     };
-    $.ajax("./api/v1/estudiante",
-       {
-    	contentType : "application/json",
-    	dataType : "json",
-    	type : "POST",
-    	data : JSON.stringify(estudiante),
-    	success : function(dataEstudiante){
-    		limpiar();
-    	},
-    	error: function(event){
-    		alert("Error en el registro vuelva a intentarlo");
-    		console.log("Error", event);
-    	}
-       });
+       };   
+     
+    $.ajax("./api/v1/representante",
+    	{
+    		contentType : "application/json",
+    		dataType : "json",
+    		type :"POST",
+    		data : JSON.stringify(responsable),
+    		success: function(datoResp){
+    			
+    			var estudiante = {
+    				      "nombre" : nombre, "apellido1" : apellido1,
+    				      "apellido2" : apellido2, "nif" : nif,
+    				      "telefono" : tel, "corrreo" : correo,
+    				      "repetidor" : repetidor, "fecha_alta" : fechaAlta,
+    				      "fecha_baja" : fechaBaja, "observacion" : observacion,
+    				      "responsable" : datoResp 
+    			       };
+    			//agregar(estudiante);
+    		    
+    		},
+    		error : function(event){
+    			console.log("Error al cargar el Representante");
+    			alert("No se puede guardar");
+    		}
+    	});
 
-  	});
+
+  });
+}
+
+function agregar(variable){
+	
+	$.ajax("./api/v1/estudiante",
+	 	    {
+	 	    	contentType : "application/json",
+	 	    	dataType : "json",
+	 	    	type : "POST",
+	 	    	data : JSON.stringify( variable),
+	 	    	success : function(dataEstudiante){
+	 	    		alert("El estudiante ha sido creado",dataEstudiante.id);
+	 	    		limpiar();
+	 	    	},
+	 	    	error: function(event){
+	 	    		alert("Error en el registro vuelva a intentarlo");
+	 	    		console.log("Error", event.status+" "+event.responseText);
+	 	    	}
+	 	   });
 }
 
 function limpiar(){
@@ -88,3 +117,82 @@ function limpiar(){
     "<td>" + fechaAlta.val() + "</td>" +
     "<td>" + fechaBaja.val() + "</td>" +
 "</tr>"); */
+function editar(){
+	$("#datosEst").on("click" ,function(event){
+		event.preventDefault();
+		
+		$.ajax("./api/v1/estudiante/"+getId,{
+			contentType:"application/json",
+			dataType : "json",
+			type :"GET",
+			success :  function (datos){
+				 $("#nombre").val(datos.nombre);
+				 $("#apellido1").val(datos.apellido1);
+				 $("#apellido2").val(datos.apellido2);
+				 $("#nif").val(datos.nif);
+				 $("#telefono").val(datos.telefono);
+				 $("#email").val(datos.correo);
+				 $("#curso").val(datos.grado);
+				 $("#repetidor").val(datos.repetidor);
+				 $("#fecha_de_alta").val(datos.fecha_alta);
+				 $("#fecha_de_baja").val(datos.fecha_baja);
+				 $("#observaciones").val(datos.observacion);
+				 // DATOS DEL RESPONSABLE 
+				 $("input[id = nombreR]").val(datos.responsable.nombre);
+				 $("input[id = apellidoR]").val(datos.responsable.apellido1);
+				 $("input [id = apellido2R]").val(datos.responsable.apellido2);
+				 $("input [id = nifR]").val(datos.responsable.nif);
+				 $("input [id = telefonoR]").val(datos.responsable.telefono);
+				 $("input[id= correoR]").val(datos.responsable.correo);
+				
+			},
+			error : function(event){
+				console.log("No carga datos");
+				alert(error , "No se logro cargar los datos");
+			} 
+			
+		});
+		
+	});
+	
+}
+function Fecha(){
+	$("#nuevoEst").on("click", function(event){
+		event.preventDefault();
+		var f = new Date();
+		$("#fecha_de_alta").val(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+	});
+}
+function Listar(){
+	$("#buscar").on("click", function(event){
+		event.preventDefault();
+		var buscar = $("#buscaNombre").val();
+		
+		
+		$.ajax("api/v1/estudiante",{
+			contentType:"application/json", 
+			dataType : "json",
+			type : "GET",
+			success: function(data){
+				$.each(data, function(i, e){
+					
+					$("tbody.cuerpo-tableEst").append(
+							"<tr>" +
+						    "<td>" + e.nombre + "</td>" +
+						    "<td>" + e.curso + "</td>" +
+						    "<td>" + e.responsable+ "</td>" +
+						    "<td>" + e.fecha_alta + "</td>" +
+						    "<td>" + e.fecha_baja + "</td>" +
+						    "<td><input type ='radio'name ='resultadoStudiante' value=" + e.id + "class='seleccion' id ="+ e.id+ "></td>" +
+						"</tr>");
+				});
+				
+			},
+			error: function (event){
+				console.log("error al intentar buscar ", event);
+				alert("error al buscar datos")
+			}
+		});
+	});
+	
+}
