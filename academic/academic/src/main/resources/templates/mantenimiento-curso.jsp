@@ -9,18 +9,18 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Mantenimiento cursos</title>
+  <title>Mantenimiento de cursos</title>
 
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
+  <link rel="stylesheet" href="../css/styles.css" type="text/css">
   <!-- Custom styles for this template -->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- Custom styles for this page -->
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -105,8 +105,17 @@
             <i class="fa fa-bars"></i>
           </button>
 
-         
-          
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -142,18 +151,6 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -172,54 +169,50 @@
 
              <!-- Page Heading -->
              <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h2 class="m-0 font-weight-bold text-primary">Mantenimiento de cursos</h2>    
-          
+                <h2 class="m-0 font-weight-bold text-primary">Mantenimiento de cursos</h2>
+    
+            </div>
+               <p><strong> Búsqueda de cursos</strong></p>
+            <div>
+                <div class="form-group">
+                    <input type="name" class="form-control form-control-user"  placeholder="Ingrese nombre...">
+                  </div>
+                  <div class="form-group">  
+                    <input type="etapa" class="form-control form-control-user"  placeholder="Ingrese etapa...">
+                  </div>
         </div>
-       
+        <div>
+            <a href="#" class="btn btn-primary btn-user btn-block">Buscar</a>
+            <a href="#" class="btn btn-primary btn-user btn-block">Limpiar</a>
+        </div>
 
   
           <!-- DataTables Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Cursos actuales</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Resultado de la búsqueda</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-striped" width="100%" cellspacing="0">
+                <table class="table" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                        <th><button type = "button" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Nuevo curso</button></th>
-                        <th><a href="#" class="btn btn-primary btn-user btn-block">Editar curso</a></th>
-                        
-                        <th><a href="#" class="btn btn-primary btn-user btn-block">Eliminar curso</a></th>
-                        </th>
+                       <th><a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Nuevo curso</a></th>
+                       <th><a href="#" class="btn btn-primary btn-user btn-block"data-toggle="modal" data-target="#EditarModal">Editar curso</a></th>
+                       <th><a href="#" class="btn btn-primary btn-user btn-block">Eliminar curso</a></th>
+                       </th>
                     </tr>
                     <tr>
                       <th>Nivel</th>
                       <th>Etapa</th>
-
-                      
-                      
                     </tr>
                   </thead>
-                  <tbody >
+                  <tbody>
     
                     <tr>
-                      <td>Felipe</td>
-                      <td>Integration Specialist</td>
-                      
-                      
+                      <td>LEvel one</td>
+                      <td>primera etapa</td>
                     </tr>
-                    <tr>
-                      <td>Colleen Hurst</td>
-                      <td>Javascript Developer</td>
-                     
-                    </tr>
-                    <tr>
-                      <td>Sonya Frost</td>
-                      <td>Software Engineer</td>
-                      
-                   
                   </tbody>
                 </table>
               </div>
@@ -231,7 +224,76 @@
 
       </div>
       <!-- End of Main Content -->
+<!-- ############################################################################################################### -->     
+      <!-- The Modal -->
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header bg-primary text-white">
+              <h4 class="modal-title" id= "NuevoDoc">Nuevo curso</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+  
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form action=""  class="form">
+                <section class="form-group">
+                    <label for="nombre">* Nivel </label>
+                    <input id = "nombre" type="text" name="nombre"   class="form-control" required />
 
+                    <label for="titulacion">* Etapa </label>
+                    <input id="titulacion" type="text" name="titulacion"  class="form-control">
+                </section>
+
+              </form>
+            </div>
+           
+            <!-- Modal footer -->
+         <!-- Modal footer -->
+            <div class="modal-footer">
+              <input id ="create" value = "Crear" type="button" class="btn btn-primary" data-dismiss="modal" />
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- ##################################################################################################### -->
+      <!-- The Modal -->
+      <div class="modal" id="EditarModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header bg-primary text-white">
+              <h4 class="modal-title" id= "NuevoDoc">Editar curso</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+  
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form action=""  class="form">
+                <section class="form-group">
+                    <label for="nombre">* Nivel </label>
+                    <input id = "nombre" type="text" name="nombre"   class="form-control" required />
+
+                    <label for="titulacion">* Etapa </label>
+                    <input id="titulacion" type="text" name="titulacion"  class="form-control">
+                </section>
+
+              </form>
+            </div>
+           
+            <!-- Modal footer -->
+         <!-- Modal footer -->
+            <div class="modal-footer">
+              <input id ="" value = "Editar" type="button" class="btn btn-primary" data-dismiss="modal" />
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>    
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -272,60 +334,24 @@
     </div>
   </div>
 
-    <!-- The Mymodal##################################################################### -->
-    <div class="modal" id="myModal">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Nuevo Curso</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <section class="form-group">
-                      <label for="nivelCurso">* Nivel</label>
-                      <input type="text" class="form-control" id="nivelCurso">
-                      <label for="etapaCurso">* Etapa</label>
-                      <select name="" id="etapaCurso" class="form-control">
-                        <option >Indique un curso..</option>
-                      </select>
-
-                    </section>
-                    
-                </div>
-          
-                <!-- Modal footer -->
-                <div class="modal-footer">
-    
-                  <button type="button" class="btn btn-primary" id="crear">crear</button>
-                  <button type="button" class="btn btn-danger " data-dismiss="modal">Cancelar</button>
-                  
-                </div>
-          
-              </div>
-            </div>
-          </div>
-       </section>
-    <!--End modal##############################################################-->    
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="../js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
-
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  
+ <!--  <script type="text/javascript" src="../js/mantenimiento-curso.js"></script> -->
+  
 </body>
-
 </html>
