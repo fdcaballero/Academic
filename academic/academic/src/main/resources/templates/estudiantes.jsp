@@ -43,21 +43,21 @@
          </div>
            
      <div>
+       <form th:action= "@{/buscarEstudiante}" method ="post">
        <div class="card-header py-1 bg-primary text-white">
          <h5>Busqueda de alumnos</h5>
        </div>
         
              <div class="form-group">
                <label for="nombre">Nombre</label>
-                 <input type="text" id ="buscaNombre" class="form-control form-control-user"  placeholder="Ingrese nombre...">
+                 <input type="text" name = "nombre"id ="buscaNombre" class="form-control form-control-user"  placeholder="Ingrese nombre...">
                </div>
                <div class="form-group">
                   <label for="curso">Curso </label>
                   <select name="curso" class="form-control custom-select" required>
-                      <option selected>Indique un curso</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      <option  selected>Indique un curso</option>
+                      <option th:each="curso : ${cursos}" th:text ="${curso.etapa}">One</option>
+                      
                   </select>
                   
                   <div class="form-check">
@@ -68,6 +68,7 @@
                     </label>
                   </div>
                </div>
+         </form>
      </div>
      <div class="form-group align-items-center">
          <button type="submit" class="btn btn-primary col-2" name = "buscar" id  = "buscar">Buscar </button>
@@ -85,7 +86,7 @@
                 <thead>
                   <tr>
                       <th><a href="#" class="btn btn-primary btn-user btn-block" id ="nuevoEst" data-toggle="modal" data-target="#myModal">Nuevo alumno</a></th>
-                      <th><a href="#" class="btn btn-primary btn-user btn-block " id="datosEst">Datos personales</a></th>
+                      <th><a href="#" class="btn btn-primary btn-user btn-block " id="datosEst" data-toggle="modal" data-target="#myModal">Datos personales</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block "  data-toggle="modal" data-target="#myModalClases">Clases</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block  " onclick="confirm('desear dar de baja')">Dar de alta/ baja</a></th>
                       
@@ -99,7 +100,16 @@
                   </tr>
                 </thead>
                 <tbody class ="cuerpo-tableEst">
-  
+  					<tr th:each ="estudiante : ${estudiantes}">
+  					
+						    <td th:text="${estudiante.nombre}"></td>
+						    <td th:text ="${estudiante.curso.etapa}"></td>
+						    <td th:text  ="${estudiante.representante.nombre}"></td> 
+						    <td th:text =" ${estudiante.fecha_alta}"></td>
+						    <td th:text ="${estudiante.fecha de baja}"></td> 
+						   <!-- - <td><input type ='radio'name ='resultadoEstudiante' value=" + e.id + "class='seleccion' id ="+ e.id+ "></td> -->
+						   
+					</tr>
                 
                   
                 </tbody>
@@ -162,10 +172,10 @@
                             </div>
                             
                             <label for="fecha de alta">Fecha de alta </label>
-                            <input type="text" name="fecha de alta" id="fecha_de_alta" class="form-control">
+                            <input type="date" name="fecha de alta" id="fecha_de_alta" class="form-control">
                             
                             <label for="fecha de baja">Fecha de baja </label>
-                            <input type="text" name="fecha de baja" id="fecha_de_baja" class="form-control">
+                            <input type="date" name="fecha de baja" id="fecha_de_baja" class="form-control">
                             
                             <label for="observaciones">Observaciones </label>
                             <textarea name="observaciones"  class="form-control " id="observaciones"rows=4></textarea>
@@ -177,7 +187,7 @@
                             <input type="text" name="nombreR" id="nombreR" class="form-control" required>
 
                             <label for="apellido1">* Apellido 1</label>
-                            <input type="text" name="apellido1R" id="apellidoR" class="form-control" required>
+                            <input type="text" name="apellidoR" id="apellidoR" class="form-control" required>
                                 
                             <label for="apellido2">Apellido 2 </label>
                             <input type="text" name="apellido2R" id="apellido2R" class="form-control">

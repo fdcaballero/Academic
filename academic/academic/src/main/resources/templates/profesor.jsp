@@ -255,7 +255,7 @@
               <input id ="create" type="button" class="btn btn-primary" data-dismiss="modal" />
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
-          </div>+- 
+          </div> 
         </div>
       </div>
 <!-- ##################################################################################################### -->    

@@ -50,11 +50,7 @@ public class UsuarioController {
 		return "clases";
 	}
 	
-	@GetMapping("/estudiante")
-	public String accEstudiante(Model model) {
-		
-		return "estudiantes";
-	}
+	
 	
 	@GetMapping("/docente")
 	public String accDocente(Model model) {

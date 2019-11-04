@@ -58,5 +58,21 @@ public class EstudianteServiceImp implements EstudianteService{
 		
 		
 	}
+
+
+
+	@Override
+	public List<Estudiante> findEstudiantesByNombreOrCurso(String nombre, String curso) {
+		// TODO Auto-generated method stub
+		return estudiantRepository.findEstudiantesByNombreOrCurso(nombre, curso);
+	}
+
+
+
+	@Override
+	public List<Estudiante> findEstudianteByNombre(String nombre) {
+		
+		return estudiantRepository.findEstudianteByNombre(nombre);
+	}
 	
 }

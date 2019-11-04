@@ -5,6 +5,11 @@ import java.util.*;
 
 public interface EstudianteService {
 	
+	List<Estudiante> findEstudiantesByNombreOrCurso(String nombre,String curso);
+	
+	
+	List<Estudiante> findEstudianteByNombre(String nombre);
+	
 	Estudiante save(Estudiante estudiante);
 	
 	Optional<Estudiante> findById(Long id);
