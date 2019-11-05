@@ -10,10 +10,11 @@ import java.util.*;
 @Repository
 public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
 	List<Estudiante> findEstudianteByNombre(String nombre);
-	@Query("SELECT e FROM Estudiante e WHERE e.nombre = : nombre or e.curso =: curso")
+	
+	@Query("SELECT e FROM Estudiante e WHERE e.nombre = :buscaNombre Or e.grado.etapa = :buscaCurso")
 	List<Estudiante> findEstudiantesByNombreOrCurso(
-			@Param("nombre") String nombre,
-			@Param("curso") String curso
+			@Param("buscaNombre") String buscaNombre,
+			@Param("buscaCurso") String buscaCurso
 			);
 	
 }

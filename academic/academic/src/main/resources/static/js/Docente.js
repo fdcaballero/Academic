@@ -4,35 +4,21 @@ $(function(){
     showData();
     limpiar();
     Actualizar();
-    buscar();
+   // buscar();
     getId();
-    btnCrear();
+    //btnCrear();
     //activarBtn();
 });
 
-function btnCrear(){ //esta funcion es llamada cuando el usuario presiona el Btn con el id de create
-	$('#create').on("click", function(event){ 
-	      event.preventDefault();
-	      if($("#myModal").is(":hide")){
-	    	
-	    	  if($(this).val() == "Crear"){
-	    		 
-	    		  AddDocente();
-	    	  }else if($(this).val() == "Guardar"){
-	    		  Actualizar();
-	    	  }
-	      }
-	});
-}
+
 function agregarCurso(){
 	$.ajax("./api/v1/");
 	
 }
 function AddDocente(){
+	$("#create").on("click", function(event){
 	
-      $("#create").val("Crear"); //Cambio de valor del bton aceptar para manejo de acciones
-      $("#NuevoDoc").text("Nuevo Profesor"); //Cambio de header del modal para orientar al usuario
-      
+	
       var nombre = $("input[id = nombre]").val();
       var apellido = $("input[id = apellido]").val();
       var apellidoS = $("input[id = apellidoS]").val();
@@ -71,11 +57,12 @@ function AddDocente(){
     	 }
      
       });
+      
+	});
          
-
 }
 
-function activarBtn(){
+/*function activarBtn(){
 	var checkout = $("input[class = seleccion]").prop("checked");
 	var band = false;
 	
@@ -85,13 +72,13 @@ function activarBtn(){
 	
 	//$("#datosDocente").prop("disabled",band);
 	//$("#Delete").prop("disabled", band);
-}
+}*/
 
 function EliminarDocente(){
     $('#Delete').on('click',  function(event){
          event.preventDefault();
          var id = getId();
-         
+         console.log("id seleccionado desde Eliminar " + id);
      $.ajax("api/v1/docente/" + id,
     		{
     	//url: window.location +"api/v1/docente/" + id,
@@ -116,37 +103,51 @@ function EliminarDocente(){
 }
 
 function Actualizar(){
+	 $('#guardarDatos').on("click", function(event){
+	      event.preventDefault();
 	
-		  var nombre = $("input[id = nombre]").val();
+		/*  var nombre = $("input[id = nombre]").val();
 	      var apellido = $("input[id = apellido]").val();
 	      var apellidoS = $("input[id = apellidoS]").val();
 	      var Nif = $("input[id = nif]").val();
 	      var telefono = $("input[id = telefono]").val();
 	      var correo = $("input[id = correo]").val();
 	      var titulacion = $("input[id  = titulacion]").val();
-	     
+	     */
+	
+
+	      var nombre = $("#Dnombre").val();
+	      var apellido = $("#Dapellido").val();
+	      var apellidoS = $("#DapellidoS").val();
+	      var Nif = $("#Dnif").val();
+	      var telefono = $("#Dtelefono").val();
+	      var correo = $("#Dcorreo").val();
+	      var titulacion = $("#Dtitulacion").val();
+
 	      var docente = {
 	    	  "nombre" : nombre, "apellido1" : apellido,
 	    	  "apellido2" : apellidoS, "nif" : Nif ,
 	    	  "telefono" : telefono,"correo" : correo, "titulacion" : titulacion
 	        };
 	      var id = getId();
-	        if(id == "undefined"){
-			     $.ajax("./api/v1/docente/"+getId(),
+	      console.log(id+ " este es el id seleccionado des Actualizar");
+	        if(id != "undefined"){
+			     $.ajax("./api/v1/docente/"+id,
 			    		 {
 			    	 contentType :"application/json",
 			    	 dataType:'json',
 			    	 type: "PUT",
 			    	 data: JSON.stringify(docente),
 			    	 success: function(dataDocente){  
-			    			    		             
-			    		    $("input[id = nombre]").val("");
-			    		    $("input[id = apellido]").val("");
-			    		    $("input[id = apellidoS]").val("");
-			    		    $("input[id = nif]").val("");
-			    		    $("input[id = telefono]").val("");
-			    		    $("input[id = correo]").val("");
-			    		    $("input[id  = titulacion]").val("");
+			    
+			    		    $("#Dnombre").val("");
+			    			$("#Dapellido").val("");
+			    			$("#DapellidoS").val("");
+			    			$("#Dnif").val("");
+			    			$("#Dtelefono").val("");
+			    			$("#Dcorreo").val("");
+			    			$("#Dtitulacion").val("");
+
 			    		
 			    	      
 			    	 },
@@ -160,18 +161,20 @@ function Actualizar(){
 	        	console.log("no ha seleccionado los datos")
 	        }
 		
+	 });
 }
 
 function showData(){
     $("#datosDocente").on("click",function(event){
         event.preventDefault();
-        $("#NuevoDoc").text("Datos Profesor");
-        $("#create").val("Guardar");
+       
         
        var id = getId();
-        if(id == 'undefined'){
-        	//abrir modal data-toggle="modal"
-        	$('#myModal').modal('show');
+       console.log("id Desde mostrar data", id);
+      
+        if(id != 'undefined'){
+        	
+        	
         	$.ajax("api/v1/docente/"+id,
     	    	{
     	    		contentType :"application/json",
@@ -179,14 +182,18 @@ function showData(){
     	    		type: "GET",
     	    		success:function (data){
     	    			
-    	    			$("input[id = nombre]").val(data.nombre);
-    	    		    $("input[id = apellido]").val(data.apellido1);
-    	    		    $("input[id = apellidoS]").val(data.apellido2);
-    	    		    $("input[id = nif]").val(data.nif);
-    	    		    $("input[id = telefono]").val(data.telefono);
-    	    		    $("input[id = correo]").val(data.correo);
-    	    		    $("input[id  = titulacion]").val(data.titulacion);
+    	    				
+    	    			$("input[id = Dnombre]").val(data.nombre);
+    	    			$("input[id = Dapellido]").val(data.apellido1);
+    	    			$("input[id = DapellidoS]").val(data.apellido2);
+    	    			$("input[id = Dnif]").val(data.nif);
+    	    			$("input[id = Dtelefono]").val(data.telefono);
+    	    			$("input[id = Dcorreo]").val(data.correo);
+    	    			$("input[id  = Dtitulacion]").val(data.titulacion);
+    	    			
     	    		
+    	    			
+
     	    			
     	    		},
     	    		error : function(event){
@@ -204,8 +211,8 @@ function showData(){
 
 }
 
-function buscar(){
-	$("#buscar").on("click", function(event){
+/*function buscar(){
+$("#buscar").on("click", function(event){
 		event.preventDefault();
 		var link;
 		var buscaNombre =$("#buscarNombre").val();
@@ -245,7 +252,7 @@ function buscar(){
 		
 	});
 }
-
+*/
 function getId(){
 	return $("input[name = seleccion]:checked").val();
 }
@@ -261,3 +268,15 @@ function limpiar(){
 	
 }
  
+
+
+
+/*	
+$("input[id = nombre]").val(data.nombre);
+$("input[id = apellido]").val(data.apellido1);
+$("input[id = apellidoS]").val(data.apellido2);
+$("input[id = nif]").val(data.nif);
+$("input[id = telefono]").val(data.telefono);
+$("input[id = correo]").val(data.correo);
+$("input[id  = titulacion]").val(data.titulacion);
+*/

@@ -19,6 +19,6 @@ public interface ProfesorService {
 	
 	List<Profesor> findProfesoresByNombre(String nombre);
 	
-	List<Profesor> findProfesorByNombreOrNif(String nombre, String nif);
+	List<Profesor> findProfesorByNombreOrCedula(String nombre, String nif);
 	
 }

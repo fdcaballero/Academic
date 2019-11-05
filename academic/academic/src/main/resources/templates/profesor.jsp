@@ -160,20 +160,22 @@
                 <h2 class="m-0 font-weight-bold text-primary">Profesorado</h2>
     
             </div>
+         
                <p><strong> Busqueda de profesores</strong></p>
-        <div>
-                <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="buscarNombre" placeholder="Ingrese nombre...">
-                  </div>
-                  <div class="form-group">
-                    <input type="number" class="form-control form-control-user" id="buscarCC" placeholder="Ingrese C.C...">
-                  </div>
-        </div>
-        <div>
-            <a id="buscar" class="btn btn-primary btn-user btn-block">Buscar</a>
-            <a id="limpiar" class="btn btn-primary btn-user btn-block">Limpiar</a>
-        </div>
-
+       <form th:action ="@{/buscar-profesores}" th:method = "post">
+        	<div>
+                	<div class="form-group">
+            	         <input type="text" class="form-control form-control-user" name ="buscarNombre" id="buscarNombre" placeholder="Ingrese nombre...">
+                    </div>
+                    <div class="form-group">
+                     	<input type="text" class="form-control form-control-user" id="buscarCC" name="buscarCC" placeholder="Ingrese C.C...">
+                    </div>
+        	</div>
+        	<div>
+            	<button  type="submit" id="buscar" class="btn btn-primary btn-user btn-block">Buscar</button>
+            	<a id="limpiar" class="btn btn-primary btn-user btn-block">Limpiar</a>
+        	</div>
+		</form>
   
           <!-- DataTables Example -->
           <div class="card shadow mb-4">
@@ -185,7 +187,7 @@
                 <table id = "prof-tabla" class="table" width="100%" cellspacing="0">         
                     <tr>
                         <th><button class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Crear docente</button></th>                    
-                        <th><a id ="datosDocente" class="btn btn-primary btn-user btn-block" data-target="#myModal">Datos personales</a></th>
+                        <th><a id ="datosDocente" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#Modaldatos">Datos personales</a></th>
                         <th><a href="#" class="btn btn-primary btn-user btn-block">Clases</a></th>
                         <th><a href="#" id="Delete" class="btn btn-primary btn-user btn-block">Eliminar profesor</a></th>
                       
@@ -196,6 +198,14 @@
                       <th>Correo</th>
                       <th>Teléfono</th>
                     </tr>
+                    
+					<tr  th:each ="profesor : ${profesores}" class = 'contenido' data-id="${profesor.id}" >
+	    			    <td th:text ="${profesor.nombre}"></td><!-- Nombre -->
+	    			    <td th:text ="${profesor.nif}"></td><!-- nif -->
+	    			    <td th:text ="${profesor.correo}"></td><!-- correo -->
+	    			    <td th:text ="${profesor.telefono}"></td><!-- telefono -->
+	    			    <td> <input type='radio' th:value ="${profesor.id}" class ='seleccion' id ="${profesor.id}"name='seleccion' > </td>
+	    			</tr>
                     
                 </table>
               </div>
@@ -208,14 +218,14 @@
       </div>
       <!-- End of Main Content -->
  <!-- ############################################################################################################### -->     
-      <!-- The Modal -->
+      <!-- The Modal NUevo-->
       <div class="modal" id="myModal">
         <div class="modal-dialog">
           <div class="modal-content">
       
             <!-- Modal Header -->
             <div class="modal-header bg-primary text-white">
-              <h4 class="modal-title" id= "NuevoDoc">Nuevo profesor</h4>
+              <h4 class="modal-title" >Nuevo profesor</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
   
@@ -252,13 +262,120 @@
             <!-- Modal footer -->
          <!-- Modal footer -->
             <div class="modal-footer">
-              <input id ="create" type="button" class="btn btn-primary" data-dismiss="modal" />
+              <input id ="create" type="button" value="Registrar" class="btn btn-primary" data-dismiss="modal" />
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
           </div> 
         </div>
       </div>
-<!-- ##################################################################################################### -->    
+      
+      <!--Hola
+<!-- #####################################################################################################   
+      
+      <!-- The Modal 
+      <div class="modal" id="datosDocente">
+      
+        <div class="modal-dialog">
+        
+          <div class="modal-content">
+ 		
+             Modal Header 
+            <div class="modal-header bg-primary text-white">
+              <h4 class="modal-title">Editar profesor</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+             Modal body 
+            <div class="modal-body">
+              <form action=""  class="form">
+                <section class="form-group">
+                    <label for="nombre">* Nombre </label>
+                    <input id = "Dnombre" type="text" name="Datosnombre"   class="form-control" required />
+
+                    <label for="apellido1">* Apellido 1</label>
+                    <input  type="text" name="Datosapellido" id="Dapellido" class="form-control" required/>
+
+                    <label for="apellido2">Apellido 2 </label>
+                    <input  type="text" name="DatosapellidoS" id="DapellidoS"  class="form-control">
+
+                    <label for="nif">* NIF </label>
+                    <input id="Dnif" type="text" name="Datosnif" class="form-control" required>
+
+                    <label for="telefono">* Telefono </label>
+                    <input id="Dtelefono" type="tel" name="Datostelefono"   class="form-control" required>
+
+                    <label for="correo">* Correo </label>
+                    <input id="Dcorreo" type="email" name="Datoscorreo"  class="form-control" required>
+
+                    <label for="titulacion">Titulación </label>
+                    <input id="Dtitulacion" type="text" name="Datostitulacion"  class="form-control">
+                </section>
+
+              </form>
+            </div>
+
+          Modal footer 
+            <div class="modal-footer">
+              <input id ="guardarDatos" value = "Guardar" type="button" class="btn btn-primary" data-dismiss="modal" />
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+      
+      <!-- The Datos -->
+      <div class="modal" id="Modaldatos">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header bg-primary text-white">
+              <h4 class="modal-title">Editar profesor</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form action=""  class="form">
+                <section class="form-group">
+                    <label for="nombre">* Nombre </label>
+                    <input id = "Dnombre" type="text" name="nombre"   class="form-control" required />
+
+                    <label for="apellido1">* Apellido 1</label>
+                    <input  type="text" name="apellido" id="Dapellido" class="form-control" required/>
+
+                    <label for="apellido2">Apellido 2 </label>
+                    <input  type="text" name="apellidoS" id="DapellidoS"  class="form-control">
+
+                    <label for="nif">* NIF </label>
+                    <input id="Dnif" type="text" name="nif" class="form-control" required>
+
+                    <label for="telefono">* Telefono </label>
+                    <input id="Dtelefono" type="tel" name="telefono"   class="form-control" required>
+
+                    <label for="correo">* Correo </label>
+                    <input id="Dcorreo" type="email" name="correo"  class="form-control" required>
+
+                    <label for="titulacion">Titulación </label>
+                    <input id="Dtitulacion" type="text" name="titulacion"  class="form-control">
+                </section>
+
+              </form>
+            </div>
+
+
+            <!-- Modal footer -->
+         <!-- Modal footer -->
+            <div class="modal-footer">
+              <input id ="guardarDatos" value = "Guardar" type="button" class="btn btn-primary" data-dismiss="modal" />
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -287,7 +404,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">Ã—</span>
+            <span aria-hidden="true">—</span>
           </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>

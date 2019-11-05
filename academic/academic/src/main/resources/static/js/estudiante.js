@@ -1,7 +1,7 @@
 $(function(){
     add();
     limpiar();
-    Listar();
+   // Listar();
     editar();
     //Fecha();
 });
@@ -104,15 +104,7 @@ function limpiar(){
 
 	
 }
-//  $("#myModal").modal("hide");   
-/*$("#ct").append(
- "<tr>" +
-    "<td>" + nombre.val() + "</td>" +
-    "<td>" + curso.val() + "</td>" +
-    "<td>" + responsable.val() + "</td>" +
-    "<td>" + fechaAlta.val() + "</td>" +
-    "<td>" + fechaBaja.val() + "</td>" +
-"</tr>"); */
+
 function editar(){
 	$("#datosEst").on("click" ,function(event){
 		event.preventDefault();
@@ -123,25 +115,45 @@ function editar(){
 			type :"GET",
 			success :  function (datos){
 				
-				 $("#nombre").val(datos.nombre);
-				 $("#apellido1").val(datos.apellido1);
-				 $("#apellido2").val(datos.apellido2);
-				 $("#nif").val(datos.nif);
-				 $("#telefono").val(datos.telefono);
-				 $("#email").val(datos.correo);
-				 $("#curso").val(datos.grado);
-				 $("#repetidor").val(datos.repetidor);
-				 $("#fecha_de_alta").val(datos.fecha_alta);
-				 $("#fecha_de_baja").val(datos.fecha_baja);
-				 $("#observaciones").val(datos.observacion);
+				 $("input[id =  Dnombre]").val(datos.nombre);
+				 $("input[id =  Dapellido1]").val(datos.apellido1);
+				 $("input[id =  DapellidoD]").val(datos.apellido2);
+				 $("input[id =  Dnif]").val(datos.nif);
+				 $("input[id =  Dtelefono]").val(datos.telefono);
+				 $("input[id =  Dcorreo]").val(datos.correo);
+				 $("input[id =  Dcurso]").val(datos.grado);
+				 $("input[id =  Drepetidor]").val(datos.repetidor);
+				 $("input[id =  DfechaAlta]").val(datos.fecha_alta);
+				 $("input[id =  DfechaBaja]").val(datos.fecha_baja);
+				 $("input[id =  Dobservaciones]").val(datos.observacion);
 				 // DATOS DEL RESPONSABLE 
-				 $("input[id = nombreR]").val(datos.responsable.nombre);
-				 $("input[id = apellidoR]").val(datos.responsable.apellido1);
-				 $("input [id = apellido2R]").val(datos.responsable.apellido2);
-				 $("input [id = nifR]").val(datos.responsable.nif);
-				 $("input [id = telefonoR]").val(datos.responsable.telefono);
-				 $("input[id= correoR]").val(datos.responsable.correo);
+				 $("input[id =  DnombreR]").val(datos.responsable.nombre);
+				 $("input[id =  DapellidoR]").val(datos.responsable.apellido1);
+				 $("input [id = DapellidoRs]").val(datos.responsable.apellido2);
+				 $("input [id = DnifR]").val(datos.responsable.nif);
+				 $("input [id = DtelefonoR]").val(datos.responsable.telefono);
+				 $("input[id= DcorreoR]").val(datos.responsable.correo);
+				 
+				 /*
 				
+				 $("#Dnombre").val(datos.nombre);
+				  $("#Dapellido1").val(datos.apellido1);
+				  $("#DapellidoD").val(datos.apellido2);
+				  $("#Dnif").val(datos.nif);
+				  $("#Dtelefono").val(datos.telefono);
+				  $("#Dcorreo").val(datos.correo);
+				  $("#Dcurso").val(datos.grado);
+				  $("#Drepetidor").val(datos.repetidor);
+				  $("#DfechaAlta").val(datos.fecha_alta);
+				  $("#DfechaBaja").val(datos.fecha_baja);
+				  $("#Dobservaciones").val(datos.observacion);
+				   // DATOS DEL RESPONSABLE
+				  $("#DnombreR").val(datos.responsable.nombre);
+				  $("#DapellidoR").val(datos.responsable.apellido1);
+				  $("#DapellidoRs").val(datos.responsable.apellido2);
+				  $("#DnifR").val(datos.responsable.nif);
+				  $("#DtelefonoR").val(datos.responsable.telefono);
+				  $("#DcorreoR").val(datos.responsable.correo);*/
 			},
 			error : function(event){
 				console.log("No carga datos");
@@ -153,6 +165,61 @@ function editar(){
 	});
 	
 }
+
+function Guardar(){
+	$("#guardarEst").on("click", function(event){
+		event.preventDefault();
+		var nombre =  $("input[id =  Dnombre]").val();
+		var apellido = $("input[id =  Dapellido1]").val(datos.apellido1);
+		var apellido1 = $("input[id =  DapellidoD]").val(datos.apellido2);
+		var cc = $("input[id =  Dnif]").val(datos.nif);
+		var celular =  $("input[id =  Dtelefono]").val(datos.telefono);
+		var correo =  $("input[id =  Dcorreo]").val(datos.correo);
+		var curso = $("input[id =  Dcurso]").val(datos.grado);
+		var repetidor = $("input[id =  Drepetidor]").val(datos.repetidor);
+		var fecha = $("input[id =  DfechaAlta]").val(datos.fecha_alta);
+		var fechaB =  $("input[id =  DfechaBaja]").val(datos.fecha_baja);
+		var observacion = $("input[id =  Dobservaciones]").val(datos.observacion);
+		 // DATOS DEL RESPONSABLE 
+		var nombreRep = $("input[id =  DnombreR]").val(datos.responsable.nombre);
+		var apellidoRep = $("input[id =  DapellidoR]").val(datos.responsable.apellido1);
+		var apellidoRep1 = $("input [id = DapellidoRs]").val(datos.responsable.apellido2);
+		var nif =  $("input [id = DnifR]").val(datos.responsable.nif);
+		var telefono =  $("input [id = DtelefonoR]").val(datos.responsable.telefono);
+		var correoRep = $("input[id= DcorreoR]").val(datos.responsable.correo);
+		
+		var responsable = {
+				"nombre" : nombreRep, "apellido1" : apellidoRep, 
+		    	"apellido2" : apellidoRep1, "nif" : nif,
+		    	"telefono" : telefono, "correo" : correoRep 
+		};
+		
+		var estudiante = {
+			      "nombre" : nombre, "apellido1" : apellido,
+			      "apellido2" : apellido1, "nif" : cc,
+			      "telefono" : celular, "correo" : correo,
+			      "repetidor" : repetidor, "fecha_alta" : fecha,
+			      "fecha_baja" : fechaB, "observacion" : observacion,
+			      "responsable" : responsable
+		       };
+	  $.ajax("./api/v1/representante",{
+  		contentType : "application/json",
+  		dataType : "json",
+  		type :"PUT",
+  		data : JSON.stringify(estudiante),
+  		success: function(datoResp){
+  			alert("Actualizado  con exito");
+  		},
+  		error : function(event){
+  			console.log("error al guardar los datos" , event);
+  			alert("error desde Actualizar");
+  		}
+	  });
+	  
+	});
+	
+}
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 function Fecha(){
 	/*$("#nuevoEst").on("click", function(event){
 		event.preventDefault();
@@ -160,7 +227,9 @@ function Fecha(){
 		$("#fecha_de_alta").val(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
 	});*/
 }
-function Listar(){
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~~44~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~
+function Listar(){ //Buscar implementado con AJAX
 	$("#buscar").on("click", function(event){
 		event.preventDefault();
 		var buscar = $("#buscaNombre").val();
@@ -190,10 +259,13 @@ function Listar(){
 				alert("error al buscar datos")
 			}
 		});
-	});
-function getId(){
-	
-	return $("input[name = resultadoEstudiante]:checked").val();
+	});~
 }
-	
+//4~~4~~4~~4~~~44~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~
+function getId(){
+	return $("input[name = resultadoEstudiante]:checked").val(); 
+}
+	function repetidor(){
+	$("#")
+		
 }

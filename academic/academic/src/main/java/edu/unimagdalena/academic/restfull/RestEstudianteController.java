@@ -39,10 +39,10 @@ public class RestEstudianteController {
 		return estudiante.get();
 	 }
 	 
-	 @GetMapping("/estudiante")
+	/* @GetMapping("/estudiante")
 	 public List<Estudiante> listar(){
 		 return studentRepository.findAll();
-	 }
+	 }*/
 	 
 	 @PutMapping("/estudiante/{id}")
 	 public Estudiante editStudent(@RequestBody Estudiante estudiante, @PathVariable Long id) {
@@ -63,4 +63,7 @@ public class RestEstudianteController {
 		//student.setResponsable(responsableA);
 	  return studentRepository.save(student);
 	}
+
+
+
 }

@@ -58,8 +58,8 @@ public class ProfesorServiceImp implements ProfesorService {
 	}
 
 	@Override
-	public List<Profesor> findProfesorByNombreOrNif(String nombre, String nif) {
+	public List<Profesor> findProfesorByNombreOrCedula(String nombre, String nif) {
 	
-		return profesorRepository.findProfesorByNombreOrNif(nombre, nif);
+		return profesorRepository.findProfesorByNombreOrCedula(nombre, nif);
 	}
 }

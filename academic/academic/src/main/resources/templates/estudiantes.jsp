@@ -41,20 +41,20 @@
              <h2 class="m-0 font-weight-bold text-primary">Alumnado</h2>
  
          </div>
-           
-     <div>
-       <form th:action= "@{/buscarEstudiante}" method ="post">
-       <div class="card-header py-1 bg-primary text-white">
-         <h5>Busqueda de alumnos</h5>
-       </div>
+       <form th:action= "@{/buscarEstudiante}" method ="post">    
+     	<div>
+       
+        	<div class="card-header py-1 bg-primary text-white">
+          		<h5>Busqueda de alumnos</h5>
+        	</div>
         
              <div class="form-group">
                <label for="nombre">Nombre</label>
-                 <input type="text" name = "nombre"id ="buscaNombre" class="form-control form-control-user"  placeholder="Ingrese nombre...">
+                 <input type="text" name = "buscaNombre" id ="buscaNombre" class="form-control form-control-user"  placeholder="Ingrese nombre...">
                </div>
                <div class="form-group">
                   <label for="curso">Curso </label>
-                  <select name="curso" class="form-control custom-select" required>
+                  <select name="buscaCurso" id = "buscaCurso" class="form-control custom-select" required>
                       <option  selected>Indique un curso</option>
                       <option th:each="curso : ${cursos}" th:text ="${curso.etapa}">One</option>
                       
@@ -68,13 +68,13 @@
                     </label>
                   </div>
                </div>
-         </form>
-     </div>
+         
+    	</div>
      <div class="form-group align-items-center">
          <button type="submit" class="btn btn-primary col-2" name = "buscar" id  = "buscar">Buscar </button>
          <button type="submit" class=" btn btn-primary col-2"name="limpiar">Limpiar </button>
      </div>
-
+  </form> 
       <!-- DataTables Example -->
       <div class="card shadow mb-4">
           <div class="card-header py-3">
@@ -86,7 +86,7 @@
                 <thead>
                   <tr>
                       <th><a href="#" class="btn btn-primary btn-user btn-block" id ="nuevoEst" data-toggle="modal" data-target="#myModal">Nuevo alumno</a></th>
-                      <th><a href="#" class="btn btn-primary btn-user btn-block " id="datosEst" data-toggle="modal" data-target="#myModal">Datos personales</a></th>
+                      <th><a href="#" class="btn btn-primary btn-user btn-block " id="datosEst" data-toggle="modal" data-target="#actualizar-estudiante">Datos personales</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block "  data-toggle="modal" data-target="#myModalClases">Clases</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block  " onclick="confirm('desear dar de baja')">Dar de alta/ baja</a></th>
                       
@@ -100,14 +100,16 @@
                   </tr>
                 </thead>
                 <tbody class ="cuerpo-tableEst">
-  					<tr th:each ="estudiante : ${estudiantes}">
+                 <tr> <td>Hola</td>
+                 </tr> 
+  					<tr th:each ="estudiante : ${estudiantes}" data-id="${estudiante.id}">
   					
 						    <td th:text="${estudiante.nombre}"></td>
 						    <td th:text ="${estudiante.curso.etapa}"></td>
 						    <td th:text  ="${estudiante.representante.nombre}"></td> 
 						    <td th:text =" ${estudiante.fecha_alta}"></td>
 						    <td th:text ="${estudiante.fecha de baja}"></td> 
-						   <!-- - <td><input type ='radio'name ='resultadoEstudiante' value=" + e.id + "class='seleccion' id ="+ e.id+ "></td> -->
+						    <td><input type ='radio'name ='resultadoEstudiante' th:value="${estudiante.id}"class='seleccion' id ="${estudiante.id}"></td> 
 						   
 					</tr>
                 
@@ -118,7 +120,7 @@
           </div>
         </div>
    </section>
-    <!-- The Modal registro ################################-->
+    <!-- The Modal registro 4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~-->
     <div class="modal " id="myModal">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -219,6 +221,105 @@
           </div>
         </div>
       </div>
+ <!-- -4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~ -->     
+ <!-- The Modal Datos ¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬ -->
+    <div class="modal " id="actualizar-estudiante">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header colorH">
+              <h4 class="modal-title">Datos alumno</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body ">
+              <form class="form" id="ActEstudiante">
+                <section class="container">
+                    <section class="row">
+                        <section class="form-group col formulario">
+
+                            <label for="nombre">* Nombre </label>
+                            <input type="text" name="nombre" id="Dnombre" class="form-control " required>
+
+                            <label for="apellido1">* Apellido 1</label>
+                            <input type="text" name="apellido" id="Dapellido1" class="form-control" required>
+
+                            <label for="apellido2">Apellido 2 </label>
+                            <input type="text" name="apellido"  class="form-control" id="DapellidoD">
+
+                            <label for="nif">* NIF </label>
+                            <input type="text" name="nif" id="Dnif" class="form-control" required>
+
+                            <label for="telefono">Telefono </label>
+                            <input type="tel" name="telefono" id="Dtelefono" class="form-control">
+
+                            <label for="correo">Correo </label>
+                            <input type="email" name="correo" id="Dcorreo" class="form-control">
+
+                            <label for="curso">Curso </label>
+                            <select name="curso" id="Dcurso" class="form-control custom-select" required>
+                                <option selected>Choose...</option>
+                                <option value="1">Three</option>
+                            </select>
+
+                            <div class="form-check">
+                              <label class="form-check-label">
+
+                                <input type="checkbox" class="form-check-input " name="repetidor" id="Drepetidor" value="True" >
+
+                                * Repetidor
+                              </label>
+                            </div>
+
+                            <label for="fecha de alta">Fecha de alta </label>
+                            <input type="date" name="fechaDeAlta" id="DfechaAlta" class="form-control ">
+
+                            <label for="fecha de baja">Fecha de baja </label>
+                            <input type="date" name="fecha_de_baja" id="DfechaBaja" class="form-control">
+
+                            <label for="observaciones">Observaciones </label>
+                            <textarea name="observaciones"  class="form-control " id="Dobservaciones"rows=4></textarea>
+                        </section>
+
+                        <section class="form-group col" id="Dresponsable">
+                            <h4>Responsable</h4>
+                            <label for="nombre">* Nombre </label>
+                            <input type="text" name="nombreR" id ="DnombreR" class="form-control" required>
+
+                            <label for="apellido1">* Apellido 1</label>
+                            <input type="text" name="apellido1R" id="DapellidoR" class="form-control" required>
+
+                            <label for="apellido2">Apellido 2 </label>
+                            <input type="text" name="apellidoRs" id="DapellidoRs" class="form-control">
+
+                            <label for="nif">* NIF </label>
+                            <input type="text" name="nifR"  id="DnifR" class="form-control" required>
+
+                            <label for="telefono">* Telefono </label>
+                            <input type="tel" name="telefonoR" id="DtelefonoR" class="form-control" required>
+
+                            <label for="correo">* Correo </label>
+                            <input type="email" name="correoR" id="DcorreoR" class="form-control" required>
+                            <h5><br>** Nota: Los datos del responsable se rellenarán en caso de que sea necesario</h5>
+
+                        </section>
+                    </section>
+                </section>
+              </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary " id="guardarEst" data-dismiss="modal">Guardar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--¬¬¬¬¬¬¬¬MODAL DATOS¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬ -->
       <section>
     
           <!-- The Modal HorarioÂ·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·-->
@@ -260,110 +361,45 @@
                      <thead class="thead-inverse">
                          <h5>Horario</h5>
                          <tr>
-                             <th>Hora</th>
-                             <th>Lunes</th>
-                             <th>Martes</th>
-                             <th>Miercoles</th>
-                             <th>Jueves</th>
-                             <th>Viernes</th>
+                             				<th>Hora</th>			<th>Lunes</th> 		 <th>Martes</th> 	<th>Miercoles</th>	 <th>Jueves</th>	 <th>Viernes</th>
                          </tr>
                          </thead>
                          <tbody>
                            <tr>
-                             <td scope="row">09:00 - 10:00</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
+                             <td scope="row">09:00 - 10:00</td>  	 <td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td>
                            </tr>
                            <tr>
-                             <td scope="row">10:00 - 11:00</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
+                             <td scope="row">10:00 - 11:00</td>   	 <td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td>
                            </tr>
                            <tr>
-                             <td scope="row">11:00 - 12:00</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
+                             <td scope="row">11:00 - 12:00</td>  	 <td>-</td> 			<td>-</td> 			<td>-</td>			<td>-</td> 			<td>-</td>
                            </tr>
                            <tr>
-                             <td scope="row">12:00 - 13:00</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
+                             <td scope="row">12:00 - 13:00</td> 	 <td>-</td>				<td>-</td>			<td>-</td> 			<td>-</td> 			<td>-</td>
                            </tr>
                            <tr>
-                             <td scope="row">13:00 - 14:00</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
+                             <td scope="row">13:00 - 14:00</td>   	 <td>-</td>				<td>-</td> 			<td>-</td>			<td>-</td> 			<td>-</td>
                            </tr>
                            <tr>
-                              <td scope="row">14:00 - 15:00</td>
-                              <td>-</td>
-                              <td>-</td>
-                              <td>-</td>
-                              <td>-</td>
-                              <td>-</td>
+                             <td scope="row">14:00 - 15:00</td>  	 <td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td>
                            </tr>
                            <tr>
-                             <td scope="row">15:00 - 16:00</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
+                             <td scope="row">15:00 - 16:00</td>   	 <td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td>
                            </tr>
                            <tr>
-                             <td scope="row">16:00 - 17:00</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
+                             <td scope="row">16:00 - 17:00</td>   	 <td>-</td>				<td>-</td>	 		<td>-</td> 			<td>-</td> 			<td>-</td>
                            </tr>
                            <tr>
-                             <td scope="row">17:00 - 18:00</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
+                             <td scope="row">17:00 - 18:00</td>   	 <td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td>
                            </tr>
                            <tr>
-                             <td scope="row">18:00 - 19:00</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
+                             <td scope="row">18:00 - 19:00</td>  	 <td>-</td>				<td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td> 
                            </tr>
                            <tr>
-                             <td scope="row">19:00 - 20:00</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
+                             <td scope="row">19:00 - 20:00</td>  	 <td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td>
                            </tr>
                            <tr>
-                             <td scope="row">20:00 - 21:00</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
-                             <td>-</td>
+                             <td scope="row">20:00 - 21:00</td>  	 <td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td> 			<td>-</td>
                            </tr>
                          </tbody>
                  </table>

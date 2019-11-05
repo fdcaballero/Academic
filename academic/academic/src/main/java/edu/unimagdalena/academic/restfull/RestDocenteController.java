@@ -33,10 +33,10 @@ public class RestDocenteController {
 		return docenteRepository.findAll();
 	}
 	
-	@GetMapping("/docente/{nombre}/{nif}")
+	/*@GetMapping( "/docente/{nombre}/{nif}")
 	public List<Profesor> getProfesore(@PathVariable("nombre") String nombre, @PathVariable("nif") String nif){
 		return docenteRepository.findProfesorByNombreOrNif(nombre, nif);
-	}
+	}*/
 	@GetMapping("/docente/{id}")
 	public Profesor getProfesor(@PathVariable("id") Long id ) {
 		

@@ -12,9 +12,9 @@ public interface ProfesorRepository extends JpaRepository<Profesor, Long>{
 	
 	List<Profesor> findProfesoresByNombre(String nombre);
 	
-	@Query("SELECT p FROM Profesor p WHERE p.nombre = :nombre or p.nif =:nif")
-	List<Profesor> findProfesorByNombreOrNif(
-			@Param("nombre") String nombre,
-			@Param("nif") String nif);
+	@Query("SELECT p FROM Profesor p WHERE p.nombre = :buscarNombre or p.nif =:buscarCC")
+	List<Profesor> findProfesorByNombreOrCedula(
+			@Param("buscarNombre") String nombre ,
+			@Param("buscarCC") String nif);
 	
 }

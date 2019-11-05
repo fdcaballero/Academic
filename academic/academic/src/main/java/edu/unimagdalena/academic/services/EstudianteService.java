@@ -5,7 +5,7 @@ import java.util.*;
 
 public interface EstudianteService {
 	
-	List<Estudiante> findEstudiantesByNombreOrCurso(String nombre,String curso);
+	//List<Estudiante> findEstudiantesByNombreOrCurso(String nombre,String curso);
 	
 	
 	List<Estudiante> findEstudianteByNombre(String nombre);
@@ -21,5 +21,7 @@ public interface EstudianteService {
 	Estudiante buscarEstudiantePorId(Long id);
 	
 	Estudiante getOne(Long id);
+	
+	List<Estudiante> findEstudiantesByNombreOrCurso(String nombre, String curso);
 	
 }
