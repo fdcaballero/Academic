@@ -7,13 +7,12 @@ import edu.unimagdalena.academic.entities.Curso;
 
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Long> { 
-  	
-	List<Curso> findCursoByNivel(String Nivel);
+ 	
+	List<Curso> findCursosByNivel(Integer nivel);
 	
-	@Query("SELECT c FROM cursos p WHERE c.nivel = :Nivel or c.etapa =:Etapa")
+	@Query("SELECT c FROM Curso c WHERE c.etapa = etapa OR c.nivel = nivel")
     List<Curso> findCursoByNivelOrEtapa(
-    		@Param("Nivel") Integer Nivel,
-    		@Param("Etapa") String Etapa
-    		);
-
+    		@Param("nivel") Integer nivel,
+    		@Param("etapa") String etapa); 
+	
 }
