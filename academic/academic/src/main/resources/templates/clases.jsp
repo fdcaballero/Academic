@@ -182,12 +182,8 @@
                       </select>
                   </div>
                   <div class="form-group">
-                    <select class="form-control">
+                    <select id = "MySelect" class="form-control">
                         <option>Seleccione Profesor...</option>
-                        <option>Fredy</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
                       </select>
                   </div>
         </div>
@@ -328,10 +324,12 @@
                    
 
                       <label for="profesor">* Profesor</label>
-             
-                        <input id="indica_profesor"> indique un profesor...</input>
-                      
-                      <label for="tarifa">* Tarifa</label>
+                               <div class="form-group">
+                    <select id = "Lista-Profesor" class="form-control">
+                        <option>Seleccione Profesor...</option>
+                      </select>
+                  </div>
+                      <label for="hora">* Hora </label>
                         <select id = "clase_horasemanal" class="form-control">
                         <option>Seleccione hora...</option>
                         <option>09:00 - 10:00</option>
