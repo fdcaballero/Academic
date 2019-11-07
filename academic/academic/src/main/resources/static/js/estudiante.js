@@ -1,9 +1,9 @@
 $(function(){
     add();
     limpiar();
-   // Listar();
+   Listar();
     editar();
-    //Fecha();
+    
    ListarCursos();
    
 });
@@ -93,8 +93,8 @@ function add(){  //Agrega un estudiante a la BDD
     	  "apellido2" : apellido1Re, "nif" : nifRe,
     	  "telefono" : telefonoRe, "correo" : correoRe 
        };
-    var curso = cursoSeleccionado(idcurso);
-     
+    
+     console.log (idcurso);
     $.ajax("./api/v1/representante",
     	{
     		contentType : "application/json",
@@ -102,28 +102,16 @@ function add(){  //Agrega un estudiante a la BDD
     		type :"POST",
     		data : JSON.stringify(responsable),
     		success: function(datoResp){
-    			 if (idcurso == 0 ){
+    			 
     				estudiante  = {
        				      "nombre" : nombre, "apellido1" : apellido1,
        				      "apellido2" : apellido2, "nif" : nif,
        				      "telefono" : tel, "correo" : correo,
        				      "repetidor" : repetidor, "fecha_alta" : fechaAlta,
        				      "fecha_baja" : fechaBaja, "observacion" : observacion,
-       				      "responsable" : datoResp 
+       				      "responsable" : datoResp , "varString" :idcurso
        			       };
-    			  }else{
-    				  estudiante  = {
-           				      "nombre" : nombre, "apellido1" : apellido1,
-           				      "apellido2" : apellido2, "nif" : nif,
-           				      "telefono" : tel, "correo" : correo,
-           				      "repetidor" : repetidor, "fecha_alta" : fechaAlta,
-           				      "fecha_baja" : fechaBaja, "observacion" : observacion,
-           				      "responsable" : datoResp , "grado" : curso
-           			       };
-    			  }
-    			
-    			
-    			
+    		
     			$.ajax("./api/v1/estudiante",
     			 	    {
     			 	    	contentType : "application/json",
@@ -136,7 +124,7 @@ function add(){  //Agrega un estudiante a la BDD
     			 	    	},
     			 	    	error: function(event){
     			 	    		alert("Error en el registro vuelva a intentarlo");
-    			 	    		console.log("Error", event.status+" "+event.responseText);
+    			 	    		console.log("Error", event);
     			 	    	}
     			 	   });
     		    
@@ -153,7 +141,8 @@ function add(){  //Agrega un estudiante a la BDD
 
 
 function limpiar(){ //Limpia los datos de los estudiantes
-	    $("#nombre").val("");
+	$("input[type = text]").val("");  
+	/*  $("#nombre").val("");
 	    $("#apellido1").val("");
 	    $("#apellido2").val("");
 	    $("#nif").val("");
@@ -171,7 +160,7 @@ function limpiar(){ //Limpia los datos de los estudiantes
 	    $("input [id = nifR]").val("");
 	    $("input [id = telefonoR]").val("");
 	    $("input[id= correoR]").val("");
-
+*/
 	
 }
 
@@ -194,14 +183,14 @@ function editar(){ //Carga los datos del estudiante en el Modal
 				 
 				 $("input[id =  Dtelefono]").val(datos.telefono);
 				 $("input[id =  Dcorreo]").val(datos.correo);
-				 agregaCursoEdit(datos.grado.id);
+				// agregaCursoEdit(datos.grado.id);
 				 
 				 $("input[id =  Drepetidor]").val(datos.repetidor);
 				 $("input[id =  DfechaAlta]").val(datos.fecha_alta);
 				 $("input[id =  DfechaBaja]").val(datos.fecha_baja);
 				 $("input[id =  Dobservaciones]").val(datos.observacion);
 				 // DATOS DEL RESPONSABLE 
-				 $("input[id =  DnombreR]").val(datos.responsable.nombre);
+				/* $("input[id =  DnombreR]").val(datos.responsable.nombre);
 				 $("input[id =  DapellidoR]").val(datos.responsable.apellido1);
 				 $("input [id = DapellidoRs]").val(datos.responsable.apellido2);
 				 $("input [id = DnifR]").val(datos.responsable.nif);
@@ -223,13 +212,13 @@ function editar(){ //Carga los datos del estudiante en el Modal
 				  $("#DfechaAlta").val(datos.fecha_alta);
 				  $("#DfechaBaja").val(datos.fecha_baja);
 				  $("#Dobservaciones").val(datos.observacion);
-				   // DATOS DEL RESPONSABLE
+				   */ // DATOS DEL RESPONSABLE
 				  $("#DnombreR").val(datos.responsable.nombre);
 				  $("#DapellidoR").val(datos.responsable.apellido1);
 				  $("#DapellidoRs").val(datos.responsable.apellido2);
 				  $("#DnifR").val(datos.responsable.nif);
 				  $("#DtelefonoR").val(datos.responsable.telefono);
-				  $("#DcorreoR").val(datos.responsable.correo);*/
+				  $("#DcorreoR").val(datos.responsable.correo);
 			},
 			error : function(event){
 				console.log("No carga datos");
@@ -241,9 +230,7 @@ function editar(){ //Carga los datos del estudiante en el Modal
 	});
 	
 }
-function agregaCursoEdit(val){
-	
-}
+
 
 function Guardar(){ //Carga los datos ya editados a la bdd
 	
@@ -308,7 +295,7 @@ function Listar(){ //Buscar implementado con AJAX
 	$("#buscar").on("click", function(event){
 		event.preventDefault();
 		var buscar = $("#buscaNombre").val();
-		
+		var buscar = $("#buscaCurso").val();
 		
 		$.ajax("api/v1/estudiante",{
 			contentType:"application/json", 
@@ -316,16 +303,27 @@ function Listar(){ //Buscar implementado con AJAX
 			type : "GET",
 			success: function(data){
 				$.each(data, function(i, e){
-					
-					$("tbody.cuerpo-tableEst").append(
-							"<tr>" +
-						    "<td>" + e.nombre + "</td>" +
-						    "<td>" + e.curso + "</td>" +
-						   // "<td>" + e.responsable.nombre+ "</td>" +
-						    "<td>" + e.fecha_alta + "</td>" +
-						    "<td>" + e.fecha_baja + "</td>" +
-						    "<td><input type ='radio'name ='resultadoEstudiante' value=" + e.id + "class='seleccion' id ="+ e.id+ "></td>" +
-						"</tr>");
+					if(e.responsable != null){
+						$("tbody.cuerpo-tableEst").append(
+								"<tr data-id="+e.id+">" +
+								    "<td>" + e.nombre + "</td>" +
+								    "<td>" + e.grado + "</td>" +
+								    "<td>" + e.responsable.nombre+ "</td>" +
+								    "<td>" + e.fecha_alta + "</td>" +
+								    "<td>" + e.fecha_baja + "</td>" +
+								    "<td><input type ='radio' name ='resultadoEstudiante' value=" + e.id + " id ="+ e.id+ "></td>" +
+								"</tr>");
+					}else{
+						$("tbody.cuerpo-tableEst").append(
+								"<tr data-id="+e.id+">" +
+								    "<td>" + e.nombre + "</td>" +
+								    "<td>" + e.grado + "</td>" +
+								    "<td> - </td>" +
+								    "<td>" + e.fecha_alta + "</td>" +
+								    "<td>" + e.fecha_baja + "</td>" +
+								    "<td><input type ='radio' name ='resultadoEstudiante' value=" + e.id + " id ="+ e.id+ "></td>" +
+								"</tr>");
+					}	
 				});
 				
 			},
@@ -338,7 +336,9 @@ function Listar(){ //Buscar implementado con AJAX
 }
 //4~~4~~4~~4~~~44~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~4~~
 function getId(){
-	return $("input[name = resultadoEstudiante]:checked").val(); 
+	
+	return $("input[name = resultadoEstudiante]:checked").val();
+	
 }
 function repetidor(){
 	$("#")

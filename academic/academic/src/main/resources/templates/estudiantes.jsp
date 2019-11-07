@@ -44,7 +44,7 @@
           		<h5>Busqueda de alumnos</h5>
         	</div>
         
-       <form th:action= "@{/buscar-estudiante}" th:method ="post">
+      
            
      	<div>
        
@@ -75,7 +75,7 @@
          <button type="submit" class="btn btn-primary col-2" name = "buscar" id  = "buscar" >Buscar </button>
          <button type="submit" class=" btn btn-primary col-2"name="limpiar">Limpiar </button>
      </div>
-  </form> 
+  
       <!-- DataTables Example -->
       <div class="card shadow mb-4">
           <div class="card-header py-3">
@@ -99,20 +99,11 @@
                     <th>Fecha de alta </th>
                     <th>Fecha de baja</th>
                   </tr>
+                <tbody class="cuerpo-tableEst">
                 
                 
-                   <tr th:each ="estudiante : ${listaEstudiante}" class= "contenido" data-id="${estudiante.id}">
-  					
-						    <td th:text="${estudiante.nombre}"></td>
-						    <td th:text ="${estudiante.apellido1}"></td>
-						    <td th:text  ="${estudiante.apellido2}"></td> 
-						    <td th:text =" ${estudiante.fecha_alta}"></td>
-						    <td th:text ="${estudiante.fecha_baja}"></td> 
-						    <td><input type ='radio'name ='resultadoEstudiante' th:value="${estudiante.id}"class='seleccion' id ="${estudiante.id}"></td> 
-						   
-					</tr>
                 
-                  
+                </tbody>	
                 
               </table>
             </div>

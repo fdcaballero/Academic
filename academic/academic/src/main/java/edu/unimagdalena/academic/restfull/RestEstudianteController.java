@@ -16,10 +16,12 @@ import java.util.*;
 
 import javax.persistence.EntityNotFoundException;
 
-import edu.unimagdalena.academic.entities.Estudiante;
-import edu.unimagdalena.academic.entities.Responsable_Alumno;
+
 import edu.unimagdalena.academic.repositories.Responsable_AlumnoRepository;
+import edu.unimagdalena.academic.services.CursoService;
 import edu.unimagdalena.academic.services.EstudianteService;
+import edu.unimagdalena.academic.services.ResponsableAlumnoService;
+import edu.unimagdalena.academic.entities.*;
 
 @RestController
 @RequestMapping("/api/v1") //Nombre para accesar a la api
@@ -27,7 +29,10 @@ public class RestEstudianteController {
 	
 	@Autowired
 	private EstudianteService studentRepository;
-	
+	@Autowired
+	private CursoService cursoService;
+	@Autowired
+	private ResponsableAlumnoService responsableService;
 	
 	 @GetMapping("/estudiante/{id}")
 	 public Estudiante getEstudiante(@PathVariable("id") Long id) {
@@ -39,10 +44,10 @@ public class RestEstudianteController {
 		return estudiante.get();
 	 }
 	 
-	/* @GetMapping("/estudiante")
+	 @GetMapping("/estudiante")
 	 public List<Estudiante> listar(){
 		 return studentRepository.findAll();
-	 }*/
+	 }
 	 
 	 @PutMapping("/estudiante/{id}")
 	 public Estudiante editStudent(@RequestBody Estudiante estudiante, @PathVariable Long id) {
@@ -59,8 +64,14 @@ public class RestEstudianteController {
 
 	@PostMapping("/estudiante")
     public Estudiante createStudent(@RequestBody Estudiante student) {
-		//responsableRepository.save(responsableA);
-		//student.setResponsable(responsableA);
+		Responsable_Alumno Responsable = responsableService.getOne(student.getResponsable().getId());
+		Responsable.getEstudiantes().add(student);
+		Long idCurso = Long.parseLong(student.getVarString());
+		Optional<Curso> curso = cursoService.findById(idCurso);
+	 if (!curso.isEmpty()) {
+		 student.setGrado(curso.get()); 
+	 }
+	  
 	  return studentRepository.save(student);
 	}
 

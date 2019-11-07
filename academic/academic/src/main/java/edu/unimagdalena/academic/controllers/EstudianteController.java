@@ -15,8 +15,7 @@ import edu.unimagdalena.academic.services.*;
 public class EstudianteController {
 	@Autowired 
 	private CursoService cursoService;
-	@Autowired
-	private EstudianteService estudianteSevice;
+	
 	
 	@GetMapping("/estudiante")
 	public String accEstudiante(Model model) {
@@ -25,7 +24,7 @@ public class EstudianteController {
 		return "estudiantes";
 	}
 	
-	@PostMapping("/buscar-estudiante")
+/*	@PostMapping("/buscar-estudiante")
 	public String Buscar(@RequestParam("buscaNombre") String nombre, @RequestParam("buscaCurso") String curso, Model model) {
 		
 		List<Estudiante> estudiantes  = estudianteSevice.findEstudiantesByNombreOrCurso(nombre, curso);
@@ -36,5 +35,5 @@ public class EstudianteController {
 		
 		return "estudiantes";//::;
 		
-	}
+	}*/
 }	

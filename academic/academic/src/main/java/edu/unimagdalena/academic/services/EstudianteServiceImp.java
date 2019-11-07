@@ -21,7 +21,10 @@ public class EstudianteServiceImp implements EstudianteService{
 	}
 	
 	
-
+	@Override 
+	public Estudiante findEstudianteById(Long id) {
+		return estudiantRepository.findEstudianteById(id);
+	}
 	@Override
 	public void delete(Estudiante estudiante) {
 		estudiantRepository.delete(estudiante);

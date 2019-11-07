@@ -6,7 +6,7 @@ import java.util.*;
 public interface EstudianteService {
 	
 	//List<Estudiante> findEstudiantesByNombreOrCurso(String nombre,String curso);
-	
+	Estudiante  findEstudianteById(Long id);
 	
 	List<Estudiante> findEstudianteByNombre(String nombre);
 	

@@ -17,8 +17,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Estudiante")
@@ -39,6 +42,17 @@ public class Estudiante implements Serializable {
 	private String telefono;
 	@Column(name = "correo")
 	private String correo;
+	
+	@Transient
+	private String varString;
+	
+	public String getVarString() {
+		return varString;
+	}
+
+	public void setVarString(String varString) {
+		this.varString = varString;
+	}
 	
 	@ManyToOne
 	@JoinColumn(name = "id_responsable") 
@@ -78,7 +92,7 @@ public class Estudiante implements Serializable {
 
 	public Estudiante() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	public Long getId() {
