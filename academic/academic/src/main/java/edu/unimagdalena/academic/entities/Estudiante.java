@@ -67,6 +67,7 @@ public class Estudiante implements Serializable {
 	joinColumns = @JoinColumn(name = "id_estudiante", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "id_clase", referencedColumnName = "id"))
 	private Set<Clase> clases;
+	
 	@Column
 	private Boolean repetidor;
 	

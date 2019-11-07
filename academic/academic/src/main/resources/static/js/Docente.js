@@ -131,7 +131,7 @@ function Actualizar(){
 	        };
 	      var id = getId();
 	      console.log(id+ " este es el id seleccionado des Actualizar");
-	        if(id != "undefined"){
+	   
 			     $.ajax("./api/v1/docente/"+id,
 			    		 {
 			    	 contentType :"application/json",
@@ -157,9 +157,7 @@ function Actualizar(){
 			    	 }
 			     
 			      });
-	        }else{
-	        	console.log("no ha seleccionado los datos")
-	        }
+	       
 		
 	 });
 }

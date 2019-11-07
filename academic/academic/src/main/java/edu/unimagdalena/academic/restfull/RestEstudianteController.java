@@ -68,7 +68,7 @@ public class RestEstudianteController {
 		Responsable.getEstudiantes().add(student);
 		Long idCurso = Long.parseLong(student.getVarString());
 		Optional<Curso> curso = cursoService.findById(idCurso);
-	 if (!curso.isEmpty()) {
+	 if (!curso.isPresent()) {
 		 student.setGrado(curso.get()); 
 	 }
 	  

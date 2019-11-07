@@ -64,7 +64,7 @@
                   <div class="form-check">
                     <label class="form-check-label">
                           
-                      <input type="checkbox" class="form-check-input" name="repetidor"  value="checkedValue" >
+                      <input type="checkbox" class="form-check-input" name="repetidor" >
                       Mostrar solo actuales 
                     </label>
                   </div>
