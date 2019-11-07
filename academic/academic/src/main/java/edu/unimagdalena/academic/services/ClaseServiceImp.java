@@ -51,15 +51,7 @@ public class ClaseServiceImp implements ClaseService {
 	}
 	
 		
-	@Override
-	public List<Curso> findCursosByNivel(Integer nivel) {
-		return cursoRepository.findCursosByNivel(nivel);
-	}
 
-	@Override
-	public List<Curso> findCursoByNivelOrEtapa(Integer nivel, String etapa){
-	    return cursoRepository.findCursoByNivelOrEtapa(nivel, etapa);
-	}
 	
 	
 

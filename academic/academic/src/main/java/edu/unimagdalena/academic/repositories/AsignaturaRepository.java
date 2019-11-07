@@ -2,6 +2,7 @@ package edu.unimagdalena.academic.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import java.util.*;
 
 import edu.unimagdalena.academic.entities.Asignatura;
 

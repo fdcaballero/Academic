@@ -11,5 +11,5 @@ public interface CursoService {
 	Optional<Curso> findById(Long id);
 	Curso getOne(Long id);
 	List<Curso> findCursosByNivel(Integer nivel);
-	List<Curso> findCursoByNivelOrEtapa(Integer nivel, String etapa);
+	//List<Curso> findCursoByNivelOrEtapa(Integer nivel, String etapa);
 }

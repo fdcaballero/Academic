@@ -25,13 +25,14 @@ public class EstudianteController {
 		return "estudiantes";
 	}
 	
-	@PostMapping("/buscarEstudiante")
+	@PostMapping("/buscar-estudiante")
 	public String Buscar(@RequestParam("buscaNombre") String nombre, @RequestParam("buscaCurso") String curso, Model model) {
 		
 		List<Estudiante> estudiantes  = estudianteSevice.findEstudiantesByNombreOrCurso(nombre, curso);
+		//List<Estudiante> estudiantes = estudianteSevice.findAll();
 		List<Curso> cursos = cursoService.findAll();
 		model.addAttribute("cursos", cursos);
-		model.addAttribute("estudiantes", estudiantes);
+		model.addAttribute("listaEstudiante", estudiantes);
 		
 		return "estudiantes";//::;
 		
