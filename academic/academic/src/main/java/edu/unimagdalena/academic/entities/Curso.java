@@ -30,9 +30,6 @@ public class Curso implements Serializable {
 	@OneToMany(mappedBy = "curso") // Lado Dominante
 	private Set<Asignatura> asignaturas;
 
-	/**
-	 * 
-	 */
 	public Curso() {
 		super();
 		// TODO Auto-generated constructor stub

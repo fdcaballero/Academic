@@ -61,16 +61,19 @@ public class RestEstudianteController {
 		studentRepository.delete(aux);
 		 
 	 }
-
-	@PostMapping("/estudiante")
-    public Estudiante createStudent(@RequestBody Estudiante student) {
-		Responsable_Alumno Responsable = responsableService.getOne(student.getResponsable().getId());
-		Responsable.getEstudiantes().add(student);
+ 
+     @PostMapping("/estudiante")
+     public Estudiante createStudent(@RequestBody Estudiante student) {
+		
+		if(student.getResponsable() != null) {
+			Responsable_Alumno Responsable = responsableService.getOne(student.getResponsable().getId());
+			Responsable.getEstudiantes().add(student);
+		}
+		
 		Long idCurso = Long.parseLong(student.getVarString());
-		Optional<Curso> curso = cursoService.findById(idCurso);
-	 if (!curso.isPresent()) {
-		 student.setGrado(curso.get()); 
-	 }
+		Curso curso = cursoService.getOne(idCurso);
+		student.setGrado(curso); 
+		curso.getEstudiantes().add(student);
 	  
 	  return studentRepository.save(student);
 	}

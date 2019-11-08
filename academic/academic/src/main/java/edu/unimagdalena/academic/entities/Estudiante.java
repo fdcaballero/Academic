@@ -36,7 +36,7 @@ public class Estudiante implements Serializable {
 	private String apellido1;
 	@Column (name = "apellido2")
 	private String apellido2;
-	@Column(name = "nif")
+	@Column(name = "nif", nullable = false)
 	private String nif;
 	@Column(name = "telefono")
 	private String telefono;

@@ -147,15 +147,15 @@
                             <input type="email" name="email" id="email" class="form-control">
 
                             <label for="curso">Curso </label>
-                            <select name="curso" id="curso" class="form-control custom-select" required>
-                                <option selected value="0" > Choose...</option>
+                            <select name="curso" id="curso" class="form-control custom-select" required placeholder = "Choose...">
+                                <!-- <option selected > </option> -->
                                 
                             </select>
                             
                             <div class="form-check">
                               <label class="form-check-label">
                                     
-                                <input type="checkbox" class="form-check-input " name="repetidor" id="repetidor" value="checkedValue" >
+                                <input type="checkbox" class="form-check-input " name="repetidor" id="repetidor" >
                                 
                                 * Repetidor
                               </label>
@@ -173,6 +173,12 @@
 
                         <section class="form-group col" id="responsable">
                             <h4>Responsable</h4>
+                            <div>
+                            	<label for="lista-responsable"> Lista Responsable</label>
+                            	<select name = "lista-responsable" id ="ListaResponsable" class="form-control" >
+                            		<option selected> -------</option>
+                            	</select>
+                            </div>
                             <label for="nombre">* Nombre </label>
                             <input type="text" name="nombreR" id="nombreR" class="form-control" required>
 
@@ -247,22 +253,19 @@
                             <input type="email" name="correo" id="Dcorreo" class="form-control">
 
                             <label for="curso">Curso </label>
-                            <select name="curso" id="Dcurso" class="form-control custom-select" required>
-                                
-                                
-                            </select>
+                            <select name="curso" id="Dcurso" class="form-control custom-select" required></select>
 
                             <div class="form-check">
                               <label class="form-check-label">
 
-                                <input type="checkbox" class="form-check-input " name="repetidor" id="Drepetidor" value="True" >
+                                <input type="checkbox" class="form-check-input " name="repetidor" id="Drepetidor" >
 
                                 * Repetidor
                               </label>
                             </div>
 
                             <label for="fecha de alta">Fecha de alta </label>
-                            <input type="date" name="fechaDeAlta" id="DfechaAlta" class="form-control ">
+                            <input type="date" name="fechaDeAlta" id="DfechaAlta" class="form-control" disabled>
 
                             <label for="fecha de baja">Fecha de baja </label>
                             <input type="date" name="fecha_de_baja" id="DfechaBaja" class="form-control">
