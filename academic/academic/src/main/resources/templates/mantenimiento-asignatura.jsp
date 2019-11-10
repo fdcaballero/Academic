@@ -177,7 +177,8 @@
                 <div class="form-group">
                     <input type="text" class="form-control form-control-user" id="Bnombre" placeholder="Ingrese nombre...">
                   </div>
-                  <div class="form-group">            
+                  <div class="form-group">  
+                  <label for ="curso">Curso</label>          
                     <select id = "Bcurso" class="form-control">
                         <option id = "0"></option>
                       

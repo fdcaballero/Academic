@@ -10,5 +10,7 @@ public interface AsignaturaService {
 	Asignatura getOne(Long id);
 	void delete (Asignatura asignatura);
 	List<Asignatura> findAll();
-	
+	List<Asignatura> findAsignaturaByNombre(String nombre);
+	List<Asignatura> findAsignaturasByCurso(String curso);
+	List<Asignatura> findAsignaturasByNombreAndCurso(String nombre,  String curso);
 }

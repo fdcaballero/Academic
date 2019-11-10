@@ -42,4 +42,22 @@ public class AsignaturaServiceImp implements AsignaturaService{
 	public Optional<Asignatura> findById(Long id){
 		return asignaturaRepository.findById(id);
 	}
+
+	@Override
+	public List<Asignatura> findAsignaturaByNombre(String nombre) {
+		
+		return asignaturaRepository.findAsignaturaByNombre(nombre);
+	}
+
+	@Override
+	public List<Asignatura> findAsignaturasByCurso(String curso) {
+		
+		return asignaturaRepository.findAsignaturasByCurso(curso);
+	}
+
+	@Override
+	public List<Asignatura> findAsignaturasByNombreAndCurso(String nombre, String curso) {
+
+		return asignaturaRepository.findAsignaturasByNombreAndCurso(nombre, curso);
+	}
 }

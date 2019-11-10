@@ -78,6 +78,21 @@ public class RestAsignaturaController {
 		asignaturaService.delete(asignaturaService.getOne(id));
 	}
 	
+	@GetMapping("/asignaturas/{nombre}")
+	public List<Asignatura> ListarAsignaturasPorNombre(@PathVariable String nombre){
+		return asignaturaService.findAsignaturaByNombre(nombre);
+	}
+	
+	@GetMapping("/asignaturasC/{curso}")
+	public List<Asignatura> listarAsignaturasPorCurso(@PathVariable String curso){
+		return asignaturaService.findAsignaturasByCurso(curso);
+	}
+	
+	@GetMapping("/asignaturas/{nombre}/{curso}")
+	public List<Asignatura> listaAsignaturasPorNombreYCurso(@PathVariable String nombre, @PathVariable String curso){
+		return asignaturaService.findAsignaturasByNombreAndCurso(nombre, curso);
+	}
+	
 	@GetMapping("/asignatura")
 	public List<Asignatura> listar(){
 		return asignaturaService.findAll();
