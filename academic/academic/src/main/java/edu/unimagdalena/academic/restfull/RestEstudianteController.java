@@ -120,8 +120,6 @@ public class RestEstudianteController {
      @PostMapping("/estudiante")
      public Estudiante createStudent(@RequestBody Estudiante student) {
 		
-    	 //Logger  log = Logger.getLogger(student.getVarString() + "   " +  student.getVar1String());
-    	 
 		if(student.getVar1String() != null) {
 			Optional<Responsable_Alumno> responsable = responsableService.findById(Long.parseLong( student.getVar1String() ) ); //Buscamos el responsable
 			student.setResponsable(responsable.get()); //Agregamos el responsable al estudiante 

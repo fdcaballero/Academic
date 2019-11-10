@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"s>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -172,22 +172,22 @@
                 <h2 class="m-0 font-weight-bold text-primary">Mantenimiento de asignaturas</h2>
     
             </div>
-               <p><strong> Búsqueda de asignaturas</strong></p>
+               <p><strong> Busqueda de asignaturas</strong></p>
             <div>
                 <div class="form-group">
-                    <input type="name" class="form-control form-control-user"  placeholder="Ingrese nombre...">
+                    <input type="text" class="form-control form-control-user" id="Bnombre" placeholder="Ingrese nombre...">
                   </div>
                   <div class="form-group">            
-                    <select id = "curso" class="form-control">
-                        <option id = "c">Seleccione curso...</option>
+                    <select id = "Bcurso" class="form-control">
+                        <option id = "0"></option>
                       
                       </select>
                   
                   </div>
         </div>
         <div>
-            <a href="#" class="btn btn-primary btn-user btn-block">Buscar</a>
-            <a href="#" class="btn btn-primary btn-user btn-block">Limpiar</a>
+            <a href="#" class="btn btn-primary btn-user btn-block" id = "buscar">Buscar</a>
+            <a href="#" class="btn btn-primary btn-user btn-block"id ="limpiar">Limpiar</a>
         </div>
 
   
@@ -202,8 +202,8 @@
                   <thead>
                     <tr>
                        <th><a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Nueva asignatura</a></th>
-                       <th><a href="#" class="btn btn-primary btn-user btn-block"data-toggle="modal" data-target="#EditarModal">Editar asignatura</a></th>
-                       <th><a href="#" class="btn btn-primary btn-user btn-block">Eliminar asignatura</a></th>
+                       <th><a href="#" class="btn btn-primary btn-user btn-block"data-toggle="modal" id ="editar" data-target="#EditarModal">Editar asignatura</a></th>
+                       <th><a href="#" class="btn btn-primary btn-user btn-block" id ="eliminar">Eliminar asignatura</a></th>
                        </th>
                     </tr>
                     <tr>
@@ -211,12 +211,9 @@
                       <th>Curso</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody class ="cuerpo-tabla">
     
-                    <tr>
-                      <td>Level one</td>
-                      <td>primera etapa</td>
-                    </tr>
+                 
                   </tbody>
                 </table>
               </div>
@@ -229,14 +226,14 @@
       </div>
       <!-- End of Main Content -->
 <!-- ############################################################################################################### -->     
-      <!-- The Modal -->
+      <!-- The Modal CREATE -->
       <div class="modal" id="myModal">
         <div class="modal-dialog">
           <div class="modal-content">
       
             <!-- Modal Header -->
             <div class="modal-header bg-primary text-white">
-              <h4 class="modal-title" id= "NuevoDoc">Nueva asignatura</h4>
+              <h4 class="modal-title" >Nueva asignatura</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
   
@@ -248,8 +245,8 @@
                     <input id = "nombre" type="text" name="nombre"   class="form-control" required />
 
                     <label for="titulacion">* Curso </label>
-                    <select id = "Lista_asignatura" class="form-control">
-                        <option>Seleccione curso...</option></select>
+                    <select id = "Lista_curso" class="form-control">
+                        <option></option></select>
                 </section>
 
               </form>
@@ -258,14 +255,14 @@
             <!-- Modal footer -->
          <!-- Modal footer -->
             <div class="modal-footer">
-              <input id ="create" value = "Crear" type="button" class="btn btn-primary" data-dismiss="modal" />
+              <input  value = "Crear" type="button" id="crear" class="btn btn-primary" data-dismiss="modal" />
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
           </div>
         </div>
       </div>
 <!-- ##################################################################################################### -->
-      <!-- The Modal -->
+      <!-- The Modal EDIT -->
       <div class="modal" id="EditarModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -281,11 +278,11 @@
               <form action=""  class="form">
                 <section class="form-group">
                     <label for="nombre">* Nombre </label>
-                    <input id = "nombre" type="text" name="nombre"   class="form-control" required />
+                    <input id = "Dnombre" type="text" name="nombre"   class="form-control" required />
 
                     <label for="titulacion">* Curso </label>
-                    <select id = "Lista_asignatura" class="form-control">
-                        <option>Seleccione curso...</option></select>
+                    <select id = "Lista_cursoD" class="form-control">
+                        <option></option></select>
                 </section>
                 </section>
 
@@ -295,7 +292,7 @@
             <!-- Modal footer -->
          <!-- Modal footer -->
             <div class="modal-footer">
-              <input id ="" value = "Editar" type="button" class="btn btn-primary" data-dismiss="modal" />
+              <input id ="guardar" value = "Editar" type="button" class="btn btn-primary" data-dismiss="modal" />
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
           </div>
@@ -357,8 +354,7 @@
   <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
-  
- <!--  <script type="text/javascript" src="../js/mantenimiento-curso.js"></script> -->
+   <script type="text/javascript" src="../js/mantenimientoAsignatura.js" ></script> 
   
 </body>
 

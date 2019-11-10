@@ -14,14 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.unimagdalena.academic.entities.Asignatura;
 import edu.unimagdalena.academic.services.AsignaturaService;
+import edu.unimagdalena.academic.services.CursoService;
 import java.util.Optional;
 import java.util.List;
+import edu.unimagdalena.academic.entities.*;
 
 @RestController
 @RequestMapping("/api/v1")
 public class RestAsignaturaController {
 	@Autowired
 	private AsignaturaService asignaturaService;
+	
+	@Autowired
+	private CursoService cursoService;
 	
 	@GetMapping("/asignatura/{id}")
 	public Asignatura getAsignatura( @PathVariable Long id) {
@@ -34,11 +39,37 @@ public class RestAsignaturaController {
 	
 	@PostMapping("/asignatura")
 	public Asignatura createAsignatura (@RequestBody Asignatura asignatura ) {
+		
+		if(asignatura.getVarString() != null) {
+			Optional<Curso> curso = cursoService.findById(Long.parseLong(asignatura.getVarString()));
+			asignatura.setCurso(curso.get());
+			curso.get().getAsignaturas().add(asignatura);
+			
+			cursoService.save(curso.get());
+		}
 		return asignaturaService.save(asignatura);
 	}
 	
-	@PutMapping("/asignatura")
-	public Asignatura editarAsignatura (@RequestBody Asignatura asignatura ) {
+	@PutMapping("/asignatura/{id}")
+	public Asignatura editarAsignatura (@RequestBody Asignatura asignatura, @PathVariable Long id ) {
+		asignatura.setId(id);
+		if(asignatura.getVarString() != null) { // VERIFICACION DE DATOS
+			Optional<Curso> curso = cursoService.findById(Long.parseLong(asignatura.getVarString()));
+			if(asignatura.getCurso() != null) { //VERIFICAR SI TIENE UN CURSO AGREAGADO
+				if(asignatura.getCurso().getId() != curso.get().getId()) { //CAMBIANDO DE CURSO
+					Curso cursoAnt = asignatura.getCurso(); 
+					for(Asignatura asig : cursoAnt.getAsignaturas()) {
+						if(asig.getId() == asignatura.getId()) {
+							cursoAnt.getAsignaturas().remove(asignatura);
+						}
+					}
+					cursoService.save(cursoAnt);
+				}
+			}
+			asignatura.setCurso(curso.get());
+			curso.get().getAsignaturas().add(asignatura);
+			cursoService.save(curso.get());
+		}
 		return asignaturaService.save(asignatura);
 	}
 	
@@ -46,6 +77,7 @@ public class RestAsignaturaController {
 	public void eliminar(@PathVariable Long id) {
 		asignaturaService.delete(asignaturaService.getOne(id));
 	}
+	
 	@GetMapping("/asignatura")
 	public List<Asignatura> listar(){
 		return asignaturaService.findAll();

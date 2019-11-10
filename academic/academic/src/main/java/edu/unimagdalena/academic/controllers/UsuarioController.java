@@ -50,21 +50,19 @@ public class UsuarioController {
 		return "clases";
 	}
 	
-	
-	
 	@GetMapping("/docente")
 	public String accDocente(Model model) {
 		
 		return "profesor";
 		
 	}
-	@GetMapping("/mantenimiento/curso")
+	@GetMapping("/mantenimiento-curso")
 	public String accMantenimientoCurso(Model model) {
 		
 		return "mantenimiento-curso";
 	}
 	
-	@GetMapping("/mantenimiento/asignatura")
+	@GetMapping("/mantenimiento-asignatura")
 	public String accMantenimientoAsig(Model model) {
 		
 		return "mantenimiento-asignatura";

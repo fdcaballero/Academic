@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "asignaturas")
@@ -24,17 +27,30 @@ public class Asignatura implements Serializable {
   @Column(name = "nombre" , nullable = false)
   private String nombre;
   
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name="id_curso")
   private Curso curso;
   
+  
   @OneToMany(mappedBy = "asignatura")
   private Set<Clase> clases;
 
+  @Transient
+  private String varString;
+	
+	
+  
+public String getVarString() {
+		return varString;
+	}
+
+	public void setVarString(String varString) {
+		this.varString = varString;
+	}
 
 public Asignatura() {
 	super();
-	// TODO Auto-generated constructor stub
 }
 
 public Long getId() {
