@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "cursos")
 public class Curso implements Serializable {
@@ -23,16 +25,18 @@ public class Curso implements Serializable {
 	
 	@Column(name = "etapa")
 	private String etapa;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy="grado") //Lado Dominante
 	private Set<Estudiante> estudiantes;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "curso") // Lado Dominante
 	private Set<Asignatura> asignaturas;
 
 	public Curso() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Long getId() {

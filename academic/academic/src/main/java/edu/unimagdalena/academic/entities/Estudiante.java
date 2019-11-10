@@ -44,6 +44,18 @@ public class Estudiante implements Serializable {
 	private String correo;
 	
 	@Transient
+	private String var1String;
+	
+	
+	public String getVar1String() {
+		return var1String;
+	}
+
+	public void setVar1String(String var1String) {
+		this.var1String = var1String;
+	}
+
+	@Transient
 	private String varString;
 	
 	public String getVarString() {
@@ -71,14 +83,12 @@ public class Estudiante implements Serializable {
 	@Column
 	private Boolean repetidor;
 	
-
-
 	@Column(name = "fecha_alta" , nullable = false)
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd-MM--yyyy")
 	private Date fecha_alta;
 	
-	//Falta el atributo repetidor del estudiante
+	
 	@Column(name = "fecha_baja")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd-MM--yyyy")

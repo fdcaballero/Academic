@@ -22,6 +22,8 @@ public interface EstudianteService {
 	
 	Estudiante getOne(Long id);
 	
-	List<Estudiante> findEstudiantesByNombreOrCurso(String nombre, String curso);
+	List<Estudiante> findEstudiantesByNombreAndCurso(String nombre, String curso);
+	
+	List<Estudiante> findEstudiantesByGrado(String grado);
 	
 }

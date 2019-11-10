@@ -75,30 +75,29 @@ function AddDocente(){
 }*/
 
 function EliminarDocente(){
-    $('#Delete').on('click',  function(event){
+    $('#Delete').on('click', function(event){
          event.preventDefault();
          var id = getId();
          console.log("id seleccionado desde Eliminar " + id);
-     $.ajax("api/v1/docente/" + id,
-    		{
-    	//url: window.location +"api/v1/docente/" + id,
-    	contentType: "application/json",
-    	type: "DELETE",
-    	success:function(){
-		 //añadir codigo para eliminar la fila de la bd al momento de borrar usuario
-		
-		},
-		error : function(event){
-  		 alert("error en el registro intente nuevamente");
-  		 console.log("error" , event);
-  	 	},
-  	 	complete : function(event){
-  	 		var td = $("input[id = "+getId()+"]");
-  	 		td.closest("tr").remove();
-  	 	}
-    });
-     
-         
+         if(id){
+	         $.ajax("api/v1/docente/" + id,
+	    		{
+	        	 //url: window.location +"api/v1/docente/" + id,
+	        	 contentType: "application/json",
+	        	 type: "DELETE",
+	        	 success:function(){
+	        		 //añadir codigo para eliminar la fila de la bd al momento de borrar usuario
+	        		 var td = $("input[id = "+getId()+"]");
+	        		 td.closest("tr").remove();
+	        	 },
+	        	 error : function(event){
+	        		 alert("error en el registro intente nuevamente");
+	        		 console.log("error" , event);
+	        	 }
+	        });
+    	}else{
+    		alert("Seleccione un Profesor");
+    	}       
     });
 }
 
@@ -164,23 +163,16 @@ function Actualizar(){
 
 function showData(){
     $("#datosDocente").on("click",function(event){
-        event.preventDefault();
-       
-        
+       event.preventDefault();
        var id = getId();
        console.log("id Desde mostrar data", id);
-      
-        if(id != 'undefined'){
-        	
-        	
-        	$.ajax("api/v1/docente/"+id,
+       if(id != 'undefined'){
+    	   $.ajax("api/v1/docente/"+id,
     	    	{
     	    		contentType :"application/json",
     	    		dataType:'json',
     	    		type: "GET",
     	    		success:function (data){
-    	    			
-    	    				
     	    			$("input[id = Dnombre]").val(data.nombre);
     	    			$("input[id = Dapellido]").val(data.apellido1);
     	    			$("input[id = DapellidoS]").val(data.apellido2);
@@ -188,16 +180,10 @@ function showData(){
     	    			$("input[id = Dtelefono]").val(data.telefono);
     	    			$("input[id = Dcorreo]").val(data.correo);
     	    			$("input[id  = Dtitulacion]").val(data.titulacion);
-    	    			
-    	    		
-    	    			
-
-    	    			
     	    		},
     	    		error : function(event){
     	    			alert("error al cargar datos intente nuevamente");
     	       		 	console.log("error" , event);
-    	    			
     	    		}
     	    		
     	        });
@@ -205,7 +191,7 @@ function showData(){
         	alert("seleccione un profesor");
         }
 	    
-    } );
+   });
 
 }
 
@@ -259,11 +245,7 @@ function limpiar(){
 	$("#limpiar").on("click", function(event){
 			event.preventDefault();
 			$("tr").remove(".contenido");
-		}
-		
-	);
-	
-	
+	});
 }
  
 

@@ -65,10 +65,8 @@ public class EstudianteServiceImp implements EstudianteService{
 
 
 	@Override
-	public List<Estudiante> findEstudiantesByNombreOrCurso(String nombre, String curso) {
-		
-		
-		return estudiantRepository.findEstudiantesByNombreOrCurso(nombre, curso);
+	public List<Estudiante> findEstudiantesByNombreAndCurso(String nombre, String curso) {
+		return estudiantRepository.findEstudiantesByNombreAndCurso(nombre, curso);
 	}
 
 
@@ -77,6 +75,13 @@ public class EstudianteServiceImp implements EstudianteService{
 	public List<Estudiante> findEstudianteByNombre(String nombre) {
 		
 		return estudiantRepository.findEstudianteByNombre(nombre);
+	}
+
+
+	@Override
+	public List<Estudiante> findEstudiantesByGrado(String grado) {
+		
+		return estudiantRepository.findEstudiantesByGrado(grado);
 	}
 	
 }
