@@ -30,7 +30,7 @@ public class Curso implements Serializable {
 	@OneToMany(mappedBy="grado") //Lado Dominante
 	private Set<Estudiante> estudiantes;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "curso") // Lado Dominante
 	private Set<Asignatura> asignaturas;
 

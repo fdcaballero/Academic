@@ -29,9 +29,9 @@ public class RestAsignaturaController {
 	private CursoService cursoService;
 	
 	@GetMapping("/asignatura/{id}")
-	public Asignatura getAsignatura( @PathVariable Long id) {
+	public Asignatura getAsignatura( @PathVariable("id") Long id) {
 		Optional<Asignatura> asignatura = asignaturaService.findById(id);
-		if (asignatura.isPresent()) {
+		if (!asignatura.isPresent()) {
 			throw new EntityNotFoundException("No se encontro la asignatura id "+ id);
 		}
 		return asignatura.get();
@@ -46,6 +46,8 @@ public class RestAsignaturaController {
 			curso.get().getAsignaturas().add(asignatura);
 			
 			cursoService.save(curso.get());
+		}else {
+			
 		}
 		return asignaturaService.save(asignatura);
 	}
@@ -78,7 +80,7 @@ public class RestAsignaturaController {
 		asignaturaService.delete(asignaturaService.getOne(id));
 	}
 	
-	@GetMapping("/asignaturas/{nombre}")
+	@GetMapping("/asignaturasN/{nombre}")
 	public List<Asignatura> ListarAsignaturasPorNombre(@PathVariable String nombre){
 		return asignaturaService.findAsignaturaByNombre(nombre);
 	}

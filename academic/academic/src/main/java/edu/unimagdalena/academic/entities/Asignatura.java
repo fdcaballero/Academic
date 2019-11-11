@@ -27,7 +27,7 @@ public class Asignatura implements Serializable {
   @Column(name = "nombre" , nullable = false)
   private String nombre;
   
-  @JsonIgnore
+  
   @ManyToOne
   @JoinColumn(name="id_curso")
   private Curso curso;
