@@ -188,12 +188,11 @@ function Elim(){ //ELIMINA UN ESTUDIANTE DE LA BD
 		alert("llegando a la funcion" + getId());
 		
 		if(getId()){
-			console.log("entrando en el ajax");
-			$.ajax("api/v1/estudiante/"+getId(), 
+			
+			$.ajax("api/v1/estudiante/" + getId(), 
 				{
 				contentType : "application/json",
 				Type : "DELETE",
-				
 				success: function (){
 					
 					 var td = $("input[id = "+getId()+"]");
@@ -275,6 +274,7 @@ function ActualizarRepresentante(){ //ACTUALIZA LOS DATOS DEL REPRESENTANTE
 					    			$("input[type = text]").val("");
 					    			$("input[type = tel]").val("");
 					    			$("input[type = email]").val("");
+					    			$("#ListaResponsableEdit").val("");
 					    			
 					    			 
 					    		},
@@ -310,7 +310,7 @@ function CrearRepresentante(){ // CREA UN NUEVO REPRESENTANTE EN LA BD
 	    	    	  "apellido2" : apellido1Re, "nif" : nifRe,
 	    	    	  "telefono" : telefonoRe, "correo" : correoRe 
 	    	       };
-	    	
+	    	console.log("estoy aqui");
 	    	$.ajax("./api/v1/representante",
 			    	{
 			    		contentType : "application/json",

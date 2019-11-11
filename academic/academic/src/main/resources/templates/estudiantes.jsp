@@ -57,7 +57,7 @@
                   <label for="curso">Curso </label>
                   <select name="buscaCurso" id = "buscaCurso" class="form-control custom-select">
                       <option  selected></option>
-                      <option th:each="curso : ${cursos}" th:text ="${curso.etapa}">One</option>
+                      <option th:each="curso : ${cursos}" th:text ="${curso.etapa}"></option>
                       
                   </select>
                   

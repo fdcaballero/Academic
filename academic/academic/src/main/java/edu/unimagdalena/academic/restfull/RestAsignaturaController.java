@@ -80,7 +80,7 @@ public class RestAsignaturaController {
 		asignaturaService.delete(asignaturaService.getOne(id));
 	}
 	
-	@GetMapping("/asignaturasN/{nombre}")
+	@GetMapping("/asignaturasn/{nombre}")
 	public List<Asignatura> ListarAsignaturasPorNombre(@PathVariable String nombre){
 		return asignaturaService.findAsignaturaByNombre(nombre);
 	}

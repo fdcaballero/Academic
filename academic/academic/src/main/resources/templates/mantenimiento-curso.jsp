@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../css/styles.css" type="text/css">
   <!-- Custom styles for this template -->
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../css/curso.css" rel="stylesheet">
 
   <!-- Custom styles for this page -->
   <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -172,34 +173,34 @@
                 <h2 class="m-0 font-weight-bold text-primary">Mantenimiento de cursos</h2>
     
             </div>
-               <p><strong> BÃºsqueda de cursos</strong></p>
+               <p><strong> Búsqueda de cursos</strong></p>
             <div>
                 <div class="form-group">
-                    <input type="name" class="form-control form-control-user"  placeholder="Ingrese nombre...">
+                    <input type="number" class="form-control form-control-user" id="Bnivel" placeholder="Ingrese nivel...">
                   </div>
                   <div class="form-group">  
-                    <input type="etapa" class="form-control form-control-user"  placeholder="Ingrese etapa...">
+                    <input type="text" class="form-control form-control-user"  id ="Betapa" placeholder="Ingrese etapa...">
                   </div>
         </div>
         <div>
-            <a href="#" class="btn btn-primary btn-user btn-block">Buscar</a>
-            <a href="#" class="btn btn-primary btn-user btn-block">Limpiar</a>
+            <a href="#" class="btn btn-primary btn-user btn-block" id ="buscar" >Buscar</a>
+            <a href="#" class="btn btn-primary btn-user btn-block" id ="limpiar">Limpiar</a>
         </div>
 
   
           <!-- DataTables Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Resultado de la bÃºsqueda</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Resultado de la búsqueda</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table" width="100%" cellspacing="0">
+                <table class="table" id="curso-tabla" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                        <th><a href="#" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Nuevo curso</a></th>
-                       <th><a href="#" class="btn btn-primary btn-user btn-block"data-toggle="modal" data-target="#EditarModal">Editar curso</a></th>
-                       <th><a href="#" class="btn btn-primary btn-user btn-block">Eliminar curso</a></th>
+                       <th><a href="#" class="btn btn-primary btn-user btn-block"id="editar" data-toggle="modal" data-target="#EditarModal">Editar curso</a></th>
+                       <th><a href="#" class="btn btn-primary btn-user btn-block"id ="elim">Eliminar curso</a></th>
                        </th>
                     </tr>
                     <tr>
@@ -209,10 +210,7 @@
                   </thead>
                   <tbody>
     
-                    <tr>
-                      <td>LEvel one</td>
-                      <td>primera etapa</td>
-                    </tr>
+                   
                   </tbody>
                 </table>
               </div>
@@ -241,10 +239,10 @@
               <form action=""  class="form">
                 <section class="form-group">
                     <label for="nombre">* Nivel </label>
-                    <input id = "nombre" type="text" name="nombre"   class="form-control" required />
+                    <input id = "nivel" type="number" name="nivel"   class="form-control" required />
 
                     <label for="titulacion">* Etapa </label>
-                    <input id="titulacion" type="text" name="titulacion"  class="form-control">
+                    <input id="etapa" type="text" name="etapa"  class="form-control">
                 </section>
 
               </form>
@@ -260,7 +258,7 @@
         </div>
       </div>
 <!-- ##################################################################################################### -->
-      <!-- The Modal -->
+      <!-- The Modal EDIT -->
       <div class="modal" id="EditarModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -275,11 +273,11 @@
             <div class="modal-body">
               <form action=""  class="form">
                 <section class="form-group">
-                    <label for="nombre">* Nivel </label>
-                    <input id = "nombre" type="text" name="nombre"   class="form-control" required />
+                    <label for="nivel">* Nivel </label>
+                    <input id = "nivelS" type="number" name="nombre"   class="form-control" required />
 
-                    <label for="titulacion">* Etapa </label>
-                    <input id="titulacion" type="text" name="titulacion"  class="form-control">
+                    <label for="etapa">* Etapa </label>
+                    <input id="etapaS" type="text" name="titulacion"  class="form-control">
                 </section>
 
               </form>
@@ -288,7 +286,7 @@
             <!-- Modal footer -->
          <!-- Modal footer -->
             <div class="modal-footer">
-              <input id ="" value = "Editar" type="button" class="btn btn-primary" data-dismiss="modal" />
+              <input id ="editar" value = "Editar" type="button" class="btn btn-primary" data-dismiss="modal" />
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
           </div>
@@ -351,7 +349,7 @@
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
   
- <!--  <script type="text/javascript" src="../js/mantenimiento-curso.js"></script> -->
+   <script type="text/javascript" src="../js/mantenimiento-curso.js"></script>
   
 </body>
 </html>

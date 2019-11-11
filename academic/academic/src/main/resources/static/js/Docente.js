@@ -166,7 +166,7 @@ function showData(){
        event.preventDefault();
        var id = getId();
        console.log("id Desde mostrar data", id);
-       if(id != 'undefined'){
+       if(id){
     	   $.ajax("api/v1/docente/"+id,
     	    	{
     	    		contentType :"application/json",

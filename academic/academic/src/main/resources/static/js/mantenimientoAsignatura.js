@@ -45,7 +45,7 @@ function ListaCursos(){	//AGREGA EL LISTADO DE DATOS DE LOS CURSOS AL MODAL DE C
 		success:function(datos){
 			$.each(datos, function(i, curso) {
 				 $("#Lista_curso").append("<option value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
-				                   
+				 $("#Bcurso").append("<option value=" + curso.etapa + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");                  
 			 });
 			 		 
 		},
@@ -68,7 +68,7 @@ function Crear(){ //ENVIA A LA BD LOS DATOS DE LA ASIGNATURA
 				"nombre" : nombre,
 				"varString" : curso
 		};
-		if(nombre){
+		if(nombre && curso){
 			$.ajax("./api/v1/asignatura",
 				{
 				contentType: "application/json",
@@ -97,6 +97,11 @@ function Crear(){ //ENVIA A LA BD LOS DATOS DE LA ASIGNATURA
 function Cargar(){ //CARGA LOS DATOS AL MODAL DE EDICION
 	$("#editar").on("click", function(event){
 		event.preventDefault();
+		var aux = $("#Lista_cursoD").val();
+		if(aux){
+			$("#Lista_cursoD").find("#"+ aux).attr("selected", false);
+		}
+		
 		if (getId()){
 			$.ajax(
 					{
@@ -105,19 +110,15 @@ function Cargar(){ //CARGA LOS DATOS AL MODAL DE EDICION
 					dataType : "json",
 					type : "GET",
 					success: function(data){
-						//$("#Dnombre").val("");
-						//$("#Lista_cursoD").val("");
 						$("#Dnombre").val(data.nombre);
-						//agregaCursoEdit(data.curso.id);
-					 var opc = 	$("#Lista_cursoD").find("#"+ data.curso.id);
+						var opc = 	$("#Lista_cursoD").find("#"+ data.curso.id);
 						opc.attr("selected", true);
+						
 					},
 					error : function(event){
 						alert("error al cargar datos");
 						console.log("error ",event);
 					}
-				
-					
 				});
 		}else{
 			alert("seleccione una asignatura");
@@ -146,8 +147,8 @@ function Editar(){	//GUARDA LOS DATOS DE LA ASIGNATURA
 				type : "PUT",
 				data: JSON.stringify(asignatura),
 				success: function(data){
-					$("#Dnombre").val("");
-					$("#Lista_cursoD").val("");
+					//$("#Dnombre").val("");
+					//$("#Lista_cursoD").val("");
 				},
 				error : function(event){
 					alert("error al crear");
@@ -196,17 +197,18 @@ function buscar(){ //BUSCA Y RETORNA TODOS LOS DATOS DE  LA TABLA
 		var curso = $("#Bcurso").val();
 		var url;
 		if(curso && nombre){
-			url ="/api/v1/asignatura/"+nombre+"/"+curso;
+			url ="/api/v1/asignaturas/"+nombre+"/"+curso;
 		}else if(curso && !nombre){
-			url ="/api/v1/asignaturasc/"+curso;
+			url ="/api/v1/asignaturasC/"+curso;
 		}else if(!curso && nombre){
 			url ="/api/v1/asignaturasn/"+nombre;
 		}else{
 			url ="/api/v1/asignatura";
 		}
-	
+		$("tbody.cuerpo-tabla").children().remove();
+		//console.log(nombre+" "+curso+" "+url);
 		$.ajax({
-			url : "./api/v1/asignatura",
+			url : url,
     		contentType: "application/json",
     		dataType:'json',
     		type: "GET",
