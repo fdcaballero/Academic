@@ -77,6 +77,35 @@ function cargarCurso(){
 }
 
 function addClase(){
+	$("#crear").on("click", function(event){
+		event.preventDefault();
+		alert("hola");
+		
+		var curso = $("#curso").val();
+		var asignatura =$("#asignatura").val();
+		var profesor = $("#profesor").val();
+		var clase ;
+		
+		
+		if(curso && asignatura && profesor){
+			$.ajax("./api/v1/clase",{
+				contentType: "application/json",
+				dataType: "json",
+				type : "POST",
+				data : JSON.stringify(clase),
+				success: function(data){
+					$("select").val("");
+					
+				}, 
+				error : function(event){
+					console.log("Error al crear la clase");
+					alert("Ha ocurrido un error al crear la clase");
+				}
+			});
+		}else {
+			alert("seleccione todos los datos");
+		}
+	});
 	
 
 }
