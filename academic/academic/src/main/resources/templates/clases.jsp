@@ -269,7 +269,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Cerrar sesión</a>
+          <a class="btn btn-primary" href="">Cerrar sesión</a>
         </div>
       </div>
     </div>
@@ -371,7 +371,11 @@
                     </section>
                  <table class="table table-striped table-inverse table-bordered text-center">
                      <thead class="thead-inverse">
-                         <h5>Horario</h5>
+                     	<div class="card-body d-flex justify-content-between align-items-center">
+                        	 <h5>Horario</h5>
+                        	<button  id="add_hora" class="btn btn-warning">Add</button>
+                        	 
+                        </div>
                          <tr>
                              <th>Hora</th>
                              <th>Lunes</th>
