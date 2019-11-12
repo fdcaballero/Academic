@@ -45,7 +45,7 @@
                       </div>					</div>
                       <div class="card-footer">
                           <div class="d-flex justify-content-center links">
-                              Ya tienes una cuenta?<a th:href="@{/login}">Inicia sesiÃ³n</a>
+                              Ya tienes una cuenta?<a th:href="@{/login}">Inicia sesión</a>
                           </div>
                       </div>
                       <div class="form-group">      

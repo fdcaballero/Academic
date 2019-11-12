@@ -75,7 +75,7 @@
   
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/mantenimiento/asignatura}">
+          <a class="nav-link" th:href="@{/mantenimiento-asignatura}">
             <i class="fas fa-fw fa-table"></i>
             <span>Mantenimiento</span></a>
         </li>
@@ -161,42 +161,39 @@
              <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h2 class="m-0 font-weight-bold text-primary">Clases</h2>    
             </div>
-               <p><strong> BÃºsqueda de clases</strong></p>
+               <p><strong> Búsqueda de clases</strong></p>
             <div>
                 <div class="form-group">
-                    <select class="form-control">
-                        <option>Seleccione curso...</option>
-                        <option>1</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                 <label for="curso">Curso</label>
+                    <select class="form-control" id ="Bcurso">
+                        <option selected></option>
+                        
                       </select>
                   </div>
                   <div class="form-group">
-                    <select class="form-control">
-                        <option>Seleccione Asignatura...</option>
-                        <option>ProgramaciÃ³n web</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                   <label for="asignatura">Asignatura</label>
+                    <select class="form-control" id ="Basignatura">
+                        <option selected></option>
+                       
                       </select>
                   </div>
                   <div class="form-group">
-                    <select id = "MySelect" class="form-control">
-                        <option>Seleccione Profesor...</option>
-                      </select>
+                    <label for="profesor">Profesor</label>
+                    <select id = "Bprofesor" class="form-control" >
+                        <option selected></option>
+                    </select>
                   </div>
         </div>
         <div>
-            <a href="#" class="btn btn-primary btn-user btn-block">Buscar</a>
-            <a href="#" class="btn btn-primary btn-user btn-block">Limpiar</a>
+            <a href="#" class="btn btn-primary btn-user btn-block" id="buscar">Buscar</a>
+            <a href="#" class="btn btn-primary btn-user btn-block" id="limpiar">Limpiar</a>
         </div>
 
   
           <!-- DataTables Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Resultado de la bÃºsqueda</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Resultado de la búsqueda</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -204,21 +201,21 @@
                   <thead>
                     <tr>
                         <th><button  type = "button" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Nueva clase</button></th>
-                        <th><a href="#" class="btn btn-primary btn-user btn-block">Editar clase</a></th>
+                        <th><a href="#" class="btn btn-primary btn-user btn-block"  data-toggle="modal" data-target="#modal-editar">Editar clase</a></th>
                         <th><button type = "button" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#ModalAlumnos">Alumnos</button></th>
                         <th><a href="#" class="btn btn-primary btn-user btn-block">Eliminar clase</a></th>
-                        </th>
+                       
                     </tr>
                     <tr>
                       <th>Asignatura</th>
                       <th>Curso</th>
                       <th>Profesor</th>
                       <th>Horario</th>
-                      <th>Tarifa</th> 
+                      
                       
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody class="cuerpo-table">
     
                     <tr>
                       <td>------</td>
@@ -277,32 +274,51 @@
       </div>
     </div>
   </div>
+  
+
+<!-- LISTA DE ESTUDIANTES -->
 <section>
-      <!-- The ModalAlumnos -->
-      <div class="modal" id="ModalAlumnos">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <!-- Modal Header -->
-              <div class="modal-header">
-                <h4 class="modal-title">Nueva clase</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <div class="modal" id="ModalAlumnos">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Alumno</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                   <section class="form-group">
+          			  <select multiple class="form-control" id ="list-estudiantes">
+          			  		 <option> Fredy  </option>
+          			  		 <option> Fredy aballero </option>
+          			  		 <option> Fredy ballero </option>
+          			  		 <option> Fredy allero </option>
+          			  		 <option> Fredy llero </option>
+          			  		 <option> Fredy ero </option>
+          			  		 <option> Fred Caballero </option>
+          			  		 
+          			  </select> 
+          			  	
+                   </section>
+                 </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer">
+    
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                  
+                </div>
+          
               </div>
-              <!-- Modal body -->
-              <div class="modal-body">
-                
-                  <h5>Alumnos</h5>
-                  <select multiple class="form-control"> 
-                          <h1>Nombre</h1>                                    
-                          <option>
-                             Fredy Caballero   
-                          </option>
-                          <option>                
-                             Andres Navarro
-                        </option> 
-                       </tbody>
-              </select>
-      </section>
-    <!-- The Mymodal##################################################################### -->
+            </div>
+          </div>
+
+</section>
+<!-- LISTA DE ESTUDIANTES -->
+      
+<!-- The NUEVA CLASE############ -->
+    
     <div class="modal" id="myModal">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
@@ -316,35 +332,42 @@
                   
                     <h5>Nueva clase</h5>
                     <section class="form-group">
-                    <label for="apellido2">Curso: </label>
-                    <input  type="text" name="Curso" id="curso"  class="form-control">
-
-                      <label for="asignatura">* Asignatura</label>
-                        <input id="asignatura"> indique una asignatura...</input>
+                    
+                    	<div class="form-group">
+                 		   <label for="curso">Curso: </label>
+                 		   <select id="curso" class="form-control">
+                   	   		  <option>Seleccione Curso...</option>
+                      	   </select>
+                   		</div>
+					
+							<label for="asignatura">* Asignatura</label>
+							<select id = "asignatura" class="form-control">
+                   	     		<option>Seleccione Asignatura...</option>
+                  		    </select>
+                      		
+                   	
                    
-
-                      <label for="profesor">* Profesor</label>
-                               <div class="form-group">
-                    <select id = "Lista-Profesor" class="form-control">
-                        <option>Seleccione Profesor...</option>
+                 	  <label for="profesor">* Profesor</label>
+                  	  <select id = "profesor" class="form-control">
+                   	     <option>Seleccione Profesor...</option>
                       </select>
-                  </div>
-                      <label for="hora">* Hora </label>
+                  
+              <!--         <label for="hora">* Hora </label>
                         <select id = "clase_horasemanal" class="form-control">
-                        <option>Seleccione hora...</option>
-                        <option>09:00 - 10:00</option>
-                        <option>10:00 - 11:00</option>
-                        <option>11:00 - 12:00</option>
-                        <option>12:00 - 13:00</option>
-                        <option>13:00 - 14:00</option>
-                        <option>14:00 - 15:00</option>
-                        <option>15:00 - 16:00</option>
-                        <option>16:00 - 17:00</option>
-                        <option>18:00 - 19:00</option>
-                        <option>19:00 - 20:00</option>
-                        <option>20:00 - 21:00</option>
+	                        <option>Seleccione hora...</option>
+	                        <option>09:00 - 10:00</option>
+	                        <option>10:00 - 11:00</option>
+	                        <option>11:00 - 12:00</option>
+	                        <option>12:00 - 13:00</option>
+	                        <option>13:00 - 14:00</option>
+	                        <option>14:00 - 15:00</option>
+	                        <option>15:00 - 16:00</option>
+	                        <option>16:00 - 17:00</option>
+	                        <option>18:00 - 19:00</option>
+	                        <option>19:00 - 20:00</option>
+	                        <option>20:00 - 21:00</option>
                       </select>
-                      
+                      --> 
                     </section>
                  <table class="table table-striped table-inverse table-bordered text-center">
                      <thead class="thead-inverse">
@@ -470,8 +493,186 @@
               </div>
             </div>
           </div>
-       </section>
+   
     <!--End modal##############################################################-->    
+    
+<!-- MODAL DE EDITAR -->
+
+<div class="modal" id="modal-editar">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Nueva clase</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  
+                    <h5>Editar clase</h5>
+                    <section class="form-group">
+                    
+                    	<div class="form-group">
+                 		   <label for="curso">Curso: </label>
+                 		   <select id="curso" class="form-control">
+                   	   		  <option>Seleccione Curso...</option>
+                      	   </select>
+                   		</div>
+					
+							<label for="asignatura">* Asignatura</label>
+							<select id = "asignatura" class="form-control">
+                   	     		<option>Seleccione Asignatura...</option>
+                  		    </select>
+                      		
+                   	
+                   
+                 	  <label for="profesor">* Profesor</label>
+                  	  <select id = "profesor" class="form-control">
+                   	     <option>Seleccione Profesor...</option>
+                      </select>
+                  
+                  <!--    <label for="hora">* Hora </label>
+                        <select id = "clase_horasemanal" class="form-control">
+	                        <option>Seleccione hora...</option>
+	                        <option>09:00 - 10:00</option>
+	                        <option>10:00 - 11:00</option>
+	                        <option>11:00 - 12:00</option>
+	                        <option>12:00 - 13:00</option>
+	                        <option>13:00 - 14:00</option>
+	                        <option>14:00 - 15:00</option>
+	                        <option>15:00 - 16:00</option>
+	                        <option>16:00 - 17:00</option>
+	                        <option>18:00 - 19:00</option>
+	                        <option>19:00 - 20:00</option>
+	                        <option>20:00 - 21:00</option>
+                      </select>  --> 
+                      
+                    </section>
+                 <table class="table table-striped table-inverse table-bordered text-center">
+                     <thead class="thead-inverse">
+                         <h5>Horario</h5>
+                         <tr>
+                             <th>Hora</th>
+                             <th>Lunes</th>
+                             <th>Martes</th>
+                             <th>Miercoles</th>
+                             <th>Jueves</th>
+                             <th>Viernes</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                           <tr>
+                             <td scope="row">09:00 - 10:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                           <tr>
+                             <td scope="row">10:00 - 11:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                           <tr>
+                             <td scope="row">11:00 - 12:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                           <tr>
+                             <td scope="row">12:00 - 13:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                           <tr>
+                             <td scope="row">13:00 - 14:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                           <tr>
+                              <td scope="row">14:00 - 15:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                           <tr>
+                             <td scope="row">15:00 - 16:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                           <tr>
+                             <td scope="row">16:00 - 17:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                           <tr>
+                             <td scope="row">17:00 - 18:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                           <tr>
+                             <td scope="row">18:00 - 19:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                           <tr>
+                             <td scope="row">19:00 - 20:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                           <tr>
+                             <td scope="row">20:00 - 21:00</td>
+                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
+                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
+                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           </tr>
+                     </tbody>
+                 </table>
+                </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer">
+    
+                  <button id = "actualizar" type="button" class="btn btn-primary" >actualizar</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  
+                </div>
+          
+              </div>
+            </div>
+          </div>
+
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>

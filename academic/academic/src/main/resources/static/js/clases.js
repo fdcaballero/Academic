@@ -1,86 +1,164 @@
 $(function(){
- // btnCrear();
- // addClase();
-  BuscarByProfe();
+ 
+  addClase();
+  Buscar();
   OpcionesProfe();
+
+  cargarAsignatura();
+  cargarProfesores();
+  cargarCurso();
 });
 
-function btnCrear(){
+function cargarAsignatura(){
 	
-	$('#create').on("click", function(event){
-	      event.preventDefault();
-	      if($(this).val() =="Crear"){
-	    	  //Add();
-	      }else{
-	    	  //Actualizar();
-	      }
+	$.ajax("./api/v1/asignatura",{	//AGREAGA LA LISTA DE ASIGNATURA A LA VISTA
+		
+		contentType: "application/json",
+		dataType:'json',
+		type: "GET",
+		success:function(datos){
+			
+			$.each(datos, function(i, e) {
+			     $("#asignatura").append("<option value=" + e.id + " id = "+e.id+">" + e.nombre + "</option>");
+				 $("#Basignatura").append("<option value=" + e.nombre + " id = "+e.id+">" + e.nombre  + "</option>");                  
+			 });
+			 		 
+		},
+		error : function(event){
+   		 alert("error en el registro intente nuevamente");
+   		 console.log("error ", event);
+   	 	}
+		
 	});
+}
+
+function cargarProfesores(){
+	$.ajax({	//AGREAGA LA LISTA DE PROFESORES A LA VISTA
+		url : "/api/v1/docente",
+		contentType: "application/json",
+		dataType:'json',
+		type: "GET",
+		success:function(datos){
+			$.each(datos, function(i, p) {
+				 $("#profesor").append("<option value=" + p.id + " id = "+p.id+">" + p.nombre + " " + p.apellido1 + "</option>");
+				 $("#Bprofesor").append("<option value=" + p.nombre + " id = "+p.id+">" + p.nombre + " " + p.apellido1 + "</option>");                  
+			 });
+			 		 
+		},
+		error : function(event){
+   		 alert("error en el registro intente nuevamente");
+   		 console.log("error ", event);
+   	 	}
+		
+	});
+}
+
+function cargarCurso(){
+	
+	$.ajax({	//AGREAGA LA LISTA DE CURSOS A LA VISTA
+		url : "/api/v1/curso",
+		contentType: "application/json",
+		dataType:'json',
+		type: "GET",
+		success:function(datos){
+			$.each(datos, function(i, curso) {
+				 $("#curso").append("<option value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
+				 $("#Bcurso").append("<option value=" + curso.etapa + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");                  
+			 });
+			 		 
+		},
+		error : function(event){
+   		 alert("error en el registro intente nuevamente");
+   		 console.log("error ", event);
+   	 	}
+		
+	});
+	
 }
 
 function addClase(){
 	
-    $('form input[type=submit]').on('click', function(e) {
-        e.preventDefault();
-		
-		
 
-    });
-	
 }
 
 function OpcionesProfe(){
-	$("#new").on("click", function(event){
-		event.preventDefault();
-		 
-		 var s = document.getElementById('Lista-profesor');
 
-			$.ajax({
-					url : "./api/v1/docente",
-		    		contentType: "application/json",
-		    		dataType:'json',
-		    		type: "GET",
-		    		success:function(datos){
-		    			// s[0] = new Option("Seleccione profesor...", 0, false, true);
-		    			 $.each(datos, function(i, e) {
-		    				 
-		    				 s[i] = new Option(e.nombre+" "+e.apellido1, i);   
-		                     console.log(e.apellido1);
-		    			 });
-		    			 		 
-		    		},
-		    		error : function(event){
-		       		 alert("error en el registro intente nuevamente");
-		       		 console.log("error" , event);
-		       	 	}
-		    			
-		});	
+}
+
+function limpiar(){
+	 $("#limpiar").on("click", function(event){
+		  event.preventDefault();
+		  $("tbody.cuerpo-table").children().remove();
+	 });
+	
+}
+
+function Buscar(){
+ $("#buscar").on("click", function(event){
+	  event.preventDefault();
+	  var buscar = $("#buscaNombre").val();
+	  var buscar1 = $("#buscaCurso").val();
+	  var buscar2  = $("#").val();
+	  
+	  var url;
+	  
+	  if (buscar && buscar1  && bucar2){ // 1 2 3
 		
-	});
-}
-
-
-function BuscarByProfe(){
-
-	 var select = document.getElementById('MySelect');
-
+		  url = "api/v1/clase/"+ buscar + "/" +buscar1 +"/"+bucar2;
+		  
+	  }else if (buscar && buscar1 && !buscar2){ //1 2
+		
+		  url = "api/v1/clase/"+ buscar + "/" +buscar1 +"/"+bucar2;
+		  
+	  }else if (buscar && !buscar1 && buscar2){ // 1 3
+		  
+	    url = "api/v1/clase/"+ buscar + "/" +buscar1 +"/"+bucar2;
+		  
+	  }else if (!buscar && buscar1 && buscar2){ //2 3
+		
+		  url = "api/v1/clase/"+ buscar + "/" +buscar1 +"/"+bucar2;
+		  
+	  }else if (!buscar && !buscar1 && buscar2){ // 3 
+		  
+		  url = "api/v1/clase/"+ buscar + "/" +buscar1 +"/"+bucar2;
+		  
+	  }else if (buscar && !buscar1 && !buscar2){ // 1
+		  
+		  url = "api/v1/clase/"+ buscar + "/" +buscar1 +"/"+bucar2;
+		  
+	  }else if (!buscar && buscar1 && !buscar2){ // 2
+		  
+		  url = "api/v1/clase/"+ buscar + "/" +buscar1 +"/"+bucar2;
+		  
+	  }else{
+		  url = "api/v1/clase/";
+	  }
+	  $("tbody.cuerpo-table").children().remove();
 		$.ajax({
-				url : "./api/v1/docente",
-	    		contentType: "application/json",
-	    		dataType:'json',
-	    		type: "GET",
-	    		success:function(datos){
-	    			// s[0] = new Option("Seleccione profesor...", 0, false, true);
-	    			 $.each(datos, function(i, e) {
-	    				 
-	    				 select[i] = new Option(e.nombre+" "+e.apellido1, e.id);   
-	    				 
-	    			 });
-	    			 		 
-	    		},
-	    		error : function(event){
-	       		 alert("error en el registro intente nuevamente");
-	       		 console.log("error" , event);
-	       	 	}
-	    			
-	});
+			url : url,
+			contentType:"application/json", 
+			dataType : "json",
+			type : "GET",
+			success: function(data){
+				$.each(data, function(i, e){
+					if(e.responsable && e.grado){
+						$("tbody.cuerpo-table").append(
+								"<tr data-id="+e.id+">" +
+								    "<td>" + e.asignatura.nombre + "</td>" +
+							/*	    "<td>" + e.grado.etapa + "</td>" +
+								    "<td>" + e.responsable.nombre+ "</td>" +
+								    "<td>" + e.fecha_alta + "</td>" +
+								   */
+								    "<td><input type ='radio' name ='resultadoEstudiante' value=" + e.id + " id ="+ e.id+ "></td>" +
+								"</tr>");
+					}
+				});
+			},
+			error: function(event) {
+				alert("error al buscar");
+			}
+		});
+ });
 }
+							// OBjeto Hijo
+//$('seletor').on('click', '.editar', function(e) {

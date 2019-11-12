@@ -29,11 +29,13 @@ public class UsuarioController {
 		
 		return "registro";
 	}
+	
 	@GetMapping("/inicio")
 	public String inicio(Model model) {
 		
 		return "inicio";
 	}
+	
 	@PostMapping("/registro")
 	public String registroUsuario(@Valid Usuario usuario ,BindingResult result, Model model) {
 		if (result.hasErrors()) {

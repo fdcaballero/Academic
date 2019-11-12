@@ -48,7 +48,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="d-flex justify-content-center links">
-                      No tienes una cuenta aún?<a href="@{/registro}">Registrarse</a>
+                      No tienes una cuenta ?<a th:href="@{/registro}">Registrarse</a>
                     </div>
                   </div>
                 </div>

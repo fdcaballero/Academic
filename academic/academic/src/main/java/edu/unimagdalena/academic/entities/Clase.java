@@ -41,12 +41,10 @@ public class Clase implements Serializable {
 	 @ManyToMany(mappedBy = "clases")
 	 private Set<Estudiante> estudiantes;
 
-	/**
-	 * 
-	 */
+	
 	public Clase() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Long getId() {
