@@ -4,26 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import edu.unimagdalena.academic.entities.Estudiante;
-import edu.unimagdalena.academic.repositories.EstudianteRepository;
+import edu.unimagdalena.academic.entities.Usuario;
+import edu.unimagdalena.academic.repositories.UsuarioRepository;
 
 @SpringBootApplication
 public class AcademicApplication {
 	
 	@Autowired
-	private EstudianteRepository estudianteRepositorio;
+	private UsuarioRepository usuarioRepositorio;
 	public static void main(String[] args) {
 		SpringApplication.run(AcademicApplication.class, args);
 	}
 
 	public void run (String... args ) throws Exception {
-		Estudiante estud = new Estudiante();
-		estud.setNombre("Juan");
-		estud.setApellido1("perez");
-		estud.setCorreo("freddy@gamail.com");
-		estud.setTelefono("3126443540");
-	
+		Usuario us = new Usuario();
+		us.setUser("Admin");
+		us.setPassword("123");
+	    us.setHabilitado(true);
 		
-		estudianteRepositorio.save(estud);
+		usuarioRepositorio.save(us);
 	}
 }
