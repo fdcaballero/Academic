@@ -43,16 +43,18 @@ public class CursoServiceImp implements CursoService {
 
 	@Override
 	public List<Curso> findCursosByNivel(Integer nivel) {
-		// TODO Auto-generated method stub
+		
 		return cursoRepository.findCursosByNivel(nivel);
 	}
 
+	@Override
+	public List<Curso> findCursoByNivelAndEtapa(Integer nivel, String etapa) {
+		return cursoRepository.findCursoByNivelAndEtapa(nivel, etapa);
+	}
 
-
-	/*@Override
-	public List<Curso> findCursoByNivelOrEtapa(Integer nivel, String etapa) {
-		
-		return cursoRepository.findCursoByNivelOrEtapa(nivel, etapa);
-	}*/
+	@Override
+	public List<Curso> findCursosByEtapa(String etapa) {
+		return cursoRepository.findCursosByEtapa(etapa);
+	}
 
 }

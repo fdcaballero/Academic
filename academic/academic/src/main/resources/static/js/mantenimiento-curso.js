@@ -61,9 +61,9 @@ function buscar(){
 		}else{
 			url="api/v1/curso";
 		}
-	
-		$.ajax("./api/v1/curso",{
-			//url : url,
+		$("tbody.cuerpo-tabla").children().remove();
+		$.ajax({
+			url : url,
 			contentType :"application/json",
 			dataType : "json",
 			type : "GET",
@@ -91,6 +91,7 @@ function buscar(){
 function cargarDatos(){
 	$("#editar").on("click", function(event){
 		event.preventDefault();
+		
 		if(getId()){
 			$.ajax("./api/v1/curso/"+ getId(),{
 				contentType : "application/json",
@@ -113,7 +114,7 @@ function cargarDatos(){
 }
 
 function editar(){
-	$("#editar").on("click", function(event){
+	$("#guardar").on("click", function(event){
 		event.preventDefault();
 		var nivel = $("#nivelS").val();
 		var etapa = $("#etapaS").val();

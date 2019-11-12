@@ -208,7 +208,7 @@
                       <th>Etapa</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody class ="cuerpo-tabla">
     
                    
                   </tbody>
@@ -286,7 +286,7 @@
             <!-- Modal footer -->
          <!-- Modal footer -->
             <div class="modal-footer">
-              <input id ="editar" value = "Editar" type="button" class="btn btn-primary" data-dismiss="modal" />
+              <input id ="guardar" value = "Editar" type="button" class="btn btn-primary" data-dismiss="modal" />
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
           </div>

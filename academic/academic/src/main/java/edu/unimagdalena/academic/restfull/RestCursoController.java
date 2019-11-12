@@ -46,6 +46,7 @@ public class RestCursoController {
 		return cursoService.save(curso);
 		
 	}
+	
 	@DeleteMapping("/curso/{id}")
 	public void Elim(@PathVariable Long id) {
 		Curso  curso = cursoService.getOne(id);
@@ -55,6 +56,21 @@ public class RestCursoController {
 	@GetMapping("/curso")
 	public List<Curso> Listar(){
 		return cursoService.findAll();
+	}
+	
+	@GetMapping("/cursose/{etapa}")
+	public List<Curso> ListarByEtapa(@PathVariable String etapa){
+		return cursoService.findCursosByEtapa(etapa);
+	}
+	
+	@GetMapping("/cursos/{nivel}")
+	public List<Curso> ListarPorNivel(@PathVariable Integer nivel){
+		return cursoService.findCursosByNivel(nivel);
+	}
+	
+	@GetMapping("/cursosne/{nivel}/{etapa}")
+	public List<Curso> ListarPorNivelYEtpa(@PathVariable Integer nivel , @PathVariable String etapa){
+		return cursoService.findCursoByNivelAndEtapa(nivel, etapa);
 	}
 }
 
