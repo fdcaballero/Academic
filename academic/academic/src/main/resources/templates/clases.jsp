@@ -342,7 +342,7 @@
 					
 							<label for="asignatura">* Asignatura</label>
 							<select id = "asignatura" class="form-control">
-                   	     		<option>Seleccione Asignatura...</option>
+                   	     		
                   		    </select>
                       		
                    	
@@ -369,14 +369,14 @@
                       </select>
                       --> 
                     </section>
-                 <table class="table table-striped table-inverse table-bordered text-center">
+                 <table  id ="crearH" class="table table-striped table-inverse table-bordered text-center">
                      <thead class="thead-inverse">
                      	<div class="card-body d-flex justify-content-between align-items-center">
                         	 <h5>Horario</h5>
                         	<button  id="add_hora" class="btn btn-warning">Add</button>
                         	 
                         </div>
-                         <tr>
+                         <tr class="headTableC">
                              <th>Hora</th>
                              <th>Lunes</th>
                              <th>Martes</th>
@@ -386,101 +386,101 @@
                          </tr>
                          </thead>
                          <tbody>
-                           <tr>
-                             <td scope="row">09:00 - 10:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                           <tr class ="">
+                             <td scope="row" value = "09:00 - 10:00">09:00 - 10:00</td>
+                             <td id = "1" class='editar'></td>
+                             <td id = "2" class='editar'></td>
+                             <td id = "3" class='editar'></td>
+                             <td id = "4"class='editar'></td>
+                             <td id = "5" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row">10:00 - 11:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" value ="10:00 - 11:00">10:00 - 11:00</td>
+                             <td id = ""class='editar'></td>
+                             <td id =""class='editar' ></td>
+                             <td id =""class='editar' ></td>
+                             <td id = ""class='editar'></td>
+                             <td id = ""class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row">11:00 - 12:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" value = "11:00 - 12:00">11:00 - 12:00</td>
+                             <td id = ""class='editar'></td>
+                             <td id = ""class='editar'></td>
+                             <td id = ""class='editar'></td>
+                             <td id = ""class='editar'></td>
+                             <td id = ""class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row">12:00 - 13:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" value ="12:00 - 13:00">12:00 - 13:00</td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'> </td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                           </tr>
+                            <tr>
+                             <td scope="row" value ="13:00 - 14:00">13:00 - 14:00</td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id =" " class='editar' ></td>
+                             <td id = ""></td>
                            </tr>
                            <tr>
-                             <td scope="row">13:00 - 14:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                              <td scope="row" value ="14:00 - 15:00">14:00 - 15:00</td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
                            </tr>
                            <tr>
-                              <td scope="row">14:00 - 15:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" value ="15:00 - 16:00"> 15:00 - 16:00</td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row">15:00 - 16:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" value ="16:00 - 17:00">16:00 - 17:00</td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = " "class='editar'></td>
+                             <td id = "" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row">16:00 - 17:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row"value ="17:00 - 18:00" >17:00 - 18:00</td>
+                             <td id = "" class='editar'></td>
+                             <td id ="" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row">17:00 - 18:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" value ="18:00 - 19:00">18:00 - 19:00</td>
+                             <td id = ""class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id =""  class='editar' ></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row">18:00 - 19:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" value ="19:00 - 20:00">19:00 - 20:00</td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row">19:00 - 20:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
-                           </tr>
-                           <tr>
-                             <td scope="row">20:00 - 21:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" value ="20:00 - 21:00">20:00 - 21:00</td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
+                             <td id = "" class='editar'></td>
                            </tr>
                          </tbody>
                  </table>
@@ -489,7 +489,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
     
-                  <button id = "crear" type="button" class="btn btn-primary" >crear</button>
+                  <button id = """crear" type="button" class="btn btn-primary" >crear</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                   
                 </div>
@@ -524,7 +524,7 @@
                    		</div>
 					
 							<label for="asignatura">* Asignatura</label>
-							<select id = "asignatura" class="form-control">
+							<select id = """asignatura" class="form-control">
                    	     		<option>Seleccione Asignatura...</option>
                   		    </select>
                       		
@@ -536,7 +536,7 @@
                       </select>
                   
                   <!--    <label for="hora">* Hora </label>
-                        <select id = "clase_horasemanal" class="form-control">
+                        <select id = """clase_horasemanal" class="form-control">
 	                        <option>Seleccione hora...</option>
 	                        <option>09:00 - 10:00</option>
 	                        <option>10:00 - 11:00</option>
@@ -567,51 +567,51 @@
                      <tbody>
                            <tr>
                              <td scope="row">09:00 - 10:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
                              <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
                            </tr>
                            <tr>
                              <td scope="row">10:00 - 11:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
                            </tr>
                            <tr>
                              <td scope="row">11:00 - 12:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
                            </tr>
                            <tr>
                              <td scope="row">12:00 - 13:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
                            </tr>
                            <tr>
                              <td scope="row">13:00 - 14:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
                            </tr>
                            <tr>
                               <td scope="row">14:00 - 15:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td id = ""><a href='#' class='agregar button'>-</a></td>
                            </tr>
                            <tr>
                              <td scope="row">15:00 - 16:00</td>

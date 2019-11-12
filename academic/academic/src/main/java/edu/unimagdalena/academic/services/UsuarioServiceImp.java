@@ -1,5 +1,5 @@
 package edu.unimagdalena.academic.services;
-
+/*
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -28,6 +28,7 @@ public class UsuarioServiceImp implements UsuarioService{
 	public Usuario getUsuarioById(long id) {
 		return usuarioRepositorio.getOne(id);
 	}
+	
 	public void save(Usuario usuario) {
 		usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
 		usuario.setHabilitado(true);
@@ -38,3 +39,4 @@ public class UsuarioServiceImp implements UsuarioService{
 
 	
 }
+*/

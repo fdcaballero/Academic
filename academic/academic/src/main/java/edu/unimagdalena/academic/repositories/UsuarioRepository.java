@@ -7,5 +7,6 @@ import edu.unimagdalena.academic.entities.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
-
+	Usuario findByUser(String user);
+	
 }

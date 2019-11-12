@@ -3,13 +3,48 @@ $(function(){
   addClase();
   Buscar();
   OpcionesProfe();
-
+  cargarCursoOfAsig();
   cargarAsignatura();
   cargarProfesores();
   cargarCurso();
+  tabla();
 });
 
+function cargarCursoOfAsig(){
+	
+	$("#asignatura").change(function(){
+		var id  = $("#asignatura").val();
+		
+		if(id){
+			$.ajax("./api/v1/asignatura/"+ id, {
+				contentType:"application/json",
+				dataType : "json",
+				type :"GET",
+				success :  function (datos){
+					if(datos){
+						console.log(" " +datos.id + "   "+ datos.etapa);
+						$.each(datos.curso, function(i, e) {
+						   //  $("#curso").append("<option value=" + e.id + " id = "+e.id+">" + e.nombre + "</option>");
+						     $("#curso").append("<option value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
+						 });
+					}
+					
+				},
+				error: function(event){
+					console.log("error en el listar representante");
+					alert("ERROR");
+				}
+			});
+		}
+		
+		
+		
+	});
+}
+
+
 function cargarAsignatura(){
+	
 	
 	$.ajax("./api/v1/asignatura",{	//AGREAGA LA LISTA DE ASIGNATURA A LA VISTA
 		
@@ -62,7 +97,7 @@ function cargarCurso(){
 		type: "GET",
 		success:function(datos){
 			$.each(datos, function(i, curso) {
-				 $("#curso").append("<option value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
+			//	 $("#curso").append("<option value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
 				 $("#Bcurso").append("<option value=" + curso.etapa + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");                  
 			 });
 			 		 
@@ -79,7 +114,7 @@ function cargarCurso(){
 function addClase(){
 	$("#crear").on("click", function(event){
 		event.preventDefault();
-		alert("hola");
+		;
 		
 		var curso = $("#curso").val();
 		var asignatura =$("#asignatura").val();
@@ -189,5 +224,21 @@ function Buscar(){
 		});
  });
 }
-							// OBjeto Hijo
-//$('seletor').on('click', '.editar', function(e) {
+
+function tabla(){
+
+	$('td.editar').click( function(e) {
+		e.preventDefault();
+		
+		console.log("["+$(this).parent().index()+" , "+$(this).index()+"]"  );
+		var g = $("tr.headTableC").children().eq($(this).index()).text();
+		console.log (g)
+	 //	console.log(document.getElementById("crearH").children().eq(0).eq($(this).parent().index()).text() );
+		//document.getElementById("crearH").rows[$(this).parent().index()+1].cells[$(this).index()].innerHTML = "XXXX!!" ;
+		
+		
+		
+		
+		
+	});
+}
