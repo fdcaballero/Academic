@@ -26,14 +26,20 @@ function cursoSeleccionado(id){ //ESTA FUNCION PERMITE RETORNAR UN CURSO SELECCI
 			dataType :"json",
 			type : "GET",
 			success: function(data){
+				if(data){
+					$.each(datos, function(i, curso) {
+						
+						if(curso.id == id ){
+							 $("#curso").append("<option selected value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
+						}
+							$("#curso").append("<option value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
+						                   
+					 });
+				}else{
+					console.log("Error");
+				}
+					
 				
-				$.each(datos, function(i, curso) {
-					if(curso.id == id ){
-						 $("#curso").append("<option selected value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
-					}
-						$("#curso").append("<option value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
-					                   
-				 });
 			},
 			error : function (event){
 				console.log ("Error", event);
@@ -59,11 +65,14 @@ function ListarCursos(){ //ADICIONA A LA VISTA LA LISTA DE CURSOS AL APARTADO DE
 		dataType:'json',
 		type: "GET",
 		success:function(datos){
-			
-			 $.each(datos, function(i, curso) {
-				 $("#curso").append("<option value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
-				                   
-			 });
+			if(datos){
+				$.each(datos, function(i, curso) {
+					 $("#curso").append("<option value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
+					                   
+				 });
+			}
+				
+			 
 			 		 
 		},
 		error : function(event){
@@ -84,10 +93,13 @@ function ListaResponsable(){ //#RETORNA LOS RESPONSABLES A LA VISTA DESDE MODAL 
 		dataType : "json",
 		type :"GET",
 		success :  function (datos){
-			 $.each(datos, function(i, repre) {
-				$("#ListaResponsable").append("<option value=" + repre.id + " id = "+repre.id+">" + repre.nombre + "   " + repre.apellido1 +" "+ repre.apellido2+ "</option>");
-				
-			 });
+			
+			if(datos){
+				 $.each(datos, function(i, repre) {
+						$("#ListaResponsable").append("<option value=" + repre.id + " id = "+repre.id+">" + repre.nombre + "   " + repre.apellido1 +" "+ repre.apellido2+ "</option>");
+						
+					 });
+			}
 		},
 		error: function(event){
 			console.log("error en el listar representante");
@@ -183,17 +195,18 @@ function add(){  //CREA UN ESTUDIANTE EN LA BD
 }
 
 function Elim(){ //ELIMINA UN ESTUDIANTE DE LA BD
+	
 	$("#elimEst").on("click", function(event){
 		event.preventDefault();
-		alert("llegando a la funcion" + getId());
+		
 		
 		if(getId()){
-			
-			$.ajax("api/v1/estudiante/" + getId(), 
+			$.ajax(
 				{
+				url : "api/v1/estudiante/" + getId(),
 				contentType : "application/json",
-				Type : "DELETE",
-				success: function (){
+				type : "DELETE",
+				success: function (e){
 					
 					 var td = $("input[id = "+getId()+"]");
 	        		 td.closest("tr").remove();
@@ -270,6 +283,7 @@ function ActualizarRepresentante(){ //ACTUALIZA LOS DATOS DEL REPRESENTANTE
 					    		type :"PUT",
 					    		data : JSON.stringify(responsable),
 					    		success: function(datoResp){
+					    			
 					    			console.log("Responsable Actualizado");
 					    			$("input[type = text]").val("");
 					    			$("input[type = tel]").val("");
@@ -303,14 +317,14 @@ function CrearRepresentante(){ // CREA UN NUEVO REPRESENTANTE EN LA BD
 	    var telefonoRe = $("#telefonoR").val();
 	    var correoRe = $("#correoR").val();
 	 
-	    if( Nameresponsable && apellidoRe && apellido1Re && nifRe && telefonoRe && correoRe){
+	    if( Nameresponsable && apellidoRe && nifRe && telefonoRe && correoRe){
 	    	var  responsable= {
 
 	    	    	  "nombre" : Nameresponsable, "apellido1" : apellidoRe, 
 	    	    	  "apellido2" : apellido1Re, "nif" : nifRe,
 	    	    	  "telefono" : telefonoRe, "correo" : correoRe 
 	    	       };
-	    	console.log("estoy aqui");
+	    
 	    	$.ajax("./api/v1/representante",
 			    	{
 			    		contentType : "application/json",
@@ -347,12 +361,14 @@ function CargarMenuRepresentante(){//LISTA TODOS LOS REPRESENTANTES EXISTENTES P
 	$("#EditRep").on("click", function(event){
 			event.preventDefault();
 			//$("#actualizar-representante").modal("show"= true);
-			
+			$("#ListaResponsableEdit").children().remove();
 		$.ajax("./api/v1/representante", {
 			contentType:"application/json",
 			dataType : "json",
 			type :"GET",
 			success :  function (datos){
+				$("#ListaResponsableEdit").append("<option selected></option>");
+				
 				 $.each(datos, function(i, repre) {
 					$("#ListaResponsableEdit").append("<option value=" + repre.id + " id = "+repre.id+">" + repre.nombre + "   " + repre.apellido1 +" "+ repre.apellido2+ "</option>");
 					

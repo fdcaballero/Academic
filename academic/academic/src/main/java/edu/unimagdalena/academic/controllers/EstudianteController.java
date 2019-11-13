@@ -19,7 +19,7 @@ public class EstudianteController {
 	
 	@GetMapping("/estudiante")
 	public String accEstudiante(Model model) {
-		List<Curso> curso = cursoService.findAll();
+		List<Curso> curso = new LinkedList<>();
 		model.addAttribute("cursos", curso);
 		return "estudiantes";
 	}
