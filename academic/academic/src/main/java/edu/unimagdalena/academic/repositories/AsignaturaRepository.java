@@ -23,6 +23,9 @@ public interface AsignaturaRepository extends JpaRepository<Asignatura, Long>{
 			@Param("nombre") String nombre,
 			@Param("curso") String curso);
   
+	@Query("SELECT a FROM Asignatura a WHERE a.curso.id = :id")
+	List<Asignatura>findAsignaturaByIdofCurso(@Param("id") Long id);
+	
 	/*  @Query("Select a From asignaturas where a.nombre =: Nombre or a.id_curso =: Id" )		
      List<Asignatura>findAsignaturaByNombreOrId(
     		 @Param ("nombre") String Nombre,

@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name =  "profesores")
 public class Profesor implements Serializable {
@@ -35,6 +37,7 @@ public class Profesor implements Serializable {
 	@Column(name = "titulacion", nullable = true)
 	private String titulacion;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="profesor")
 	private Set<Clase> clases;
 	

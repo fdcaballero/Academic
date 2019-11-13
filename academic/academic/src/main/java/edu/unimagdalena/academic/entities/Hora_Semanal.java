@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "Horas_Semanales")
 public class Hora_Semanal implements Serializable {
@@ -17,6 +19,7 @@ public class Hora_Semanal implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(name = "dia" , nullable = false)
 	private String dia;
 	
@@ -24,15 +27,18 @@ public class Hora_Semanal implements Serializable {
 	private String hora;
 	@Column (name = "dia_indice" , nullable = false) 
 	private Integer dia_indice;
+	
 	@Column (name = "hora_indice" , nullable = false)
 	private Integer hora_indice;
+	
+	
 	@ManyToMany(mappedBy = "horas_semanales")
 	private Set<Clase>  horas_clases;
 	
 	
 	public Hora_Semanal() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 	public Long getId() {
 		return id;

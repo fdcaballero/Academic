@@ -35,7 +35,7 @@ public class Curso implements Serializable {
 	private Set<Asignatura> asignaturas;
 
 	public Curso() {
-		super();
+		 super();
 		
 	}
 

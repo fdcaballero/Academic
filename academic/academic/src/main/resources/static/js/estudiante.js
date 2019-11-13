@@ -206,7 +206,7 @@ function Elim(){ //ELIMINA UN ESTUDIANTE DE LA BD
 				url : "api/v1/estudiante/" + getId(),
 				contentType : "application/json",
 				type : "DELETE",
-				success: function (e){
+				success: function (){
 					
 					 var td = $("input[id = "+getId()+"]");
 	        		 td.closest("tr").remove();

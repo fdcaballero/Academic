@@ -3,6 +3,7 @@ package edu.unimagdalena.academic.entities;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.data.annotation.Reference;
 @Entity
@@ -32,16 +34,42 @@ public class Clase implements Serializable {
 	 @JoinColumn(name = "id_profesor")
 	 private Profesor profesor;
 	 
-	 @ManyToMany
+	 @ManyToMany(cascade = CascadeType.ALL)
 	 @JoinTable(name = "clase_horasemanal",
 	 joinColumns = @JoinColumn(name = "id_clase", referencedColumnName = "id"), 
 	 inverseJoinColumns = @JoinColumn(name = "id_horasemanal", referencedColumnName = "id"))
 	 private Set<Hora_Semanal> horas_semanales;
 	 
+	 
+	 
+	 @Transient
+	 private String varAux1;
+	 
+	 @Transient
+	 private String varAux2;
+	 
 	 @ManyToMany(mappedBy = "clases")
 	 private Set<Estudiante> estudiantes;
 
 	
+
+
+	public String getVarAux1() {
+		return varAux1;
+	}
+
+	public void setVarAux1(String varAux1) {
+		this.varAux1 = varAux1;
+	}
+
+	public String getVarAux2() {
+		return varAux2;
+	}
+
+	public void setVarAux2(String varAux2) {
+		this.varAux2 = varAux2;
+	}
+
 	public Clase() {
 		super();
 		

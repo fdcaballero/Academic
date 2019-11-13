@@ -90,6 +90,11 @@ public class RestAsignaturaController {
 		return asignaturaService.findAsignaturasByCurso(curso);
 	}
 	
+	@GetMapping("/asignaturasPorc/{id}")
+	public List<Asignatura> listarAsignaturaPorIdOfCurso(@PathVariable Long id){
+		return asignaturaService.findAsignaturaByIdofCurso(id);
+	}
+	
 	@GetMapping("/asignaturas/{nombre}/{curso}")
 	public List<Asignatura> listaAsignaturasPorNombreYCurso(@PathVariable String nombre, @PathVariable String curso){
 		return asignaturaService.findAsignaturasByNombreAndCurso(nombre, curso);

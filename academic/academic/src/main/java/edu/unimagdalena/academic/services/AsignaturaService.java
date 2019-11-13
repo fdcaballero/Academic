@@ -13,4 +13,5 @@ public interface AsignaturaService {
 	List<Asignatura> findAsignaturaByNombre(String nombre);
 	List<Asignatura> findAsignaturasByCurso(String curso);
 	List<Asignatura> findAsignaturasByNombreAndCurso(String nombre,  String curso);
+	List<Asignatura> findAsignaturaByIdofCurso(Long id);
 }

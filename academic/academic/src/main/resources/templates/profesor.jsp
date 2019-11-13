@@ -14,6 +14,7 @@
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/profesor.css" type="text/css">
   <!-- Custom styles for this template -->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -162,7 +163,7 @@
             </div>
          
                <p><strong> Busqueda de profesores</strong></p>
-       <form th:action ="@{/buscar-profesores}" th:method = "post">
+       <form >
         	<div>
                 	<div class="form-group">
             	         <input type="text" class="form-control form-control-user" name ="buscarNombre" id="buscarNombre" placeholder="Ingrese nombre...">
@@ -187,7 +188,7 @@
                 <table id = "prof-tabla" class="table" width="100%" cellspacing="0">         
                     <tr>
                         <th><button class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Crear docente</button></th>                    
-                        <th><a id ="datosDocente" class="btn btn-primary btn-user btn-block" data-target="#Modaldatos">Datos personales</a></th>
+                        <th><a id ="datosDocente" class="btn btn-primary btn-user btn-block"data-toggle="modal" data-target='#Modaldatos' >Datos personales</a></th>
                         <th><a href="#" class="btn btn-primary btn-user btn-block">Clases</a></th>
                         <th><a href="#" id="Delete" class="btn btn-primary btn-user btn-block">Eliminar profesor</a></th>
                       
@@ -198,15 +199,15 @@
                       <th>Correo</th>
                       <th>Teléfono</th>
                     </tr>
-                    
+                   <!--  
 					<tr  th:each ="profesor : ${profesores}" class = 'contenido' data-id="${profesor.id}" >
-	    			    <td th:text ="${profesor.nombre}"></td><!-- Nombre -->
-	    			    <td th:text ="${profesor.nif}"></td><!-- nif -->
-	    			    <td th:text ="${profesor.correo}"></td><!-- correo -->
-	    			    <td th:text ="${profesor.telefono}"></td><!-- telefono -->
+	    			    <td th:text ="${profesor.nombre}"></td>
+	    			    <td th:text ="${profesor.nif}"></td>
+	    			    <td th:text ="${profesor.correo}"></td>
+	    			    <td th:text ="${profesor.telefono}"></td>
 	    			    <td> <input type='radio' th:value ="${profesor.id}" class ='seleccion' id ="${profesor.id}"name='seleccion' > </td>
 	    			</tr>
-                    
+                     -->
                 </table>
               </div>
             </div>
@@ -219,7 +220,7 @@
       <!-- End of Main Content -->
  <!-- ############################################################################################################### -->     
       <!-- The Modal NUevo-->
-      <div class="modal" id="myModal">
+      <div class="modal" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
       
@@ -325,7 +326,7 @@
       -->
       
       <!-- The Datos -->
-      <div class="modal" id="Modaldatos">
+      <div class="modal" id="Modaldatos"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
 
@@ -554,19 +555,22 @@
   </div>
   <!---#################################################################################################################-->
 
-  <!-- Bootstrap core JavaScript-->
+  <!-- Bootstrap core JavaScript
   <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 
-  <!-- Core plugin JavaScript-->
+<!--   Core plugin JavaScript -->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-
+	
   <!-- Page level plugins -->
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script> 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
   

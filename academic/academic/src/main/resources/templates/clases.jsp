@@ -137,7 +137,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              	 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -217,12 +217,7 @@
                   </thead>
                   <tbody class="cuerpo-table">
     
-                    <tr>
-                      <td>------</td>
-                      <td>Integration Specialist</td>
-                      <td>Tokyo</td>
-                      <td>55</td>                      
-                    </tr>       
+                       
                   </tbody>
                 </table>
               </div>
@@ -329,7 +324,7 @@
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
-                  
+                 
                     <h5>Nueva clase</h5>
                     <section class="form-group">
                     
@@ -373,7 +368,7 @@
                      <thead class="thead-inverse">
                      	<div class="card-body d-flex justify-content-between align-items-center">
                         	 <h5>Horario</h5>
-                        	<button  id="add_hora" class="btn btn-warning">Add</button>
+                        	<!-- <button  id="add_hora" class="btn btn-warning">Add</button> -->
                         	 
                         </div>
                          <tr class="headTableC">
@@ -387,7 +382,7 @@
                          </thead>
                          <tbody>
                            <tr class ="">
-                             <td scope="row" value = "09:00 - 10:00">09:00 - 10:00</td>
+                             <td scope="row" >09:00 - 10:00</td>
                              <td id = "1" class='editar'></td>
                              <td id = "2" class='editar'></td>
                              <td id = "3" class='editar'></td>
@@ -395,7 +390,7 @@
                              <td id = "5" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row" value ="10:00 - 11:00">10:00 - 11:00</td>
+                             <td scope="row" >10:00 - 11:00</td>
                              <td id = ""class='editar'></td>
                              <td id =""class='editar' ></td>
                              <td id =""class='editar' ></td>
@@ -403,7 +398,7 @@
                              <td id = ""class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row" value = "11:00 - 12:00">11:00 - 12:00</td>
+                             <td scope="row" >11:00 - 12:00</td>
                              <td id = ""class='editar'></td>
                              <td id = ""class='editar'></td>
                              <td id = ""class='editar'></td>
@@ -411,7 +406,7 @@
                              <td id = ""class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row" value ="12:00 - 13:00">12:00 - 13:00</td>
+                             <td scope="row" >12:00 - 13:00</td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'> </td>
@@ -419,7 +414,7 @@
                              <td id = "" class='editar'></td>
                            </tr>
                             <tr>
-                             <td scope="row" value ="13:00 - 14:00">13:00 - 14:00</td>
+                             <td scope="row" >13:00 - 14:00</td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
@@ -427,7 +422,7 @@
                              <td id = ""></td>
                            </tr>
                            <tr>
-                              <td scope="row" value ="14:00 - 15:00">14:00 - 15:00</td>
+                              <td scope="row" >14:00 - 15:00</td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
@@ -435,7 +430,7 @@
                              <td id = "" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row" value ="15:00 - 16:00"> 15:00 - 16:00</td>
+                             <td scope="row" > 15:00 - 16:00</td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
@@ -443,7 +438,7 @@
                              <td id = "" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row" value ="16:00 - 17:00">16:00 - 17:00</td>
+                             <td scope="row">16:00 - 17:00</td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
@@ -459,7 +454,7 @@
                              <td id = "" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row" value ="18:00 - 19:00">18:00 - 19:00</td>
+                             <td scope="row" >18:00 - 19:00</td>
                              <td id = ""class='editar'></td>
                              <td id = "" class='editar'></td>
                              <td id =""  class='editar' ></td>
@@ -467,7 +462,7 @@
                              <td id = "" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row" value ="19:00 - 20:00">19:00 - 20:00</td>
+                             <td scope="row">19:00 - 20:00</td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
@@ -475,7 +470,7 @@
                              <td id = "" class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row" value ="20:00 - 21:00">20:00 - 21:00</td>
+                             <td scope="row" >20:00 - 21:00</td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
                              <td id = "" class='editar'></td>
@@ -489,9 +484,8 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
     
-                  <button id = """crear" type="button" class="btn btn-primary" >crear</button>
+                  <button id = "crear" type="button" class="btn btn-primary"  data-dismiss="modal">crear</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                  
                 </div>
           
               </div>

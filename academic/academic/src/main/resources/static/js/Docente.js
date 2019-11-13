@@ -4,7 +4,7 @@ $(function(){
     showData();
     limpiar();
     Actualizar();
-   // buscar();
+    buscar();
     getId();
     //btnCrear();
     //activarBtn();
@@ -17,9 +17,7 @@ function agregarCurso(){
 }
 function AddDocente(){
 	$("#create").on("click", function(event){
-	
-	
-      var nombre = $("input[id = nombre]").val();
+	  var nombre = $("input[id = nombre]").val();
       var apellido = $("input[id = apellido]").val();
       var apellidoS = $("input[id = apellidoS]").val();
       var Nif = $("input[id = nif]").val();
@@ -41,13 +39,13 @@ function AddDocente(){
     	 data: JSON.stringify(docente),
     	 success: function(dataDocente){  
     		 
-    		    $("input[id = nombre]").val("");
-    		    $("input[id = apellido]").val("");
-    		    $("input[id = apellidoS]").val("");
-    		    $("input[id = nif]").val("");
+    		    $("input[type= text]").val("");
+    		   // $("input[id = apellido]").val("");
+    		 //   $("input[id = apellidoS]").val("");
+    		    $("input[type = tel]").val("");
     		    $("input[id = telefono]").val("");
-    		    $("input[id = correo]").val("");
-    		    $("input[id  = titulacion]").val("");
+    		    $("input[type = email]").val("");
+    		  //  $("input[id  = titulacion]").val("");
     		
     	      console.log("usuario crado");
     	 },
@@ -104,7 +102,7 @@ function EliminarDocente(){
 function Actualizar(){
 	 $('#guardarDatos').on("click", function(event){
 	      event.preventDefault();
-	
+	      
 		/*  var nombre = $("input[id = nombre]").val();
 	      var apellido = $("input[id = apellido]").val();
 	      var apellidoS = $("input[id = apellidoS]").val();
@@ -165,8 +163,11 @@ function showData(){
     $("#datosDocente").on("click",function(event){
        event.preventDefault();
        var id = getId();
-       console.log("id Desde mostrar data", id);
+      // data-target='#Modaldatos'
+     //  $('#Modaldatos').modal('show');
+     //  $("#Modaldatos").modal("target");
        if(id){
+    	 //  $('#Modaldatos').modal('show');
     	   $.ajax("api/v1/docente/"+id,
     	    	{
     	    		contentType :"application/json",
@@ -195,7 +196,7 @@ function showData(){
 
 }
 
-/*function buscar(){
+function buscar(){
 $("#buscar").on("click", function(event){
 		event.preventDefault();
 		var link;
@@ -219,8 +220,8 @@ $("#buscar").on("click", function(event){
 	    			        	"<tr class = 'contenido' data-id="+e.id+">" +
 	    			              "<td>" + e.nombre + "</td>" +
 	    			    	      "<td>" + e.nif + "</td>" +
-	    			    	      "<td>" + e.telefono + "</td>" +
 	    			    	      "<td>" + e.correo + "</td>" +
+	    			    	      "<td>" + e.telefono + "</td>" +
 	    			    	      "<td> <input type='radio' value="+ e.id +" class ='seleccion' name='seleccion' id="+ e.id + "> </td>" +
 	    			    	    "</tr>");
 	    			    });
@@ -236,7 +237,7 @@ $("#buscar").on("click", function(event){
 		
 	});
 }
-*/
+
 function getId(){
 	return $("input[name = seleccion]:checked").val();
 }

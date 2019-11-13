@@ -15,13 +15,13 @@ public class ProfesorController {
 	
 	@Autowired 
 	private ProfesorService profesorService;
-	
+	/*
 	@PostMapping("/buscar-profesores")
 	public String listarProfesores(@RequestParam("buscarNombre") String nombre, @RequestParam("buscarCC") String nif, Model model) {
 		List<Profesor> profesores = profesorService.findProfesorByNombreOrCedula( nombre, nif);
 		model.addAttribute("profesores", profesores);
 		return "profesor";
 	}
-	
+	*/
 
 }

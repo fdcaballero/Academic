@@ -33,7 +33,7 @@ public class AsignaturaServiceImp implements AsignaturaService{
 
 	@Override
 	public List<Asignatura> findAll() {
-		// TODO Auto-generated method stub
+	
 		return asignaturaRepository.findAll();
 	}
 	
@@ -59,5 +59,11 @@ public class AsignaturaServiceImp implements AsignaturaService{
 	public List<Asignatura> findAsignaturasByNombreAndCurso(String nombre, String curso) {
 
 		return asignaturaRepository.findAsignaturasByNombreAndCurso(nombre, curso);
+	}
+
+	@Override
+	public List<Asignatura> findAsignaturaByIdofCurso(Long id) {
+		
+		return asignaturaRepository.findAsignaturaByIdofCurso(id);
 	}
 }

@@ -121,7 +121,7 @@ public class RestEstudianteController {
      public Estudiante createStudent(@RequestBody Estudiante student) {
 		
 		if(student.getVar1String() != null) {
-			Optional<Responsable_Alumno> responsable = responsableService.findById(Long.parseLong( student.getVar1String() ) ); //Buscamos el responsable
+			Optional<Responsable_Alumno> responsable = responsableService.findById(Long.parseLong( student.getVar1String())); //Buscamos el responsable
 			student.setResponsable(responsable.get()); //Agregamos el responsable al estudiante 
 			responsable.get().getEstudiantes().add(student); //Agregamos el estudiante al responsable
 			responsableService.save(responsable.get());
@@ -132,6 +132,7 @@ public class RestEstudianteController {
 			student.setGrado(curso.get());
 			curso.get().getEstudiantes().add(student);
 			cursoService.save(curso.get());
+			
 		}
 		
 		

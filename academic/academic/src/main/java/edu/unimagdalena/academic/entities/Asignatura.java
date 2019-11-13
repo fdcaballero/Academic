@@ -32,7 +32,7 @@ public class Asignatura implements Serializable {
   @JoinColumn(name="id_curso")
   private Curso curso;
   
-  
+  @JsonIgnore
   @OneToMany(mappedBy = "asignatura")
   private Set<Clase> clases;
 
