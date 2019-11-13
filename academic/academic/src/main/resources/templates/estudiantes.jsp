@@ -363,7 +363,7 @@
                              <div>
                             	<label for="lista-responsable"> Lista Responsable</label>
                             	<select name = "lista-responsable" id ="ListaResponsableEdit" class="form-control" >
-                            		<option selected></option>
+                            	
                             	</select>
                             </div>
                             
