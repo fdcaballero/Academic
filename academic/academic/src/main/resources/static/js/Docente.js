@@ -209,6 +209,7 @@ $("#buscar").on("click", function(event){
 		}else {
 			link = "./api/v1/docente/" + buscaNombre + "/" + buscaCC ;
 		}
+		$("tr").remove(".contenido");
 		$.ajax({
 				url : link,
 	    		contentType: "application/json",

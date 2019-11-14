@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -74,7 +75,7 @@ public class Estudiante implements Serializable {
 	@JoinColumn(name = "id_curso")
 	private Curso grado;/// podemos cambiar a curso
 	
-	@ManyToMany // Mapeo con la tabla de clases
+	@ManyToMany(cascade = CascadeType.ALL) // Mapeo con la tabla de clases
 	@JoinTable (name = "clase_estudiante",	
 	joinColumns = @JoinColumn(name = "id_estudiante", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "id_clase", referencedColumnName = "id"))

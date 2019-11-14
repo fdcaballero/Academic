@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.data.annotation.Reference;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "Clases")
 public class Clase implements Serializable {
@@ -48,7 +50,8 @@ public class Clase implements Serializable {
 	 @Transient
 	 private String varAux2;
 	 
-	 @ManyToMany(mappedBy = "clases")
+	 @JsonIgnore
+	 @ManyToMany(mappedBy = "clases", cascade = CascadeType.ALL)
 	 private Set<Estudiante> estudiantes;
 
 	

@@ -201,9 +201,9 @@
                   <thead>
                     <tr>
                         <th><button  type = "button" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Nueva clase</button></th>
-                        <th><a href="#" class="btn btn-primary btn-user btn-block"  data-toggle="modal" data-target="#modal-editar">Editar clase</a></th>
-                        <th><button type = "button" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#ModalAlumnos">Alumnos</button></th>
-                        <th><a href="#" class="btn btn-primary btn-user btn-block">Eliminar clase</a></th>
+                        <th><a href="#" class="btn btn-primary btn-user btn-block" id="editar" data-toggle="modal" data-target="#modal-editar">Editar clase</a></th>
+                        <th><button type = "button" class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#ModalAlumnos" id ="MAlumnos">Alumnos</button></th>
+                        <th><a href="#" class="btn btn-primary btn-user btn-block" id ="elim">Eliminar clase</a></th>
                        
                     </tr>
                     <tr>
@@ -285,13 +285,13 @@
                 <div class="modal-body">
                    <section class="form-group">
           			  <select multiple class="form-control" id ="list-estudiantes">
-          			  		 <option> Fredy  </option>
-          			  		 <option> Fredy aballero </option>
-          			  		 <option> Fredy ballero </option>
-          			  		 <option> Fredy allero </option>
-          			  		 <option> Fredy llero </option>
-          			  		 <option> Fredy ero </option>
-          			  		 <option> Fred Caballero </option>
+<!--           			  		 <option> Fredy  </option> -->
+<!--           			  		 <option> Fredy aballero </option> -->
+<!--           			  		 <option> Fredy ballero </option> -->
+<!--           			  		 <option> Fredy allero </option> -->
+<!--           			  		 <option> Fredy llero </option> -->
+<!--           			  		 <option> Fredy ero </option> -->
+<!--           			  		 <option> Fred Caballero </option> -->
           			  		 
           			  </select> 
           			  	
@@ -364,7 +364,7 @@
                       </select>
                       --> 
                     </section>
-                 <table  id ="crearH" class="table table-striped table-inverse table-bordered text-center">
+                 <table  id ="crearE" class="table table-striped table-inverse table-bordered text-center">
                      <thead class="thead-inverse">
                      	<div class="card-body d-flex justify-content-between align-items-center">
                         	 <h5>Horario</h5>
@@ -383,99 +383,99 @@
                          <tbody>
                            <tr class ="">
                              <td scope="row" >09:00 - 10:00</td>
-                             <td id = "1" class='editar'></td>
-                             <td id = "2" class='editar'></td>
-                             <td id = "3" class='editar'></td>
-                             <td id = "4"class='editar'></td>
-                             <td id = "5" class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td class='editar'></td>
+                             <td  class='editar'></td>
                            </tr>
                            <tr>
                              <td scope="row" >10:00 - 11:00</td>
-                             <td id = ""class='editar'></td>
-                             <td id =""class='editar' ></td>
-                             <td id =""class='editar' ></td>
-                             <td id = ""class='editar'></td>
-                             <td id = ""class='editar'></td>
+                             <td class='editar'></td>
+                             <td class='editar' ></td>
+                             <td class='editar' ></td>
+                             <td class='editar'></td>
+                             <td class='editar'></td>
                            </tr>
                            <tr>
                              <td scope="row" >11:00 - 12:00</td>
-                             <td id = ""class='editar'></td>
-                             <td id = ""class='editar'></td>
-                             <td id = ""class='editar'></td>
-                             <td id = ""class='editar'></td>
-                             <td id = ""class='editar'></td>
+                             <td class='editar'></td>
+                             <td class='editar'></td>
+                             <td class='editar'></td>
+                             <td class='editar'></td>
+                             <td class='editar'></td>
                            </tr>
                            <tr>
                              <td scope="row" >12:00 - 13:00</td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'> </td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'> </td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
                            </tr>
                             <tr>
                              <td scope="row" >13:00 - 14:00</td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id =" " class='editar' ></td>
-                             <td id = ""></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar' ></td>
+                             <td  class='editar'></td>
                            </tr>
                            <tr>
                               <td scope="row" >14:00 - 15:00</td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
+                             <td class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td class='editar'></td>
+                             <td  class='editar'></td>
                            </tr>
                            <tr>
                              <td scope="row" > 15:00 - 16:00</td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
+                             <td class='editar'></td>
+                             <td  class='editar'></td>
+                             <td class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
                            </tr>
                            <tr>
                              <td scope="row">16:00 - 17:00</td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = " "class='editar'></td>
-                             <td id = "" class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td class='editar'></td>
+                             <td  class='editar'></td>
                            </tr>
                            <tr>
-                             <td scope="row"value ="17:00 - 18:00" >17:00 - 18:00</td>
-                             <td id = "" class='editar'></td>
-                             <td id ="" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
+                             <td scope="row" >17:00 - 18:00</td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td class='editar'></td>
+                             <td  class='editar'></td>
                            </tr>
                            <tr>
                              <td scope="row" >18:00 - 19:00</td>
-                             <td id = ""class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id =""  class='editar' ></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
+                             <td class='editar'></td>
+                             <td  class='editar'></td>
+                             <td   class='editar' ></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
                            </tr>
                            <tr>
                              <td scope="row">19:00 - 20:00</td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
                            </tr>
                            <tr>
                              <td scope="row" >20:00 - 21:00</td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
-                             <td id = "" class='editar'></td>
+                             <td class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
+                             <td  class='editar'></td>
                            </tr>
                          </tbody>
                  </table>
@@ -512,21 +512,21 @@
                     
                     	<div class="form-group">
                  		   <label for="curso">Curso: </label>
-                 		   <select id="curso" class="form-control">
-                   	   		  <option>Seleccione Curso...</option>
+                 		   <select id="Ecurso" class="form-control">
+                   	   		  
                       	   </select>
                    		</div>
 					
-							<label for="asignatura">* Asignatura</label>
-							<select id = """asignatura" class="form-control">
-                   	     		<option>Seleccione Asignatura...</option>
+							<label for="Easignatura">* Asignatura</label>
+							<select id = "Easignatura" class="form-control">
+                   	     		
                   		    </select>
                       		
                    	
                    
                  	  <label for="profesor">* Profesor</label>
-                  	  <select id = "profesor" class="form-control">
-                   	     <option>Seleccione Profesor...</option>
+                  	  <select id = "Eprofesor" class="form-control">
+                   	    
                       </select>
                   
                   <!--    <label for="hora">* Hora </label>
@@ -546,7 +546,7 @@
                       </select>  --> 
                       
                     </section>
-                 <table class="table table-striped table-inverse table-bordered text-center">
+                 <table id ="mostrarE" class="table table-striped table-inverse table-bordered text-center">
                      <thead class="thead-inverse">
                          <h5>Horario</h5>
                          <tr>
@@ -558,104 +558,106 @@
                              <th>Viernes</th>
                          </tr>
                      </thead>
+                     
                      <tbody>
-                           <tr>
-                             <td scope="row">09:00 - 10:00</td>
-                             <td id = ""></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                           <tr class ="">
+                             <td scope="row" >09:00 - 10:00</td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td class='edita'></td>
+                             <td  class='edita'></td>
                            </tr>
                            <tr>
-                             <td scope="row">10:00 - 11:00</td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" >10:00 - 11:00</td>
+                             <td class='edita'></td>
+                             <td class='edita' ></td>
+                             <td class='edita' ></td>
+                             <td class='edita'></td>
+                             <td class='edita'></td>
                            </tr>
                            <tr>
-                             <td scope="row">11:00 - 12:00</td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" >11:00 - 12:00</td>
+                             <td class='edita'></td>
+                             <td class='edita'></td>
+                             <td class='edita'></td>
+                             <td class='edita'></td>
+                             <td class='edita'></td>
                            </tr>
                            <tr>
-                             <td scope="row">12:00 - 13:00</td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" >12:00 - 13:00</td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'> </td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                           </tr>
+                            <tr>
+                             <td scope="row" >13:00 - 14:00</td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita' ></td>
+                             <td  class='edita'></td>
                            </tr>
                            <tr>
-                             <td scope="row">13:00 - 14:00</td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
+                              <td scope="row" >14:00 - 15:00</td>
+                             <td class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td class='edita'></td>
+                             <td  class='edita'></td>
                            </tr>
                            <tr>
-                              <td scope="row">14:00 - 15:00</td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                             <td id = ""><a href='#' class='agregar button'>-</a></td>
-                           </tr>
-                           <tr>
-                             <td scope="row">15:00 - 16:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" > 15:00 - 16:00</td>
+                             <td class='edita'></td>
+                             <td  class='edita'></td>
+                             <td class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
                            </tr>
                            <tr>
                              <td scope="row">16:00 - 17:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td class='edita'></td>
+                             <td  class='edita'></td>
                            </tr>
                            <tr>
-                             <td scope="row">17:00 - 18:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" >17:00 - 18:00</td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td class='edita'></td>
+                             <td  class='edita'></td>
                            </tr>
                            <tr>
-                             <td scope="row">18:00 - 19:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" >18:00 - 19:00</td>
+                             <td class='edita'></td>
+                             <td  class='edita'></td>
+                             <td   class='edita' ></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
                            </tr>
                            <tr>
                              <td scope="row">19:00 - 20:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
                            </tr>
                            <tr>
-                             <td scope="row">20:00 - 21:00</td>
-                             <td id = Lunes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Martes><a href='#' class='agregar button'>-</a></td>
-                             <td id = Miercoles><a href='#' class='agregar button'>-</a></td>
-                             <td id = Jueves><a href='#' class='agregar button'>-</a></td>
-                             <td id = Viernes><a href='#' class='agregar button'>-</a></td>
+                             <td scope="row" >20:00 - 21:00</td>
+                             <td class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
+                             <td  class='edita'></td>
                            </tr>
-                     </tbody>
+                         </tbody>
+                       
                  </table>
                 </div>
           

@@ -43,6 +43,7 @@ public class RestClaseController {
 	public Clase createClase(@RequestBody Clase clase) {
 
 		if(clase.getVarAux1() != null) {
+			
 			Optional<Asignatura> asignatura = asignaturaService.findById(Long.parseLong(clase.getVarAux1()));
 			if(asignatura.isPresent()) {
 				clase.setAsignatura(asignatura.get());
@@ -68,8 +69,32 @@ public class RestClaseController {
 	}
 	
 	@PutMapping("/clase")
-	public Clase editClase(@RequestBody Clase clas) {
-		return classRepositories.save(clas);
+	public Clase editClase(@RequestBody Clase clase) {
+		
+		if(clase.getVarAux1() != null) {
+			
+			Optional<Asignatura> asignatura = asignaturaService.findById(Long.parseLong(clase.getVarAux1()));
+			if(asignatura.isPresent()) {
+				clase.setAsignatura(asignatura.get());
+				asignatura.get().getClases().add(clase);
+				asignaturaService.save(asignatura.get());
+			}else {
+				throw new EntityNotFoundException("No se encontro la asignatura");
+			}
+		}
+		
+		 if(clase.getVarAux2() != null) {
+			Optional<Profesor> profe = profesorService.findById(Long.parseLong(clase.getVarAux2()));
+			if(profe.isPresent()) {
+				clase.setProfesor(profe.get());
+				profe.get().getClases().add(clase);
+				profesorService.save(profe.get());
+			}else {
+				throw new EntityNotFoundException("No se encontro la profesor");
+			}
+		}
+		
+		return classRepositories.save(clase);
 	}
 	
 	@DeleteMapping("/clase/{id}")

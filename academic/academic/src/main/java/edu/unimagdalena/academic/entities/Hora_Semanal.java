@@ -1,8 +1,10 @@
 package edu.unimagdalena.academic.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,8 +33,8 @@ public class Hora_Semanal implements Serializable {
 	@Column (name = "hora_indice" , nullable = false)
 	private Integer hora_indice;
 	
-	
-	@ManyToMany(mappedBy = "horas_semanales")
+	@JsonIgnore
+	@ManyToMany(mappedBy = "horas_semanales", cascade = CascadeType.ALL)
 	private Set<Clase>  horas_clases;
 	
 	

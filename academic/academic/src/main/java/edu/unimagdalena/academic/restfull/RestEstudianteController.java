@@ -1,7 +1,7 @@
 package edu.unimagdalena.academic.restfull;
 
 
-import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,6 +74,7 @@ public class RestEstudianteController {
 					for(Estudiante Bestudiante : RespAnt.getEstudiantes()  ) {
 						if(Bestudiante.getId() == estudiante.getId()) { //ENCONTRAMOS EL ESTUDIANTE Y LO REMOVEMOS DE LA LISTA
 							RespAnt.getEstudiantes().remove(Bestudiante); 
+							break;
 						}
 					}
 					 
@@ -97,6 +98,7 @@ public class RestEstudianteController {
 							for(Estudiante Bestudiante: cursoAnt.getEstudiantes()) { //Itera sobre la lista de estudiante del curso
 								if(Bestudiante.getId() == estudiante.getId()) { //ENCUENTRA AL ESTUDIANTE 
 									cursoAnt.getEstudiantes().remove(Bestudiante);
+									break;
 								}
 							}
 							cursoService.save(cursoAnt);
