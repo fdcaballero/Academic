@@ -12,15 +12,13 @@ import org.springframework.validation.BindingResult;
 
 
 import edu.unimagdalena.academic.entities.Usuario;
-import edu.unimagdalena.academic.repositories.UsuarioRepository;;
+import edu.unimagdalena.academic.services.UsuarioService;;
 
 @Controller
 public class UsuarioController {
 	
 	@Autowired
-	private UsuarioRepository usuarioServicio;
-	
-	
+	private UsuarioService usuarioServicio;
 	
 	@GetMapping("/registro")
 	public String formUsuario(Model model){
@@ -41,8 +39,13 @@ public class UsuarioController {
 		if (result.hasErrors()) {
 			return "registro";
 		}
+
 		usuarioServicio.save(usuario);
-		return "index";
+		
+		model.addAttribute("user", usuario);
+		
+		return "inicio";
+		
 	}
 	
 	
