@@ -131,6 +131,7 @@ function cargarDatos(){//CARGA LOS DATOS AL MODAL DE EDITAR
 		event.preventDefault();
 		
 		if(getId()){
+			$("p.removible").remove();
 			$.ajax("./api/v1/clase/" + getId(),
 					{
 				contentType : "application/json",
@@ -141,6 +142,7 @@ function cargarDatos(){//CARGA LOS DATOS AL MODAL DE EDITAR
 					cargarDocenteEdit(dato.profesor.id);
 					cargarCursoEdit(dato.asignatura.curso.id, dato.asignatura.id);
 					tabla1(dato.horas_semanales);
+					
 				}, 
 				error : function(event){
 					console.log("Error ", event);
@@ -294,6 +296,7 @@ function addClase(){
 					$("select").val("");
 					$("asignatura").children().remove();
 					alert("Clase creada");
+					$("p.removible").remove();
 				}, 
 				error : function(event){
 					console.log("Error al crear la clase", event);
@@ -322,7 +325,7 @@ function cargarStudiantes(){ // MUESTRA TODOS LOS ESTUDIANTES PERTENECIENTES A U
 				success:function(dato){
 					console.log(dato.asignatura.curso.estudiantes);
 					if(dato.asignatura.curso.estudiantes){
-						$.each(dato, function(i, e) {
+						$.each(dato, function(i, p) {
 	   			 			$("#list-estudiantes").append("<option value=" + p.id + " id = "+p.id+">" + p.nombre + " " + p.apellido1 + "</option>");
 	   			 		});
 					}
@@ -448,7 +451,7 @@ function tabla(){	///SELECCION DE LA TABLA
 					});*/
 	//	console.log (dia);
 	 //	console.log(document.getElementById("crearH").children().eq(0).eq($(this).parent().index()).text() );
-		document.getElementById("crearE").rows[indiceH].cells[indiceD].innerHTML = "!!!" ;
+		document.getElementById("crearE").rows[indiceH].cells[indiceD].innerHTML = "<p class='removible'>!!!</p>" ;
 			
 	});
 }
@@ -528,7 +531,7 @@ function tabla1(datos){	///CARGA LOS DIAS SELECCIONADOS A LA TABLA EDITAR
 	 //	console.log(document.getElementById("crearH").children().eq(0).eq($(this).parent().index()).text() );
 	$.each(datos, function(i, e){
 		//if(e.hora_indice != undefined && e.dia_indice != undefined){
-			document.getElementById("mostrarE").rows[e.hora_indice].cells[e.dia_indice].innerHTML ="XXX";
+			document.getElementById("mostrarE").rows[e.hora_indice].cells[e.dia_indice].innerHTML ="<p class='removible' >XXX</p>";
 	//	}
 	});
 		

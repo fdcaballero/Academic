@@ -380,7 +380,7 @@
                              <th>Viernes</th>
                          </tr>
                          </thead>
-                         <tbody>
+                         <tbody class="table-horario">
                            <tr class ="">
                              <td scope="row" >09:00 - 10:00</td>
                              <td  class='editar'></td>
@@ -559,7 +559,7 @@
                          </tr>
                      </thead>
                      
-                     <tbody>
+                     <tbody class="table-horario">
                            <tr class ="">
                              <td scope="row" >09:00 - 10:00</td>
                              <td  class='edita'></td>
