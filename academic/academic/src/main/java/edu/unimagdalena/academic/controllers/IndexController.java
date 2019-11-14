@@ -16,18 +16,11 @@ import edu.unimagdalena.academic.entities.Usuario;
 @Controller
 public class IndexController {
 	
-	 
-	//@RequestMapping(value  = {"/","/login"}, method = RequestMethod.GET)
-	@GetMapping("/login")
+	
+	@RequestMapping(value = { "/", "/login"}, method = RequestMethod.GET)
 	public String login() {
 		return "index";
-	}
-	
-	
-	@PostMapping("/login")
-	public String inicioSesion(/*@Valid Usuario user,BindingResult result ,Model model*/) {
-		return "inicio";
-	}
+	}	
 	
 	
 }
