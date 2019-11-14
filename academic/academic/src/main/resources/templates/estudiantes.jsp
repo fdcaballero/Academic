@@ -88,7 +88,7 @@
                   <tr>
                       <th><a href="#" class="btn btn-primary btn-user btn-block" id ="nuevoEst" data-toggle="modal" data-target="#myModal">Nuevo alumno</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block" id="datosEst" data-toggle="modal" data-target="#actualizar-estudiante">Datos personales</a></th>
-                      <th><a href="#" class="btn btn-primary btn-user btn-block"  data-toggle="modal" data-target="#myModalClases">Clases</a></th>
+                      <th><a href="#" class="btn btn-primary btn-user btn-block" id  ="clasesE"data-toggle="modal" data-target="#myModalClases">Clases</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block" id = "elimEst" >Dar de alta/ baja</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block" id ="nuevoRep" data-toggle="modal" data-target="#registro-representante">Nuevo representante</a></th>
                       <th><a href="#" class="btn btn-primary btn-user btn-block" id ="EditRep" data-toggle="modal" data-target="#actualizar-representante">Editar datos Representante</a></th>

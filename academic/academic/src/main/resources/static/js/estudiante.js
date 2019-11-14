@@ -12,9 +12,38 @@ $(function(){
     cargarDatosResponsable();
     Elim();
     Guardar();
+    clasesEst();
 });
 
-
+function clasesEst(){
+	$("#clasesE").on("click", function(event){
+		event.preventDefault();
+		if(getId()){
+			console.log("llegando");
+			$.ajax("./api/v1/estudiante/"+getId(),{
+				contentType:"application/json",
+				dataType : "json",
+				type :"GET",
+				success :  function (datos){
+				   $.each(datos.clases, function(i, e){
+						console.log(e.asignatura.nombre + "  " + e.profesor.nombre);
+					});
+					
+			
+				},
+				error : function(event){
+					console.log("No carga datos");
+					alert(error , "No se logro cargar los datos");
+				} 
+				
+			});
+		}else{
+			alert("No se ha seleccionado un estudiante");
+		}
+	});
+	
+	
+}
 
 function cursoSeleccionado(id){ //ESTA FUNCION PERMITE RETORNAR UN CURSO SELECCIONADO NO ACTIVA EN LA APP
 	
@@ -67,13 +96,14 @@ function ListarCursos(){ //ADICIONA A LA VISTA LA LISTA DE CURSOS AL APARTADO DE
 		success:function(datos){
 			if(datos){
 				$.each(datos, function(i, curso) {
-					 $("#curso").append("<option value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
+					if(curso){
+						 $("#curso").append("<option value=" + curso.id + " id = "+curso.id+">" + curso.nivel + " " + curso.etapa + "</option>");
+					}
+					
 					                   
 				 });
 			}
-				
-			 
-			 		 
+							 		 
 		},
 		error : function(event){
    		 alert("error en el registro intente nuevamente");
