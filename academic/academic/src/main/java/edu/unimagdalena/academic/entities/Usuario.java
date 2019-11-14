@@ -3,6 +3,7 @@ package edu.unimagdalena.academic.entities;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,60 +15,39 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import edu.unimagdalena.academic.entities.Role;
+
 @Entity
-@Table(name = "users")
+@Table(name = "usuarios")
 public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(name = "user", nullable = false)
-	private String user;
-	
+	private Long id;	
+	@Column(name = "username", nullable = false, unique = true)
+	private String username;
 	@Column (name = "password" , nullable = false)
-	private String password;
-	
-	@Column(name = "hablitado", nullable = false)
-	private Boolean habilitado;
-	
-	@OneToOne(mappedBy = "TpUsuario")
-	private Profesor Tusuario;
-	
-	@OneToOne(mappedBy = "typeUser")
-	private Estudiante t_user;
-	
-	@ManyToMany
-	@JoinTable(name  =  "user_roles",
-	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-	inverseJoinColumns = @JoinColumn( name = "role_id", referencedColumnName = "id"))
-	private Set<Role> roles;
-	public Profesor getTusuario() {
-		return Tusuario;
-	}
+	private String password;	
+	@Column(name = "habilitado")
+	private Boolean habilitado;	
+	@Column(name="rol")
+	private String rol;	
 
+	@ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName="id"), 
+    inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName="role_id"))
+    private Set<Role> roles;
+
+	public Usuario() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+		
 	public Set<Role> getRoles() {
 		return roles;
 	}
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
-	}
-
-	public void setTusuario(Profesor tusuario) {
-		Tusuario = tusuario;
-	}
-
-	public Estudiante getT_user() {
-		return t_user;
-	}
-
-	public void setT_user(Estudiante t_user) {
-		this.t_user = t_user;
-	}
-
-	public Usuario() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Long getId() {
@@ -78,12 +58,12 @@ public class Usuario implements Serializable {
 		this.id = id;
 	}
 
-	public String getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -98,8 +78,16 @@ public class Usuario implements Serializable {
 		return habilitado;
 	}
 
-	public void setHabilitado(Boolean habilitado) {
+	public void setHabilitado(boolean habilitado) {
 		this.habilitado = habilitado;
+	}
+	
+
+	public String getRol() {
+		return rol;
+	}
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 	
 }
