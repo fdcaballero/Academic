@@ -1,8 +1,10 @@
 package edu.unimagdalena.academic.services;
-/*
+
 import java.util.Arrays;
 import java.util.HashSet;
 
+import org.jboss.logging.Logger;
+import org.jboss.logging.Logger.Level;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,22 +23,23 @@ public class UsuarioServiceImp implements UsuarioService{
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	public Usuario findUsuarioByUser(String username) {
-		return usuarioRepositorio.findByUser(username);
+	Logger LOG = Logger.getLogger(UsuarioServiceImp.class); 
+	
+	public Usuario findUsuarioByUsername(String username) {
+		return usuarioRepositorio.findByUsername(username);
 	}
 
 	public Usuario getUsuarioById(long id) {
 		return usuarioRepositorio.getOne(id);
 	}
-	
 	public void save(Usuario usuario) {
 		usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
 		usuario.setHabilitado(true);
-		Role userRole = rolRepositorio.findByNombre("ADMIN");
+		Role userRole = rolRepositorio.findByRole("ADMIN");
 		usuario.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+		
+		LOG.info(usuario);
 		usuarioRepositorio.save(usuario);
 	}
-
 	
 }
-*/
