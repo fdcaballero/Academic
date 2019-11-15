@@ -197,7 +197,7 @@
                       <th>Nombre</th>
                       <th>NIF</th>
                       <th>Correo</th>
-                      <th>Teléfono</th>
+                      <th>TelÃ©fono</th>
                     </tr>
                    <!--  
 					<tr  th:each ="profesor : ${profesores}" class = 'contenido' data-id="${profesor.id}" >
@@ -252,7 +252,7 @@
                     <label for="correo">* Correo </label>
                     <input id="correo" type="email" name="correo"  class="form-control" required>
 
-                    <label for="titulacion">Titulación </label>
+                    <label for="titulacion">TitulaciÃ³n </label>
                     <input id="titulacion" type="text" name="titulacion"  class="form-control">
                 </section>
 
@@ -308,7 +308,7 @@
                     <label for="correo">* Correo </label>
                     <input id="Dcorreo" type="email" name="Datoscorreo"  class="form-control" required>
 
-                    <label for="titulacion">Titulación </label>
+                    <label for="titulacion">TitulaciÃ³n </label>
                     <input id="Dtitulacion" type="text" name="Datostitulacion"  class="form-control">
                 </section>
 
@@ -358,7 +358,7 @@
                     <label for="correo">* Correo </label>
                     <input id="Dcorreo" type="email" name="correo"  class="form-control" required>
 
-                    <label for="titulacion">Titulación </label>
+                    <label for="titulacion">TitulaciÃ³n </label>
                     <input id="Dtitulacion" type="text" name="titulacion"  class="form-control">
                 </section>
 
@@ -405,13 +405,13 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">—</span>
+            <span aria-hidden="true">Â—</span>
           </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Cerrar sesión</a>
+          <a class="btn btn-primary" href="login.html">Cerrar sesiÃ³n</a>
         </div>
       </div>
     </div>
