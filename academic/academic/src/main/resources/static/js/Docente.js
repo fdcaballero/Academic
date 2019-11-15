@@ -15,30 +15,29 @@ $(function(){
 function showClass(){	
 	$("#claseD").on("click", function(event){
 		event.preventDefault();
-		
+		$("p.removible").remove();
 		if(getId()){
-			   $.ajax("api/v1/docente/"+getId(),
+			   $.ajax("api/v1/clasesprof/"+getId(),
 		    	    	{
-		    	    		contentType :"application/json",
-		    	    		dataType:'json',
-		    	    		type: "GET",
-		    	    		success:function (data){
-		    	    			if(data.clases){
-		    	    				$.each(data.clases, function(i, dt){
-		    	    					$.each(dt, function(i, e){
-			    	    					document.getElementById("tabla-Horario").rows[e.hora_indice].cells[e.dia_indice].innerHTML ="<p class='removible' >"+dt.asignatura.nombre +"</p>";
-			    	    				});
-		    	    				
-		    	    				});	
-		    	    			}
-		    	    		},
-		    	    		error : function(event){
-		    	    			alert("error al cargar datos intente nuevamente");
-		    	       		 	console.log("error" , event);
-		    	    		}
+		    	    	contentType :"application/json",
+		    	    	dataType:'json',
+		    	    	type: "GET",
+		    	    	success:function (data){
+		    	    		$.each(data, function(i, p){
 		    	    		
-		    	        });
-			
+		    	    			$.each(p.horas_semanales, function(i, e){
+		    	    					
+		    	    				document.getElementById("tabla-Horario").rows[e.hora_indice].cells[e.dia_indice].innerHTML ="<p class='removible' >"+p.asignatura.nombre +"</p>";
+			    	    				
+		    	    			});	
+	    	    			});	
+		    	    	},
+		    	    	error : function(event){
+		    	    		alert("error al cargar datos intente nuevamente");
+		    	       	 	console.log("error" , event);
+		    	    	}
+		    	    	
+		      });
 		}
 		
 	});

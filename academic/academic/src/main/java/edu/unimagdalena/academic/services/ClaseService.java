@@ -9,11 +9,19 @@ public interface ClaseService {
 	Clase getOne (Long id);
 	void delete(Clase clase);
 	List<Clase> findAll();
+	
 	Optional<Clase> findById(Long id);
+	
 	List<Clase> findByAsignatura(String asig);
-//	List<Clase> findByCurso(String curso);
-	List<Clase> findByProfesor(String profe);	
+	List<Clase> findByCurso(String curso);
+	List<Clase> findClasesByProfesor(String profe);	
+	
+	List<Clase> findClaseByEstudianteForId(Long curso, Long id);
 	List<Clase> findByAsigAndProfe(String asig, String profe);
-//	List<Clase> findByCursoAndProfe(String curso, String profe);
-//	List<Clase> findByAsigAndCurso(String asig, String curso);
+	
+	List<Clase> findByCursoAndProfe(String curso, String profe);
+	
+	List<Clase> findByAsigAndCurso(String asig, String curso);
+	
+	List<Clase> findClasesByProfesorForId(Long id);
 }

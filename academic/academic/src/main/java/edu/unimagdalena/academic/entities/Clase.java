@@ -29,7 +29,7 @@ public class Clase implements Serializable {
 	 
 		 
 	 @ManyToOne
-	 @JoinColumn(name =" id_asignatura")
+	 @JoinColumn(name =" id_asignatura" )
 	 private Asignatura asignatura;
 	 
 	 @ManyToOne

@@ -344,10 +344,11 @@ function addClase(){
 				type : "POST",
 				data : JSON.stringify(clase),
 				success: function(data){
+					
 					horas.length= 0;
 					$("select").val("");
 					$("asignatura").children().remove();
-					alert("Clase creada");
+					
 					$("p.removible").remove();
 				}, 
 				error : function(event){
@@ -659,7 +660,7 @@ function tabla1(datos){	///CARGA LOS DIAS SELECCIONADOS A LA TABLA EDITAR
 		//if(e.hora_indice != undefined && e.dia_indice != undefined){
 			horas.push(e);
 			//console.log(e);
-			document.getElementById("mostrarE").rows[e.hora_indice].cells[e.dia_indice].innerHTML ="<p class='removible' >XXX</p>";
+			document.getElementById("mostrarE").rows[e.hora_indice].cells[e.dia_indice].innerHTML ="!!!!";
 	//	}
 	});
 		

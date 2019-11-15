@@ -417,7 +417,7 @@
           
                 <!-- Modal body -->
                 <div class="modal-body">
-                 <table class="table table-striped table-inverse table-bordered text-center">
+                 <table id ="table-hEst"class="table table-striped table-inverse table-bordered text-center">
                      <thead class="thead-inverse">
                          <h5>Clases disponibles para el alumno</h5>
                          <tr>
@@ -426,8 +426,8 @@
                              <th>Horario</th>
                          </tr>
                          </thead>
-                         <tbody>
-                             <tr>
+                         <tbody class="especificacionH">
+						<!-- <tr> 
                                  <td scope="row">Calculo Integral</td>
                                  <td>Pedro Gutierrez </td>
                                  <td>lunes , Viernes cienaga grande norte 201</td>
@@ -436,10 +436,10 @@
                                     <td scope="row">Electricidad y Magnetismo</td>
                                     <td>Gilma 500</td>
                                     <td>Viernes, 14:00-16:00 Sierra Nevada Sur 205, 16:00-18:00 Lab Electricidad y Magnetismo </td>
-                                </tr>
+                                </tr> -->
                          </tbody>
                  </table>
-                 <table class="table table-striped table-inverse table-bordered text-center">
+                 <table id ="tabla-Horario"class="table table-striped table-inverse table-bordered text-center">
                      <thead class="thead-inverse">
                          <h5>Horario</h5>
                          <tr>

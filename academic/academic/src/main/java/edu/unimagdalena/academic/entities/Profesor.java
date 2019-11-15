@@ -38,7 +38,7 @@ public class Profesor implements Serializable {
 	private String titulacion;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="profesor")
+	@OneToMany(mappedBy="profesor", orphanRemoval=true)
 	private Set<Clase> clases;
 	
 	@OneToOne

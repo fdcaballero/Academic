@@ -78,14 +78,14 @@ public class RestEstudianteController {
 						}
 					}
 					 
-					 responsableService.save(RespAnt);
+					// responsableService.save(RespAnt);
 				 }
 			 }
 				 
 			 
 			 estudiante.setResponsable(responsable.get()); //AGREGAMOS AL ESTUDIANTE EL NUEVO REPRESENTANTE Y AL REPRESENTANTE LE AGREGAMOS UN NUEVO ESTUDIANTE
 			 responsable.get().getEstudiantes().add(estudiante);
-			 responsableService.save(responsable.get());
+			//responsableService.save(responsable.get());
 		}
 			
 			if(estudiante.getVarString() != null) {
@@ -101,13 +101,13 @@ public class RestEstudianteController {
 									break;
 								}
 							}
-							cursoService.save(cursoAnt);
+						//	cursoService.save(cursoAnt);
 						}
 					}
 				}
 				estudiante.setGrado(curso.get());
 				curso.get().getEstudiantes().add(estudiante);
-				cursoService.save(curso.get());
+				//cursoService.save(curso.get());
 			}
 		 return studentRepository.save(estudiante);
 	}
@@ -126,14 +126,14 @@ public class RestEstudianteController {
 			Optional<Responsable_Alumno> responsable = responsableService.findById(Long.parseLong( student.getVar1String())); //Buscamos el responsable
 			student.setResponsable(responsable.get()); //Agregamos el responsable al estudiante 
 			responsable.get().getEstudiantes().add(student); //Agregamos el estudiante al responsable
-			responsableService.save(responsable.get());
+			//responsableService.save(responsable.get());
 		}
 		
 		if(student.getVarString() != null) {
 			Optional<Curso> curso = cursoService.findById(Long.parseLong(student.getVarString()));
 			student.setGrado(curso.get());
 			curso.get().getEstudiantes().add(student);
-			cursoService.save(curso.get());
+			//cursoService.save(curso.get());
 			
 		}
 		

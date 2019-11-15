@@ -147,10 +147,10 @@ public class RestClaseController {
 	@GetMapping("/clase0/{profe}")
 	public List<Clase> getClaseByProfe(@PathVariable String profe){
 						
-		return classRepositories.findByProfesor(profe);
+		return classRepositories.findClasesByProfesor(profe);
 	}
 	
-/*	@GetMapping("/clase01/{profe}/{curso}")
+	@GetMapping("/clase01/{profe}/{curso}")
 	public List<Clase> getClaseByProfeAndCurso(@PathVariable String profe, @PathVariable String curso){
 						
 		return classRepositories.findByCursoAndProfe(curso, profe);
@@ -160,7 +160,7 @@ public class RestClaseController {
 	public List<Clase> getClaseByAsigAndCurso(@PathVariable String asig, @PathVariable String curso){
 						
 		return classRepositories.findByAsigAndCurso(asig, curso);
-	} */
+	} 
 	
 	@GetMapping("/clase2/{asig}")
 	public List<Clase> getClaseByAsignatura(@PathVariable String asig){
@@ -168,9 +168,19 @@ public class RestClaseController {
 		return classRepositories.findByAsignatura(asig);
 	}
 	
-/*	@GetMapping("/clase1/{curso}")
+	@GetMapping("/clase1/{curso}")
 	public List<Clase> getClaseByCurso(@PathVariable String curso){
 						
 		return classRepositories.findByCurso(curso);
-	} */
+	}
+	
+	@GetMapping("/clasesprof/{id}")
+	public List<Clase> getClaseByProfesorId(@PathVariable Long id){
+		return classRepositories.findClasesByProfesorForId(id);
+	}
+	
+	@GetMapping("/clasesest/{curso}/{id}")
+	public List<Clase> getClaseByEstudianteId(@PathVariable Long curso, @PathVariable Long id) {
+		return classRepositories.findClaseByEstudianteForId(curso, id);
+	}
 }	

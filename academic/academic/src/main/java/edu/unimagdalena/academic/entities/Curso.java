@@ -3,6 +3,7 @@ package edu.unimagdalena.academic.entities;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,11 +28,11 @@ public class Curso implements Serializable {
 	private String etapa;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="grado") //Lado Dominante
-	private Set<Estudiante> estudiantes;
+	@OneToMany(mappedBy="grado", cascade = CascadeType.ALL) //Lado Dominante
+	private Set<Estudiante> estudiantes;	
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "curso") // Lado Dominante
+	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL,  orphanRemoval=true) // Lado Dominante
 	private Set<Asignatura> asignaturas;
 
 	public Curso() {

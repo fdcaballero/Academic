@@ -45,7 +45,7 @@ public class RestAsignaturaController {
 			asignatura.setCurso(curso.get());
 			curso.get().getAsignaturas().add(asignatura);
 			
-			cursoService.save(curso.get());
+			//cursoService.save(curso.get());
 		}else {
 			
 		}

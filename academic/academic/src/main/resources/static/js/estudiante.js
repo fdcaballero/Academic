@@ -19,15 +19,45 @@ function clasesEst(){
 	$("#clasesE").on("click", function(event){
 		event.preventDefault();
 		if(getId()){
-			console.log("llegando");
 			$.ajax("./api/v1/estudiante/"+getId(),{
 				contentType:"application/json",
 				dataType : "json",
 				type :"GET",
-				success :  function (datos){
-				   $.each(datos.clases, function(i, e){
-						console.log(e.asignatura.nombre + "  " + e.profesor.nombre);
+				success :  function (dato){
+					
+					$("tbody.especificacionH").children().remove();
+					$("p.removible").remove();
+					$.ajax("./api/v1/clasesest/"+dato.grado.id+"/"+dato.id ,{
+						contentType:"application/json",
+						dataType : "json",
+						type :"GET",
+						success :  function (datos){
+							 $.each(datos, function(i, e){ 
+								 var str = "";
+									$.each(e.horas_semanales, function(j,p){
+										str += p.dia +" "+ p.hora+"<br>";
+									});
+									console.log(e.profesor.nombre + " " + e.asignatura.nombre)
+								 $("tbody.especificacionH").append(
+											"<tr>" +
+											    "<td>" + e.asignatura.nombre+ "</td>" +
+											    "<td>" + e.profesor.nombre +" " +e.profesor.apellido1+ "</td>" +
+											    "<td>" + str + "</td>" +
+											"</tr>");
+							   });
+							
+						     $.each(datos, function(i, p){
+						    	 $.each(p.horas_semanales, function(i, e){
+						    		 document.getElementById("tabla-Horario").rows[e.hora_indice].cells[e.dia_indice].innerHTML ="<p class='removible' >"+p.asignatura.nombre +"</p>";
+						    	 });
+						     });
+						},
+						error : function(event){
+							console.log(event, "No carga datos");
+							alert("No se logro cargar los datos");
+						} 
 					});
+				
 					
 			
 				},
@@ -35,7 +65,6 @@ function clasesEst(){
 					console.log("No carga datos");
 					alert(error , "No se logro cargar los datos");
 				} 
-				
 			});
 		}else{
 			alert("No se ha seleccionado un estudiante");
@@ -683,7 +712,7 @@ function Listar(){ //EVENTO DESENCADENADO AL PRESIONAR EL BOTON BUSCAR.
 		var buscar1 = $("#buscaCurso").val();
 		
 		var url; //al momento de funcionar se deben agregar las url
-		console.log(buscar + " " + buscar1);
+		//console.log(buscar + " " + buscar1);
 		if( buscar && buscar1){
 			url = "api/v1/estudiante/"+ buscar + "/" + bucar1;
 		}else if (buscar && !buscar1){

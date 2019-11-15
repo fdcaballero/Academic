@@ -3,6 +3,7 @@ package edu.unimagdalena.academic.entities;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Responsable_Alumno implements Serializable {
 	private String correo;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "responsable")//mapeo con la tabla de estudiantes
+	@OneToMany(mappedBy = "responsable", cascade = CascadeType.ALL)//mapeo con la tabla de estudiantes
 	private Set<Estudiante> estudiantes;
 
 	
