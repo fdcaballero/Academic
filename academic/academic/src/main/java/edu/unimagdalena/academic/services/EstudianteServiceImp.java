@@ -83,5 +83,12 @@ public class EstudianteServiceImp implements EstudianteService{
 		
 		return estudiantRepository.findEstudiantesByGrado(grado);
 	}
+
+
+	@Override
+	public List<Estudiante> findEstudiantesByCurso(Long id) {
+		
+		return estudiantRepository.findEstudiantesByCurso(id);
+	}
 	
 }

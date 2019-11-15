@@ -19,4 +19,7 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
 			);
 	@Query("SELECT e FROM Estudiante e WHERE e.grado.etapa = :grado")
 	List<Estudiante> findEstudiantesByGrado(@Param("grado") String grado);
+	
+	@Query("SELECT e FROM Estudiante e WHERE e.grado.id = :id")
+	List<Estudiante> findEstudiantesByCurso(@Param("id") Long id);
 }

@@ -26,4 +26,6 @@ public interface EstudianteService {
 	
 	List<Estudiante> findEstudiantesByGrado(String grado);
 	
+	List<Estudiante> findEstudiantesByCurso(Long id);
+	
 }

@@ -188,9 +188,9 @@
                 <table id = "prof-tabla" class="table" width="100%" cellspacing="0">         
                     <tr>
                         <th><button class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Crear docente</button></th>                    
-                        <th><a id ="datosDocente" class="btn btn-primary btn-user btn-block"data-toggle="modal" data-target='#Modaldatos' >Datos personales</a></th>
-                        <th><a href="#" class="btn btn-primary btn-user btn-block">Clases</a></th>
-                        <th><a href="#" id="Delete" class="btn btn-primary btn-user btn-block">Eliminar profesor</a></th>
+                        <th><a id = "datosDocente" class = "btn btn-primary btn-user btn-block"data-toggle="modal" data-target='#Modaldatos' >Datos personales</a></th>
+                        <th><a id = "claseD" class = "btn btn-primary btn-user btn-block" data-toggle="modal" data-target='#myModalHorario'>Clases</a></th>
+                        <th><a id = "Delete" class = "btn btn-primary btn-user btn-block">Eliminar profesor</a></th>
                       
                     </tr>
                     <tr>
@@ -430,7 +430,7 @@
   
         <!-- Modal body -->
         <div class="modal-body">
-           <table class="table table-striped table-inverse table-bordered text-center">
+           <table id="tabla-Horario" class="table table-striped table-inverse table-bordered text-center">
              <thead class="thead-inverse">
                  <h5>Horario</h5>
                  <tr>
@@ -442,102 +442,102 @@
                      <th>Viernes</th>
                  </tr>
                  </thead>
-                 <tbody>
+                 <tbody class="tabla-horario">
                    <tr>
                      <td scope="row">09:00 - 10:00</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
                    </tr>
                    <tr>
                      <td scope="row">10:00 - 11:00</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
                    </tr>
                    <tr>
                      <td scope="row">11:00 - 12:00</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
                    </tr>
                    <tr>
                      <td scope="row">12:00 - 13:00</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
                    </tr>
                    <tr>
                      <td scope="row">13:00 - 14:00</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
                    </tr>
                    <tr>
                       <td scope="row">14:00 - 15:00</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
+                      <td class="editar"></td>
+                      <td class="editar"></td>
+                      <td class="editar"></td>
+                      <td class="editar"></td>
+                      <td class="editar"></td>
                    </tr>
                    <tr>
                      <td scope="row">15:00 - 16:00</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
                    </tr>
                    <tr>
                      <td scope="row">16:00 - 17:00</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
                    </tr>
                    <tr>
                      <td scope="row">17:00 - 18:00</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
                    </tr>
                    <tr>
                      <td scope="row">18:00 - 19:00</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
                    </tr>
                    <tr>
                      <td scope="row">19:00 - 20:00</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
                    </tr>
                    <tr>
                      <td scope="row">20:00 - 21:00</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
-                     <td>-</td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
+                     <td class="editar"></td>
                    </tr>
                  </tbody>
          </table>
@@ -546,7 +546,7 @@
         <!-- Modal footer -->
         <div class="modal-footer">
 
-          <button type="button" class="btn btn-primary ">aceptar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">aceptar</button>
                     
         </div>
   

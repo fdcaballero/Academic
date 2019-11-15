@@ -13,11 +13,13 @@ import javax.persistence.Table;
 public class Role{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id")
     private Long id;
+	
+	
     @Column(name = "role")
     private String role;
-	public Long getId() {
+	
+    public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {

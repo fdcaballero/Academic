@@ -381,7 +381,7 @@
                          </tr>
                          </thead>
                          <tbody class="table-horario">
-                           <tr class ="">
+                           <tr >
                              <td scope="row" >09:00 - 10:00</td>
                              <td  class='editar'></td>
                              <td  class='editar'></td>
@@ -548,9 +548,11 @@
                     </section>
                  <table id ="mostrarE" class="table table-striped table-inverse table-bordered text-center">
                      <thead class="thead-inverse">
-                         <h5>Horario</h5>
-                         <button class="btn btn-warning limpiarTb" >limpiar tabla</button>
-                         <tr>
+                     	<div class="card-body d-flex justify-content-between align-items-center">
+                        	 <h5>Horario</h5>
+                         	 <button class="btn btn-warning limpiarTb" >limpiar tabla</button>
+                         </div>
+                         <tr class="headTableC">
                              <th>Hora</th>
                              <th>Lunes</th>
                              <th>Martes</th>
@@ -563,67 +565,67 @@
                      <tbody class="table-horario">
                            <tr class ="">
                              <td scope="row" >09:00 - 10:00</td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td class='edita'></td>
-                             <td  class='edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
                            </tr>
                            <tr>
                              <td scope="row" >10:00 - 11:00</td>
-                             <td class='edita'></td>
-                             <td class='edita' ></td>
-                             <td class='edita' ></td>
-                             <td class='edita'></td>
-                             <td class='edita'></td>
+                             <td class = 'edita'></td>
+                             <td class = 'edita' ></td>
+                             <td class = 'edita' ></td>
+                             <td class = 'edita'></td>
+                             <td class = 'edita'></td>
                            </tr>
                            <tr>
                              <td scope="row" >11:00 - 12:00</td>
-                             <td class='edita'></td>
-                             <td class='edita'></td>
-                             <td class='edita'></td>
-                             <td class='edita'></td>
-                             <td class='edita'></td>
+                             <td class = 'edita'></td>
+                             <td class = 'edita'></td>
+                             <td class = 'edita'></td>
+                             <td class = 'edita'></td>
+                             <td class = 'edita'></td>
                            </tr>
                            <tr>
                              <td scope="row" >12:00 - 13:00</td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'> </td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'> </td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
                            </tr>
                             <tr>
                              <td scope="row" >13:00 - 14:00</td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita' ></td>
-                             <td  class='edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita' ></td>
+                             <td  class = 'edita'></td>
                            </tr>
                            <tr>
                               <td scope="row" >14:00 - 15:00</td>
-                             <td class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td class='edita'></td>
-                             <td  class='edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
                            </tr>
                            <tr>
                              <td scope="row" > 15:00 - 16:00</td>
-                             <td class='edita'></td>
-                             <td  class='edita'></td>
-                             <td class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
                            </tr>
                            <tr>
                              <td scope="row">16:00 - 17:00</td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td class='edita'></td>
-                             <td  class='edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
                            </tr>
                            <tr>
                              <td scope="row" >17:00 - 18:00</td>
@@ -643,19 +645,19 @@
                            </tr>
                            <tr>
                              <td scope="row">19:00 - 20:00</td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
                            </tr>
                            <tr>
                              <td scope="row" >20:00 - 21:00</td>
-                             <td class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
-                             <td  class='edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
+                             <td  class = 'edita'></td>
                            </tr>
                          </tbody>
                        
@@ -665,7 +667,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
     
-                  <button id = "actualizar" type="button" class="btn btn-primary" >actualizar</button>
+                  <button id = "actualizar" type="button" class="btn btn-primary" data-dismiss="modal">actualizar</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                   
                 </div>

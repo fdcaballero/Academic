@@ -15,6 +15,8 @@ $(function(){
   limpiar();
 //  tablaQuitar();
   limpiarTabla();
+  tablaEdit();
+  actualizar();
  
 });
 function limpiarTabla(){  //REMOVERA TODOS LOS DATOS DE LA TABLA
@@ -29,8 +31,7 @@ function limpiarTabla(){  //REMOVERA TODOS LOS DATOS DE LA TABLA
 }
 
 function cargarAsignaturaAlEditar(val, id){
-	
-		
+
 	 // var id  = $("#Ecurso").val();
 		$("#asignatura").children().remove();
 		if(!isNaN(id)){
@@ -215,7 +216,7 @@ function EcargarAsignaturaByCurso(){	//CAMBIA LAS ASIGNATURAS DEPENDIENDO DEL CU
 	$("#Ecurso").change(function(){
 		
 		var id  = $("#Ecurso").val();
-		$("#asignatura").children().remove();
+		$("#Easignatura").children().remove();
 		if(!isNaN(id)){
 			console.log(id);
 			$.ajax("./api/v1/asignaturasPorc/"+ id, {
@@ -327,10 +328,7 @@ function addClase(){
 		var asignatura =$("#asignatura").val();
 		var profesor = $("#profesor").val();
 		//var horas = horasSemanales();
-		console.log(curso + " " + asignatura + " " + profesor);
-		$.each(horas, function(i, e){
-			console.log(e.dia);
-		});
+	
 		var clase  ={
 				
 				"varAux1" : asignatura,
@@ -365,35 +363,84 @@ function addClase(){
 
 }
 
+function actualizar(){ //ENVIA A LA BD LOS DATOS PARA SER ACTUALIZADOS
+	$("#actualizar").on("click", function(event){
+		event.preventDefault();
+		
+		var curso = $("#Ecurso").val();
+		var asignatura =$("#Easignatura").val();
+		var profesor = $("#Eprofesor").val();
+		//var horas = horasSemanales();
+	
+		var clase  ={
+				
+				"varAux1" : asignatura,
+				"varAux2" : profesor,
+				"horas_semanales": horas
+		} ;
+		
+		if(curso && asignatura && profesor && horas.length != 0){
+			$.ajax("./api/v1/clase/"+ getId(),{
+				contentType: "application/json",
+				dataType: "json",
+				type : "PUT",
+				data : JSON.stringify(clase),
+				success: function(data){
+					horas.length= 0;
+					$("select").val("");
+					$("#Easignatura").children().remove();
+					alert("Clase actualizada");
+					$("p.removible").remove();
+				}, 
+				error : function(event){
+					console.log("Error al actualizar la clase", event);
+					alert("Ha ocurrido un error al actualizar la clase");
+				}
+			});
+		}else {
+			alert("seleccione todos los datos");
+		}
+			
+	});
+}
+
 function cargarStudiantes(){ // MUESTRA TODOS LOS ESTUDIANTES PERTENECIENTES A UNA CLASE SELECCIONADA
 	$("#MAlumnos").on("click", function(event){
 		event.preventDefault();
 		//alert(getId());
 		if(getId()){
-			
 			$.ajax("./api/v1/clase/" + getId(),
 					{
 				contentType : "application/json",
 				dataType : "json",
 				type : "GET",
-				success:function(dato){
-					console.log(dato.asignatura.curso.estudiantes);
-					if(dato.asignatura.curso.estudiantes){
-						$.each(dato, function(i, p) {
-	   			 			$("#list-estudiantes").append("<option value=" + p.id + " id = "+p.id+">" + p.nombre + " " + p.apellido1 + "</option>");
-	   			 		});
-					}
-				}, 
-				error : function(event){
-					console.log("Error ", event);
+				success:function(dato){ 
+					$("#list-estudiantes").children().remove();
+						$.ajax("./api/v1/estudianteesc/" + dato.asignatura.curso.id,
+							{
+							contentType : "application/json",
+							dataType : "json",
+							type : "GET",
+							success:function(dato){
+								console.log(dato);
+									$.each(dato, function(i, p) {
+			   			 				$("#list-estudiantes").append("<option value=" + p.id + " id = "+p.id+">" + p.nombre + " " + p.apellido1 + "</option>");
+			   			 			});
+								
+							}, 
+							error : function(event){
+								console.log("Error ", event);
+							}
+					
+						});
+				},
+				error : function(e){
+					console.log("ERROR", e);
 				}
-			
-			});
+			});		
 		}else{
 			alert("DEBE SELECCIONAR UN OBJETO DE LA TABLA");
 		}
-		
-		
 	});	
 	
 }
@@ -403,20 +450,19 @@ function limpiar(){ // LIMPIA LA TABLA DE DATOS
 		  event.preventDefault();
 		  $("tbody.cuerpo-table").children().remove();
 	 });
-	
 }
 
 function Buscar(){ //REALIZA LAS BUSQUEDAS EN LA BD
  $("#buscar").on("click", function(event){
 	  event.preventDefault();
 	  
-	  var buscar = $("#Bprofesor").val();
-	  var buscar1 = $("#Bcurso").val();
-	  var buscar2  = $("#Basignatura").val();
+	  var buscar2 = $("#Bprofesor").val();
+	  var buscar = $("#Bcurso").val();
+	  var buscar1  = $("#Basignatura").val();
 	  
 
 	  var url;
-	  
+	   console.log(buscar + "  " + buscar2 + "  " + buscar1 );
 	  if (buscar && buscar1  && buscar2){ // 1 2 3
 		
 		  url = "api/v1/clase/"+ buscar + "/" +buscar1 +"/"+buscar2; // 1
@@ -439,11 +485,11 @@ function Buscar(){ //REALIZA LAS BUSQUEDAS EN LA BD
 		   
 	  }else if (buscar && !buscar1 && !buscar2){ // 1
 		  
-		  url = "api/v1/clase/"+ buscar + "/" +buscar1 +"/"+buscar2; //6 
+		  url = "api/v1/clase/"+ buscar; //6 
 		  
 	  }else if (!buscar && buscar1 && !buscar2){ // 2
 		  
-		  url = "api/v1/clase/"+ buscar + "/" +buscar1 +"/"+buscar2; // 7
+		  url = "api/v1/clase/"+buscar1 ; // 7
 		  
 	  }else{
 		  url = "api/v1/clase/";  // 8
@@ -567,6 +613,29 @@ function getId(){	// RETORNA EL ID DEL OBJ SELECCIONADO
 	return $("input[name = seleccion]:checked").val();
 } 
 
+function tablaEdit(){
+	$('td.edita').click( function(e) {
+		e.preventDefault();
+		
+		//console.log("["+$(this).parent().index()+" , "+$(this).index()+"]"  );
+		var dia = $("tr.headTableC").children().eq($(this).index()).text();
+		
+		var hora = $(this).parent().children().eq(0).text();
+		//console.log("La hora de la clase es "+ hora);
+		var indiceD =$(this).index();
+		var indiceH =$(this).parent().index()+1;
+		
+		validarPila(dia, hora,indiceD ,indiceH );
+		/*horas.push({"dia": dia, "hora" : hora,
+					"dia_indice" :  $(this).index(),
+					"hora_indice" : $(this).parent().index()
+					});*/
+	//	console.log (dia);
+	 //	console.log(document.getElementById("crearH").children().eq(0).eq($(this).parent().index()).text() );
+		document.getElementById("mostrarE").rows[indiceH].cells[indiceD].innerHTML = "<p class='removible'>XXX</p>" ;
+			
+	});
+}
 
 function tabla1(datos){	///CARGA LOS DIAS SELECCIONADOS A LA TABLA EDITAR
 /*$(' td.edita').click( function(e) {
@@ -584,12 +653,12 @@ function tabla1(datos){	///CARGA LOS DIAS SELECCIONADOS A LA TABLA EDITAR
 					"dia_indice" :  $(this).index(),
 					"hora_indice" : $(this).parent().index()
 					});*/
-	console.log (datos);
+	//console.log (datos);
 	 	/*console.log(document.getElementById("crearH").children().eq(0).eq($(this).parent().index()).text() );*/
 	$.each(datos, function(i, e){
 		//if(e.hora_indice != undefined && e.dia_indice != undefined){
 			horas.push(e);
-			console.log(e);
+			//console.log(e);
 			document.getElementById("mostrarE").rows[e.hora_indice].cells[e.dia_indice].innerHTML ="<p class='removible' >XXX</p>";
 	//	}
 	});

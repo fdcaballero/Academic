@@ -141,6 +141,9 @@ public class RestEstudianteController {
 		return studentRepository.save(student);
 	}
 
-
+     @GetMapping("/estudianteesc/{id}")
+	 public List<Estudiante> getEstudianteByIdCurso(@PathVariable("id") Long id){
+		return studentRepository.findEstudiantesByCurso(id);
+	 }
 
 }
