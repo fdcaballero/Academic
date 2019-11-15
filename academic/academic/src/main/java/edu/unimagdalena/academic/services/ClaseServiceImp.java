@@ -49,7 +49,37 @@ public class ClaseServiceImp implements ClaseService {
 		return claseRepository.findById(id);
 		
 	}
+	@Override
+	public List<Clase> findByAsignatura(String asig){
+		return claseRepository.findByAsignatura(asig);
+	}
+
+	@Override
+	public List<Clase> findByProfesor(String profe){
+		return claseRepository.findByProfesor(profe);
+	}		
+
+	@Override
+	public List<Clase> findByAsigAndProfe(String asig, String profe){
+		return claseRepository.findByAsigAndProfe(asig, profe);
+	}
+/*	
+	@Override
+	public List<Clase> findByCurso(String curso){
+		return claseRepository.findByCurso(curso);
+	}
+		
 	
+	@Override
+	public List<Clase> findByCursoAndProfe(String curso, String profe){
+		return claseRepository.findByCursoAndProfe(curso, profe);
+	}
+	@Override
+	public List<Clase> findByAsigAndCurso(String asig, String curso){
+		return claseRepository.findByAsigAndCurso(asig, curso);
+	}
+ */
+}	
 		
 
 	
