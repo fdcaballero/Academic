@@ -1,18 +1,16 @@
 package edu.unimagdalena.academic.entities;
 
-import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.sql.rowset.serial.SerialArray;
+import javax.persistence.Table;
 
 @Entity
-public class Role implements Serializable{
+@Table(name = "roles")
+public class Role{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
