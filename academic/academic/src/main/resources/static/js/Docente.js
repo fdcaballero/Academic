@@ -11,10 +11,11 @@ $(function(){
 });
 
 
-function agregarCurso(){
+function agregarCurso(){	
 	$.ajax("./api/v1/");
 	
 }
+
 function AddDocente(){
 	$("#create").on("click", function(event){
 	  var nombre = $("input[id = nombre]").val();
@@ -136,7 +137,7 @@ function Actualizar(){
 			    	 type: "PUT",
 			    	 data: JSON.stringify(docente),
 			    	 success: function(dataDocente){  
-			    
+			    		 
 			    		    $("#Dnombre").val("");
 			    			$("#Dapellido").val("");
 			    			$("#DapellidoS").val("");
@@ -160,6 +161,7 @@ function Actualizar(){
 }
 
 function showData(){
+	
     $("#datosDocente").on("click",function(event){
        event.preventDefault();
        var id = getId();
