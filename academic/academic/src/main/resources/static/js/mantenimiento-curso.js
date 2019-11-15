@@ -191,3 +191,4 @@ function getId(){
 	return $("input[name = seleccion]:checked").val();
 }
 
+
