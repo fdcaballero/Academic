@@ -130,8 +130,14 @@ function editar(){
 				dataType : "json",
 				type : "PUT",
 				data: JSON.stringify(curso),
-				success  : function(data){
-					
+				success  : function(e){
+				       $("input[id = "+getId()+"]").closest("tr").remove();
+					   $('#curso-tabla').append("" +
+		 			        	"<tr class = 'contenido' data-id="+e.id+">" +
+		 			              "<td>" + e.nivel + "</td>" +
+		 			    	      "<td>" + e.etapa + "</td>" +
+		 			    	      "<td> <input type='radio' value="+ e.id +" class ='seleccion' name='seleccion' id="+ e.id + "> </td>" +
+		 			    	    "</tr>");
 				},
 				error : function(event){
 					alert("error al crear un curso");
@@ -184,3 +190,4 @@ function limpiar(){
 function getId(){
 	return $("input[name = seleccion]:checked").val();
 }
+
