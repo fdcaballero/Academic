@@ -161,7 +161,7 @@
              <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h2 class="m-0 font-weight-bold text-primary">Clases</h2>    
             </div>
-               <p><strong> B�squeda de clases</strong></p>
+               <p><strong> Búsqueda de clases</strong></p>
             <div>
                 <div class="form-group">
                  <label for="curso">Curso</label>
@@ -193,7 +193,7 @@
           <!-- DataTables Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Resultado de la b�squeda</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Resultado de la búsqueda</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -258,13 +258,13 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
+            <span aria-hidden="true">Ã</span>
           </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="">Cerrar sesión</a>
+          <a class="btn btn-primary" href="">Cerrar sesiÃ³n</a>
         </div>
       </div>
     </div>
@@ -368,7 +368,7 @@
                      <thead class="thead-inverse">
                      	<div class="card-body d-flex justify-content-between align-items-center">
                         	 <h5>Horario</h5>
-                        	<!-- <button  id="add_hora" class="btn btn-warning">Add</button> -->
+                        	<button  class="btn btn-warning limpiarTb">limpiar tabla</button>
                         	 
                         </div>
                          <tr class="headTableC">
@@ -549,6 +549,7 @@
                  <table id ="mostrarE" class="table table-striped table-inverse table-bordered text-center">
                      <thead class="thead-inverse">
                          <h5>Horario</h5>
+                         <button class="btn btn-warning limpiarTb" >limpiar tabla</button>
                          <tr>
                              <th>Hora</th>
                              <th>Lunes</th>
@@ -696,3 +697,4 @@
 </body>
 
 </html>
+
