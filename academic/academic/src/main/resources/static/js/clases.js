@@ -7,14 +7,62 @@ $(function(){
   cargarAsignaturaByCurso();
   EcargarAsignaturaByCurso();
   cargarAsignatura();
-tabla1();
+  tabla1();
   cargarProfesores();
   cargarCurso();
   tabla();
   //getId();
   limpiar();
-  tablaQuitar();
+//  tablaQuitar();
+  limpiarTabla();
+ 
 });
+function limpiarTabla(){  //REMOVERA TODOS LOS DATOS DE LA TABLA
+	$("button.limpiarTb").on("click", function(event){
+		event.preventDefault();
+		
+		$("p.removible").remove();
+		horas.length = 0;
+		console.log(horas + "  arreglo  "+ horas.lengt);
+	});
+	
+}
+
+function cargarAsignaturaAlEditar(val, id){
+	
+		
+	 // var id  = $("#Ecurso").val();
+		$("#asignatura").children().remove();
+		if(!isNaN(id)){
+			console.log(id);
+			$.ajax("./api/v1/asignaturasPorc/"+ id, {
+				contentType:"application/json",
+				dataType : "json",
+				type :"GET",
+				success :  function (datos){
+					$("#Easignatura").children().remove();
+					if(datos){
+						 $.each(datos, function(i, e) {
+				      
+							 if(val && val == e.id){
+							     $("#Easignatura").append("<option value=" + e.id + " id = "+e.id+" selected>"  + e.nombre +  "</option>");				 
+							 }else{
+							 console.log(e.nombre+ " " +e.id +" ");
+						   //  $("#curso").append("<option value=" + e.id + " id = "+e.id+">" + e.nombre + "</option>");
+						     $("#Easignatura").append("<option value=" + e.id + " id = "+e.id+">" + e.nombre +  "</option>");
+							 }
+						 });
+					}
+					
+				},
+				error: function(event){
+					console.log("error en al cargar la asignatura");
+					alert("ERROR");
+				}
+			});
+		}
+	
+}
 
 function elim(){ //ELIMINA UNA CLASE
 	$("#elim").on("click", function(event){
@@ -74,7 +122,8 @@ function cargarAsignaturaByCurso(){	//CAMBIA LAS ASIGNATURAS DEPENDIENDO DEL CUR
 	});
 }
 
-function cargarCursoEdit(val,val1){
+function cargarCursoEdit(val){
+	$("#Ecurso").children().remove();
 	$.ajax({	
 		url : "/api/v1/curso",
 		contentType: "application/json",
@@ -91,7 +140,7 @@ function cargarCursoEdit(val,val1){
 				
 				                  
 			 });
-			EcargarAsignaturaByCurso(val1); 
+			
 		},
 		error : function(event){
    		 alert("error en el registro intente nuevamente");
@@ -108,6 +157,7 @@ function cargarDocenteEdit(val){
 		dataType:'json',
 		type: "GET",
 		success:function(datos){
+			 $("#Eprofesor").children().remove();
 			$.each(datos, function(i, p) {
 				if(val && val == p.id){
 					 $("#Eprofesor").append("<option value=" + p.id + " id = "+p.id+" selected >" + p.nombre + " " + p.apellido1 + "</option>");
@@ -139,10 +189,12 @@ function cargarDatos(){//CARGA LOS DATOS AL MODAL DE EDITAR
 				type : "GET",
 				success:function(dato){
 					console.log(dato.profesor.nombre + " " + dato.profesor.id);
-					cargarDocenteEdit(dato.profesor.id);
-					cargarCursoEdit(dato.asignatura.curso.id, dato.asignatura.id);
+					
+					cargarCursoEdit(dato.asignatura.curso.id);
 					tabla1(dato.horas_semanales);
 					
+					cargarDocenteEdit(dato.profesor.id);
+					cargarAsignaturaAlEditar(dato.asignatura.id, dato.asignatura.curso.id);
 				}, 
 				error : function(event){
 					console.log("Error ", event);
@@ -158,10 +210,10 @@ function cargarDatos(){//CARGA LOS DATOS AL MODAL DE EDITAR
 	});
 }
 
-function EcargarAsignaturaByCurso(valor){	//CAMBIA LAS ASIGNATURAS DEPENDIENDO DEL CURSO SELECCIONADO EN EL MODAL EDITAR
+function EcargarAsignaturaByCurso(){	//CAMBIA LAS ASIGNATURAS DEPENDIENDO DEL CURSO SELECCIONADO EN EL MODAL EDITAR
 	
 	$("#Ecurso").change(function(){
-		alert("!!!!!!!!");
+		
 		var id  = $("#Ecurso").val();
 		$("#asignatura").children().remove();
 		if(!isNaN(id)){
@@ -218,6 +270,7 @@ function cargarAsignatura(){//AGREAGA LA LISTA DE ASIGNATURA A LA VISTA
 }
 
 function cargarProfesores(){//AGREAGA LA LISTA DE PROFESORES A LA VISTA
+	
 	$.ajax({	
 		url : "/api/v1/docente",
 		contentType: "application/json",
@@ -265,6 +318,7 @@ function cargarCurso(){//AGREAGA LA LISTA DE CURSOS A LA VISTA
 }
 var horas =[]; //ARRAY GLOBAL PARA EL LISTADO DE HORAS SEMANALES DE UNA ASIGNATURA
 function addClase(){
+	
 	$("#crear").on("click", function(event){
 		event.preventDefault();
 		
@@ -285,7 +339,7 @@ function addClase(){
 		} ;
 		
 		
-		if(curso && asignatura && profesor){
+		if(curso && asignatura && profesor && horas.length != 0){
 			$.ajax("./api/v1/clase",{
 				contentType: "application/json",
 				dataType: "json",
@@ -471,8 +525,9 @@ function validarPila( dia , hora, indice_dia, indice_hora){ //VERIFICA QUE LOS D
 		
 			 horas.push(horaSemanal);
 		 }else{
-			// console.log("horario" + dia + " " + hora);
-			 alert("ya has elegido ese horario");
+			// document.getElementById("crearE").rows[indice_dia].cells[indice_hora].remove("p.removible");//s = "<p class='removible' >      </p>" ;
+			 // console.log("horario" + dia + " " + hora);
+			// alert("ya has elegido ese horario");
 		 }
 		
 		
@@ -493,9 +548,9 @@ function encontrarPila(dia, hora){ // VERIFICA SI EL DIA YA HA SIDO AGREGADO UNA
 }
 
 function tablaQuitar(){ // FUNCION PARA LIMPIAR LA TABLA LUEGO DE CREAR --- NO EN USO
-	$('td.editar').dblclick( function(e) {
+	$('td.editar').on("dblclick", function(e) {
 		e.preventDefault();
-		aler("hola");
+		
 		//console.log("["+$(this).parent().index()+" , "+$(this).index()+"]"  );
 		var Qdia = $("tr.headTableC").children().eq($(this).index()).text();
 		var Qhora = $(this).parent().children().eq(0).text();
@@ -503,34 +558,38 @@ function tablaQuitar(){ // FUNCION PARA LIMPIAR LA TABLA LUEGO DE CREAR --- NO E
 		
 		console.log (dia);
 	 //	console.log(document.getElementById("crearH").children().eq(0).eq($(this).parent().index()).text() );
-		document.getElementById("crearH").rows[$(this).parent().index()+1].cells[$(this).index()].innerHTML = "   " ;
+		document.getElementById("crearH").rows[$(this).parent().index()+1].cells[$(this).index()].innerHTML = "    " ;
 				
 	});
 }
 
 function getId(){	// RETORNA EL ID DEL OBJ SELECCIONADO
 	return $("input[name = seleccion]:checked").val();
-}
+} 
+
+
 function tabla1(datos){	///CARGA LOS DIAS SELECCIONADOS A LA TABLA EDITAR
-	//$(' td.edita').click( function(e) {
-		//e.preventDefault();
+/*$(' td.edita').click( function(e) {
+		e.preventDefault();
 		
-		//console.log("["+$(this).parent().index()+" , "+$(this).index()+"]"  );
-		//var dia = $("tr.headTableC").children().eq($(this).index()).text();
+		console.log("["+$(this).parent().index()+" , "+$(this).index()+"]"  );
+		var dia = $("tr.headTableC").children().eq($(this).index()).text();
 		
-	//	var hora = $(this).parent().children().eq(0).text();
-		//console.log("La hora de la clase es "+ hora);
-	//	var indiceD =$(this).index();
-		//var indiceH =$(this).parent().index();
-	//	validarPila(dia, hora,indiceD ,indiceH );
-		/*horas.push({"dia": dia, "hora" : hora,
+		var hora = $(this).parent().children().eq(0).text();
+		console.log("La hora de la clase es "+ hora);
+		var indiceD =$(this).index();
+		var indiceH =$(this).parent().index();
+	validarPila(dia, hora,indiceD ,indiceH );
+		horas.push({"dia": dia, "hora" : hora,
 					"dia_indice" :  $(this).index(),
 					"hora_indice" : $(this).parent().index()
 					});*/
-	//	console.log (dia);
-	 //	console.log(document.getElementById("crearH").children().eq(0).eq($(this).parent().index()).text() );
+	console.log (datos);
+	 	/*console.log(document.getElementById("crearH").children().eq(0).eq($(this).parent().index()).text() );*/
 	$.each(datos, function(i, e){
 		//if(e.hora_indice != undefined && e.dia_indice != undefined){
+			horas.push(e);
+			console.log(e);
 			document.getElementById("mostrarE").rows[e.hora_indice].cells[e.dia_indice].innerHTML ="<p class='removible' >XXX</p>";
 	//	}
 	});
