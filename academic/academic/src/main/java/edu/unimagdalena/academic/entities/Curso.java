@@ -28,7 +28,7 @@ public class Curso implements Serializable {
 	private String etapa;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="grado", cascade = CascadeType.ALL) //Lado Dominante
+	@OneToMany(mappedBy="grado", cascade = CascadeType.ALL, orphanRemoval=true) //Lado Dominante
 	private Set<Estudiante> estudiantes;	
 	
 	@JsonIgnore

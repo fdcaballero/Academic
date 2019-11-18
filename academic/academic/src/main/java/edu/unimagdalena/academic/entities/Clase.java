@@ -51,7 +51,7 @@ public class Clase implements Serializable {
 	 private String varAux2;
 	 
 	 @JsonIgnore
-	 @ManyToMany(mappedBy = "clases", cascade = CascadeType.ALL)
+	 @ManyToMany(mappedBy = "clases")
 	 private Set<Estudiante> estudiantes;
 
 	

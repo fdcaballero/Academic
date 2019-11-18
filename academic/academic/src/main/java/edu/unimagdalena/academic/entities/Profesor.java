@@ -3,6 +3,7 @@ package edu.unimagdalena.academic.entities;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,7 +39,7 @@ public class Profesor implements Serializable {
 	private String titulacion;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="profesor", orphanRemoval=true)
+	@OneToMany(mappedBy="profesor", cascade = CascadeType.ALL, orphanRemoval=true)
 	private Set<Clase> clases;
 	
 	@OneToOne
