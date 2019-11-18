@@ -48,8 +48,8 @@ public class RestClaseController {
 			Optional<Asignatura> asignatura = asignaturaService.findById(Long.parseLong(clase.getVarAux1()));
 			if(asignatura.isPresent()) {
 				clase.setAsignatura(asignatura.get());
-				asignatura.get().getClases().add(clase);
-				asignaturaService.save(asignatura.get());
+			//	asignatura.get().getClases().add(clase);
+				//asignaturaService.save(asignatura.get());
 			}else {
 				throw new EntityNotFoundException("No se encontro la asignatura");
 			}
@@ -58,8 +58,8 @@ public class RestClaseController {
 			Optional<Profesor> profe = profesorService.findById(Long.parseLong(clase.getVarAux2()));
 			if(profe.isPresent()) {
 				clase.setProfesor(profe.get());
-				profe.get().getClases().add(clase);
-				profesorService.save(profe.get());
+				//profe.get().getClases().add(clase);
+				//profesorService.save(profe.get());
 			}else {
 				throw new EntityNotFoundException("No se encontro la profesor");
 			}
@@ -76,7 +76,7 @@ public class RestClaseController {
 			
 			Optional<Asignatura> asignatura = asignaturaService.findById(Long.parseLong(clase.getVarAux1()));
 			if(asignatura.isPresent()) { 
-				if(asignatura.get() !=  clase.getAsignatura()) {
+			/*	if(asignatura.get() !=  clase.getAsignatura()) {
 					Asignatura asignAnt = clase.getAsignatura();
 					if(asignAnt != null) {
 						for (Clase clasAux : asignAnt.getClases()) {
@@ -88,20 +88,20 @@ public class RestClaseController {
 						asignaturaService.save(asignAnt);
 					}
 					
-				}
+				}*/
 				
 			}else {
 				throw new EntityNotFoundException("No se encontro la asignatura");
 			}
 			clase.setAsignatura(asignatura.get());
-			asignatura.get().getClases().add(clase);
-			asignaturaService.save(asignatura.get());
+			//asignatura.get().getClases().add(clase);
+			//asignaturaService.save(asignatura.get());
 		}
 		
 		 if(clase.getVarAux2() != null) {
 			Optional<Profesor> profe = profesorService.findById(Long.parseLong(clase.getVarAux2()));
 			if(profe.isPresent()) {
-				if(profe.get()  != clase.getProfesor()){
+				/*if(profe.get()  != clase.getProfesor()){
 					Profesor profeAnt = clase.getProfesor();
 					if(profeAnt != null) {
 						for (Clase Bclas : profeAnt.getClases()) {
@@ -114,13 +114,13 @@ public class RestClaseController {
 					}
 					
 				}
-				
+				*/
 			}else {
 				throw new EntityNotFoundException("No se encontro la profesor");
 			}
 			clase.setProfesor(profe.get());
-			profe.get().getClases().add(clase);
-			profesorService.save(profe.get());
+			//profe.get().getClases().add(clase);
+			//profesorService.save(profe.get());
 		
 		}
 		

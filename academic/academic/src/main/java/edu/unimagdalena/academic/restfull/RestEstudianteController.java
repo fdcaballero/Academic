@@ -65,7 +65,7 @@ public class RestEstudianteController {
 		
 		 estudiante.setId(id);
 		 
-		 if(estudiante.getVar1String() != null) {
+		/* if(estudiante.getVar1String() != null) {
 			 Optional<Responsable_Alumno> responsable = responsableService.findById(Long.parseLong(estudiante.getVar1String())); //NUEVO RESPONSABLE
 			 if(estudiante.getResponsable() != null) {
 				 if(estudiante.getResponsable().getId() == responsable.get().getId()) {
@@ -108,7 +108,7 @@ public class RestEstudianteController {
 				estudiante.setGrado(curso.get());
 				curso.get().getEstudiantes().add(estudiante);
 				//cursoService.save(curso.get());
-			}
+			}*/
 		 return studentRepository.save(estudiante);
 	}
 	 
@@ -121,7 +121,7 @@ public class RestEstudianteController {
  
      @PostMapping("/estudiante")
      public Estudiante createStudent(@RequestBody Estudiante student) {
-		
+		/*
 		if(student.getVar1String() != null) {
 			Optional<Responsable_Alumno> responsable = responsableService.findById(Long.parseLong( student.getVar1String())); //Buscamos el responsable
 			student.setResponsable(responsable.get()); //Agregamos el responsable al estudiante 
@@ -136,7 +136,7 @@ public class RestEstudianteController {
 			//cursoService.save(curso.get());
 			
 		}
-		
+		*/
 		
 		return studentRepository.save(student);
 	}

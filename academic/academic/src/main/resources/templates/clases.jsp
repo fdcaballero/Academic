@@ -161,7 +161,7 @@
              <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h2 class="m-0 font-weight-bold text-primary">Clases</h2>    
             </div>
-               <p><strong> Búsqueda de clases</strong></p>
+               <p><strong> Buqueda de clases</strong></p>
             <div>
                 <div class="form-group">
                  <label for="curso">Curso</label>

@@ -43,12 +43,11 @@ public class RestAsignaturaController {
 		if(asignatura.getVarString() != null) {
 			Optional<Curso> curso = cursoService.findById(Long.parseLong(asignatura.getVarString()));
 			asignatura.setCurso(curso.get());
-			curso.get().getAsignaturas().add(asignatura);
+			//curso.get().getAsignaturas().add(asignatura);
 			
 			//cursoService.save(curso.get());
-		}else {
-			
-		}
+		}		
+		
 		return asignaturaService.save(asignatura);
 	}
 	
@@ -57,20 +56,21 @@ public class RestAsignaturaController {
 		asignatura.setId(id);
 		if(asignatura.getVarString() != null) { // VERIFICACION DE DATOS
 			Optional<Curso> curso = cursoService.findById(Long.parseLong(asignatura.getVarString()));
-			if(asignatura.getCurso() != null) { //VERIFICAR SI TIENE UN CURSO AGREAGADO
+			/*if(asignatura.getCurso() != null) { //VERIFICAR SI TIENE UN CURSO AGREAGADO
 				if(asignatura.getCurso().getId() != curso.get().getId()) { //CAMBIANDO DE CURSO
-					Curso cursoAnt = asignatura.getCurso(); 
-					for(Asignatura asig : cursoAnt.getAsignaturas()) {
+				//	Curso cursoAnt = asignatura.getCurso(); 
+					/*for(Asignatura asig : cursoAnt.getAsignaturas()) {
 						if(asig.getId() == asignatura.getId()) {
 							cursoAnt.getAsignaturas().remove(asignatura);
 						}
 					}
-					cursoService.save(cursoAnt);
+					//cursoService.save(cursoAnt);
 				}
-			}
+			}*/
+			
 			asignatura.setCurso(curso.get());
-			curso.get().getAsignaturas().add(asignatura);
-			cursoService.save(curso.get());
+		//	curso.get().getAsignaturas().add(asignatura);
+			//cursoService.save(curso.get());
 		}
 		return asignaturaService.save(asignatura);
 	}
