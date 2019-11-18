@@ -186,6 +186,7 @@
             <div class="card-body">
               <div class="table-responsive">
                 <table id = "prof-tabla" class="table" width="100%" cellspacing="0">         
+                <thead>
                     <tr>
                         <th><button class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#myModal">Crear docente</button></th>                    
                         <th><a id = "datosDocente" class = "btn btn-primary btn-user btn-block"data-toggle="modal" data-target='#Modaldatos' >Datos personales</a></th>
@@ -199,6 +200,10 @@
                       <th>Correo</th>
                       <th>Teléfono</th>
                     </tr>
+                    </thead>
+                    <tbody class="Tbuscar">
+                    
+                    </tbody >
                    <!--  
 					<tr  th:each ="profesor : ${profesores}" class = 'contenido' data-id="${profesor.id}" >
 	    			    <td th:text ="${profesor.nombre}"></td>

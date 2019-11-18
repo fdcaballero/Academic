@@ -157,33 +157,36 @@ function Actualizar(){
 	        };
 	      var id = getId();
 	      console.log(id+ " este es el id seleccionado des Actualizar");
-	   
-			     $.ajax("./api/v1/docente/"+id,
-			    		 {
-			    	 contentType :"application/json",
-			    	 dataType:'json',
-			    	 type: "PUT",
-			    	 data: JSON.stringify(docente),
-			    	 success: function(dataDocente){  
-			    		 
-			    		    $("#Dnombre").val("");
-			    			$("#Dapellido").val("");
-			    			$("#DapellidoS").val("");
-			    			$("#Dnif").val("");
-			    			$("#Dtelefono").val("");
-			    			$("#Dcorreo").val("");
-			    			$("#Dtitulacion").val("");
+	      if(nombre && apellido && Nif && telefono && correo ){
+	 	     $.ajax("./api/v1/docente/"+id,
+		    		 {
+		    	 contentType :"application/json",
+		    	 dataType:'json',
+		    	 type: "PUT",
+		    	 data: JSON.stringify(docente),
+		    	 success: function(dataDocente){  
+		    		 
+		    		    $("#Dnombre").val("");
+		    			$("#Dapellido").val("");
+		    			$("#DapellidoS").val("");
+		    			$("#Dnif").val("");
+		    			$("#Dtelefono").val("");
+		    			$("#Dcorreo").val("");
+		    			$("#Dtitulacion").val("");
 
-			    		
-			    	      
-			    	 },
-			    	 error : function(event){
-			    		 alert("error en el registro intente nuevamente");
-			    		 console.log("error" , event);
-			    	 }
-			     
-			      });
-	       
+		    		
+		    	      
+		    	 },
+		    	 error : function(event){
+		    		 alert("error en el registro intente nuevamente");
+		    		 console.log("error" , event);
+		    	 }
+		     
+		      });
+       
+	    	  
+	      }
+		
 		
 	 });
 }
@@ -232,7 +235,7 @@ $("#buscar").on("click", function(event){
 		var link;
 		var buscaNombre =$("#buscarNombre").val();
 		var buscaCC = $("#buscarCC").val();
-		
+		 $('tbody.Tbuscar').children().remove();
 		if(buscaNombre == ""  && buscaCC == ""){	
 			link = "./api/v1/docente";
 			
@@ -247,7 +250,7 @@ $("#buscar").on("click", function(event){
 	    		type: "GET",
 	    		success:function(datos){
 	    			 $.each(datos, function(i, e) {
-	    			        $('#prof-tabla').append("" +
+	    			        $('tbody.Tbuscar').append("" +
 	    			        	"<tr class = 'contenido' data-id="+e.id+">" +
 	    			              "<td>" + e.nombre + "</td>" +
 	    			    	      "<td>" + e.nif + "</td>" +
