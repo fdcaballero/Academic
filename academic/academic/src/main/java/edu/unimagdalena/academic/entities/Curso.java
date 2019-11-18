@@ -73,12 +73,12 @@ public class Curso implements Serializable {
 
 	public void setEstudiantes(Set<Estudiante> estudiantes) {
 		if(this.estudiantes.isEmpty()) {
-			//this.estudiantes = new Set<Estudiante>();
+			this.estudiantes = new Set<Estudiante>();
 			this.estudiantes.clear();
 		}
 			this.estudiantes.addAll(estudiantes);
 			for(Estudiante stud : estudiantes) {
-				stud.setCurso(this);
+				stud.setGrado(this);
 			
 			}
 				
@@ -89,10 +89,21 @@ public class Curso implements Serializable {
 
 	public Set<Asignatura> getAsignaturas() {
 		return asignaturas;
+		
 	}
 
 	public void setAsignaturas(Set<Asignatura> asignaturas) {
-		this.asignaturas = asignaturas;
+		if(this.asignaturas.isEmpty()) {
+			this.asignaturas  = new Set<Asignatura>();
+			this.asignaturas.clear();
+		}
+		this.asignaturas.addAll(asignaturas);
+		
+		for(Asignatura asig : asignaturas) {
+			asig.setCurso(this);
+		
+		}
+			
 	}
 	
 	
