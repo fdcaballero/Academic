@@ -20,7 +20,6 @@ import edu.unimagdalena.academic.services.CursoService;
 @RestController
 @RequestMapping("api/v1")
 public class RestCursoController {
-
 	@Autowired
 	private CursoService cursoService;
 	
@@ -43,6 +42,8 @@ public class RestCursoController {
 	@PutMapping("/curso/{id}")
 	public Curso Editar(@RequestBody Curso curso, @PathVariable Long id) {
 		curso.setId(id);
+		curso.setAsignaturas(curso.getAsignaturas());
+		curso.setEstudiantes(curso.getEstudiantes());
 		return cursoService.save(curso);
 		
 	}

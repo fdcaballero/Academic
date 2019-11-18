@@ -1,6 +1,9 @@
 package edu.unimagdalena.academic.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -32,7 +35,7 @@ public class Curso implements Serializable {
 	private Set<Estudiante> estudiantes;	
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL,  orphanRemoval=true) // Lado Dominante
+	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval=true) // Lado Dominante
 	private Set<Asignatura> asignaturas;
 
 	public Curso() {
@@ -69,6 +72,18 @@ public class Curso implements Serializable {
 	}
 
 	public void setEstudiantes(Set<Estudiante> estudiantes) {
+		if(this.estudiantes.isEmpty()) {
+			//this.estudiantes = new Set<Estudiante>();
+			this.estudiantes.clear();
+		}
+			this.estudiantes.addAll(estudiantes);
+			for(Estudiante stud : estudiantes) {
+				stud.setCurso(this);
+			
+			}
+				
+			
+		
 		this.estudiantes = estudiantes;
 	}
 

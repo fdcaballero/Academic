@@ -11,11 +11,9 @@ $(function(){
 
 
 function crear(){
-	
 	$("#create").on("click", function(event){
 		var nivel = $("#nivel").val();
 		var etapa = $("#etapa").val();
-		
 		if(nivel && etapa){
 			var curso = {
 				"nivel" : nivel,
@@ -38,17 +36,13 @@ function crear(){
 			});
 		}else{
 			alert("los campos son obligatorios");
-		}
-				
+		}		
 	});
-	
 }
 
 function buscar(){
 	$("#buscar").on("click", function(event){
 		event.preventDefault();
-		
-
 		var nivel =	$("#Bnivel").val();
 		var etapa =	$("#Betapa").val();
 		var	url ;
@@ -89,6 +83,7 @@ function buscar(){
 
 
 function cargarDatos(){
+	
 	$("#editar").on("click", function(event){
 		event.preventDefault();
 		
@@ -113,7 +108,7 @@ function cargarDatos(){
 
 }
 
-function editar(){
+function editar(){ //ENVIA LOS DATOS A LA BASE DE DATOS
 	$("#guardar").on("click", function(event){
 		event.preventDefault();
 		var nivel = $("#nivelS").val();
@@ -124,6 +119,7 @@ function editar(){
 				"nivel" : nivel,
 				"etapa" : etapa
 			};
+			console.log(etapa +"  " +etapa);
 			$.ajax("./api/v1/curso/"+ getId(),
 				{
 				contentType :"application/json",

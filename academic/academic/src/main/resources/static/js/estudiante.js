@@ -108,10 +108,6 @@ function cursoSeleccionado(id){ //ESTA FUNCION PERMITE RETORNAR UN CURSO SELECCI
 	}else{
 		return 0;
 	}
-	
-	
-	
-	
 }
 
 function ListarCursos(){ //ADICIONA A LA VISTA LA LISTA DE CURSOS AL APARTADO DE CREAR ESTUDIANTE
@@ -145,26 +141,31 @@ function ListarCursos(){ //ADICIONA A LA VISTA LA LISTA DE CURSOS AL APARTADO DE
 }
 
 function ListaResponsable(){ //#RETORNA LOS RESPONSABLES A LA VISTA DESDE MODAL REGISTRAR ESTUDIANTE
+	$("#nuevoEst").on("click" , function(event){
+		event.preventDefault();
 	
-	$.ajax("./api/v1/representante", {
-		
-		contentType:"application/json",
-		dataType : "json",
-		type :"GET",
-		success :  function (datos){
-			
-			if(datos){
-				 $.each(datos, function(i, repre) {
-						$("#ListaResponsable").append("<option value=" + repre.id + " id = "+repre.id+">" + repre.nombre + "   " + repre.apellido1 +" "+ repre.apellido2+ "</option>");
-						
+		$("#ListaResponsable").children().remove();
+		$.ajax("./api/v1/representante", {
+			contentType:"application/json",
+			dataType : "json",
+			type :"GET",
+			success :  function (datos){
+				$("#ListaResponsable").append("<option> </option>");
+				if(datos){
+					 $.each(datos, function(i, repre) {
+							$("#ListaResponsable").append("<option value=" + repre.id + " id = "+repre.id+">" + repre.nombre + "   " + repre.apellido1 +" "+ repre.apellido2+ "</option>");
 					 });
+				}
+			},
+			error: function(event){
+				console.log("error en el listar representante");
+				alert("ERROR NO SE PUEDE LISTAR LOS REPRESENTANTES");
 			}
-		},
-		error: function(event){
-			console.log("error en el listar representante");
-			alert("ERROR");
-		}
+		});
+		
 	});
+	
+	
 	
 }
 
@@ -324,10 +325,10 @@ function ActualizarRepresentante(){ //ACTUALIZA LOS DATOS DEL REPRESENTANTE
 			var correoRep = $("#DcorreoR").val();
 			var id  = $("#ListaResponsableEdit").val();
 			
-			
-			if( nombreRep && apellidoRep && apellidoRep1 && nif && telefono && correoRep){
-			
+			alert("rRRSADSADASDDDDDDDDDDDDDDD")
+			if( nombreRep && apellidoRep  && nif && telefono && correoRep){
 				
+				console.log(correoRep)
 				var  responsable= {
 
 				    	  "nombre" : nombreRep, "apellido1" : apellidoRep, 
@@ -359,7 +360,7 @@ function ActualizarRepresentante(){ //ACTUALIZA LOS DATOS DEL REPRESENTANTE
 					    	});
 				   
 			}else{
-				console.log("pasando aqui");
+				console.log("Datos incompletos no pueden ser actualizado");
 			}
 	});
 	
@@ -506,12 +507,13 @@ function agregaCursoEdit(val){ // AGREGA EL LISTADO DE DATOS DEL CURSO Y EL QUE 
 
 function agregaRepresentante(val ){	//AGREGA EL LISTADO DE DATOS DEL REPRESENTANTE Y SELECCIONAL EL QUE POSEE EL ESTUDIANTE PARA EDITAR Y POSTERIORMENTE CAMBIAR
 	
+	$("#ListaResponsablD").children().remove();
 	$.ajax("./api/v1/representante", {
-		
 		contentType:"application/json",
 		dataType : "json",
 		type :"GET",
 		success :  function (datos){
+			 $("#ListaResponsablD").append("<option > </option>");
 			 $.each(datos, function(i, repre) {
 				if(val && repre.id == val){
 					$("#ListaResponsablD").append("<option value=" + repre.id + " id = "+repre.id+" selected >" + repre.nombre + "   " + repre.apellido1 +" "+ repre.apellido2+ "</option>");
@@ -794,5 +796,4 @@ function LimpiarLista(){ //ACCION DESPLEGADA POR EL BOTON LIMPIAR
 		$("tbody.cuerpo-tableEst").children().remove();
 		
 	});
-	
 }

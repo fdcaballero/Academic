@@ -65,9 +65,9 @@ public class RestEstudianteController {
 		
 		 estudiante.setId(id);
 		 
-		/* if(estudiante.getVar1String() != null) {
+		 if(estudiante.getVar1String() != null) {
 			 Optional<Responsable_Alumno> responsable = responsableService.findById(Long.parseLong(estudiante.getVar1String())); //NUEVO RESPONSABLE
-			 if(estudiante.getResponsable() != null) {
+			/* if(estudiante.getResponsable() != null) {
 				 if(estudiante.getResponsable().getId() == responsable.get().getId()) {
 			     }else {
 					Responsable_Alumno RespAnt = estudiante.getResponsable(); //Tomamos el responsable anterior y le quitamos el estudiante 
@@ -81,16 +81,16 @@ public class RestEstudianteController {
 					// responsableService.save(RespAnt);
 				 }
 			 }
-				 
+				 */
 			 
 			 estudiante.setResponsable(responsable.get()); //AGREGAMOS AL ESTUDIANTE EL NUEVO REPRESENTANTE Y AL REPRESENTANTE LE AGREGAMOS UN NUEVO ESTUDIANTE
-			 responsable.get().getEstudiantes().add(estudiante);
+			// responsable.get().getEstudiantes().add(estudiante);
 			//responsableService.save(responsable.get());
 		}
 			
 			if(estudiante.getVarString() != null) {
 				Optional<Curso> curso = cursoService.findById(Long.parseLong(estudiante.getVarString()));
-				if(estudiante.getGrado() != null) {
+			/*	if(estudiante.getGrado() != null) {
 					if(estudiante.getGrado() != null) {
 						if(estudiante.getGrado().getId() == curso.get().getId()) { // TOMAMOS EL CURSO DEL ESTUDIANTE Y VERIFICAMOS SI ES EL MISMO QUE YA POSEE
 						}else {
@@ -104,11 +104,11 @@ public class RestEstudianteController {
 						//	cursoService.save(cursoAnt);
 						}
 					}
-				}
+				}*/
 				estudiante.setGrado(curso.get());
-				curso.get().getEstudiantes().add(estudiante);
+				//curso.get().getEstudiantes().add(estudiante);
 				//cursoService.save(curso.get());
-			}*/
+			}
 		 return studentRepository.save(estudiante);
 	}
 	 
